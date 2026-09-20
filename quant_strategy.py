@@ -30,12 +30,12 @@ DATA_PATH = "/workspace/600519_daily.csv"
 
 
 # ======================== 1. 数据加载 ========================
-def load_data(path: str) -> pd.DataFrame:
+def load_data(path: str, ma_short: int = MA_SHORT, ma_long: int = MA_LONG) -> pd.DataFrame:
     df = pd.read_csv(path, parse_dates=["date"])
     df = df.sort_values("date").reset_index(drop=True)
-    # 计算均线
-    df["ma_short"] = df["close"].rolling(MA_SHORT).mean()
-    df["ma_long"] = df["close"].rolling(MA_LONG).mean()
+    # 计算均线 (参数化, 便于网格搜索)
+    df["ma_short"] = df["close"].rolling(ma_short).mean()
+    df["ma_long"] = df["close"].rolling(ma_long).mean()
     return df
 
 
@@ -184,40 +184,48 @@ def calc_metrics(df: pd.DataFrame) -> dict:
 
 
 # ======================== 5. 可视化 ========================
-def plot_result(df: pd.DataFrame, out_path: str = "/workspace/backtest_result.png"):
+def plot_result(df: pd.DataFrame, ma_short: int = MA_SHORT, ma_long: int = MA_LONG,
+                out_path: str = "/workspace/backtest_result.png"):
     fig, axes = plt.subplots(3, 1, figsize=(14, 12), gridspec_kw={"height_ratios": [3, 1, 1]})
 
     # ---- 子图1: 价格 + 均线 + 买卖点 ----
     ax = axes[0]
     ax.plot(df["date"], df["close"], label="Close", color="#333", linewidth=1.2)
-    ax.plot(df["date"], df["ma_short"], label=f"MA{MA_SHORT}", color="#1f77b4", linewidth=1)
-    ax.plot(df["date"], df["ma_long"], label=f"MA{MA_LONG}", color="#ff7f0e", linewidth=1)
+    # 防御式: 均线列存在才绘制
+    if "ma_short" in df.columns:
+        ax.plot(df["date"], df["ma_short"], label=f"MA{ma_short}", color="#1f77b4", linewidth=1)
+    if "ma_long" in df.columns:
+        ax.plot(df["date"], df["ma_long"], label=f"MA{ma_long}", color="#ff7f0e", linewidth=1)
 
     # 买卖点 (信号日次日开盘成交, 标注在信号日)
-    buy = df[df["signal"] == 1]
-    sell = df[df["signal"] == -1]
-    ax.scatter(buy["date"], buy["close"], marker="^", color="red", s=80, zorder=5, label="Buy")
-    ax.scatter(sell["date"], sell["close"], marker="v", color="green", s=80, zorder=5, label="Sell")
-    ax.set_title("600519 Kweichow Moutai - Dual MA Strategy Backtest", fontsize=14, fontweight="bold")
+    if "signal" in df.columns:
+        buy = df[df["signal"] == 1]
+        sell = df[df["signal"] == -1]
+        ax.scatter(buy["date"], buy["close"], marker="^", color="red", s=80, zorder=5, label="Buy")
+        ax.scatter(sell["date"], sell["close"], marker="v", color="green", s=80, zorder=5, label="Sell")
+    ax.set_title(f"600519 Kweichow Moutai - Dual MA({ma_short}/{ma_long}) Backtest", fontsize=14, fontweight="bold")
     ax.set_ylabel("Price (CNY)")
     ax.legend(loc="upper left")
     ax.grid(alpha=0.3)
 
     # ---- 子图2: 净值曲线 (策略 vs 基准) ----
     ax = axes[1]
-    ax.plot(df["date"], df["strategy_nav"], label="Strategy", color="#d62728", linewidth=1.5)
-    ax.plot(df["date"], df["benchmark_nav"], label="Benchmark(Buy&Hold)", color="#7f7f7f", linewidth=1.2, linestyle="--")
+    if "strategy_nav" in df.columns:
+        ax.plot(df["date"], df["strategy_nav"], label="Strategy", color="#d62728", linewidth=1.5)
+    if "benchmark_nav" in df.columns:
+        ax.plot(df["date"], df["benchmark_nav"], label="Benchmark(Buy&Hold)", color="#7f7f7f", linewidth=1.2, linestyle="--")
     ax.set_ylabel("Net Value")
     ax.legend(loc="upper left")
     ax.grid(alpha=0.3)
 
     # ---- 子图3: 回撤 ----
     ax = axes[2]
-    nav = df["strategy_nav"].values
-    running_max = np.maximum.accumulate(nav)
-    drawdown = (nav - running_max) / running_max
-    ax.fill_between(df["date"], drawdown, 0, color="#d62728", alpha=0.4)
-    ax.plot(df["date"], drawdown, color="#d62728", linewidth=0.8)
+    if "strategy_nav" in df.columns:
+        nav = df["strategy_nav"].values
+        running_max = np.maximum.accumulate(nav)
+        drawdown = (nav - running_max) / running_max
+        ax.fill_between(df["date"], drawdown, 0, color="#d62728", alpha=0.4)
+        ax.plot(df["date"], drawdown, color="#d62728", linewidth=0.8)
     ax.set_ylabel("Drawdown")
     ax.set_xlabel("Date")
     ax.grid(alpha=0.3)
@@ -233,25 +241,72 @@ def plot_result(df: pd.DataFrame, out_path: str = "/workspace/backtest_result.pn
     return out_path
 
 
+# ======================== 6. 单次回测 (供网格搜索调用) ========================
+def run_single_backtest(ma_short: int, ma_long: int) -> tuple[dict, pd.DataFrame]:
+    """对指定均线周期运行完整回测, 返回 (指标字典, 回测DataFrame)"""
+    df = load_data(DATA_PATH, ma_short=ma_short, ma_long=ma_long)
+    df = generate_signals(df)
+    df = backtest(df)
+    metrics = calc_metrics(df)
+    return metrics, df
+
+
+# ======================== 7. 参数网格搜索 ========================
+def grid_search(short_range: list[int], long_range: list[int]) -> pd.DataFrame:
+    """
+    遍历所有 (短周期, 长周期) 组合, 返回按夏普比率排序的结果表.
+    要求: 短周期 < 长周期.
+    """
+    results = []
+    for s in short_range:
+        for l in long_range:
+            if s >= l:
+                continue
+            metrics, _ = run_single_backtest(s, l)
+            # 提取数值型指标用于排序
+            results.append({
+                "ma_short": s,
+                "ma_long": l,
+                "总收益%": float(metrics["策略总收益"].replace("%", "")),
+                "年化%": float(metrics["策略年化"].replace("%", "")),
+                "夏普": float(metrics["夏普比率"]),
+                "最大回撤%": float(metrics["最大回撤"].replace("%", "")),
+                "交易次数": int(metrics["交易次数"]),
+                "胜率%": float(metrics["胜率"].replace("%", "")),
+            })
+    res_df = pd.DataFrame(results).sort_values("夏普", ascending=False).reset_index(drop=True)
+    return res_df
+
+
 # ======================== 主流程 ========================
 def main():
     print("=" * 60)
     print("  双均线趋势跟踪策略 回测报告")
-    print(f"  参数: MA_SHORT={MA_SHORT}, MA_LONG={MA_LONG}")
     print(f"  手续费={COMMISSION_RATE*100:.2f}%  滑点={SLIPPAGE_RATE*100:.2f}%  印花税={STAMP_TAX_RATE*100:.2f}%(卖)")
     print("=" * 60)
 
-    df = load_data(DATA_PATH)
-    df = generate_signals(df)
-    df = backtest(df)
-    metrics = calc_metrics(df)
+    # ---------- 阶段一: 参数网格搜索 ----------
+    print("\n>>> 阶段一: 参数网格搜索 (按夏普比率排序 Top 10)")
+    short_candidates = [5, 10, 15, 20, 30]
+    long_candidates = [40, 60, 90, 120, 150]
+    gs = grid_search(short_candidates, long_candidates)
+    print(gs.head(10).to_string(index=False))
+
+    # 取夏普最高的参数组合
+    best = gs.iloc[0]
+    best_s, best_l = int(best["ma_short"]), int(best["ma_long"])
+    print(f"\n最优参数: MA_SHORT={best_s}, MA_LONG={best_l} (夏普={best['夏普']:.2f})")
+
+    # ---------- 阶段二: 用最优参数回测 ----------
+    print(f"\n>>> 阶段二: 最优参数 (MA{best_s}/MA{best_l}) 回测结果")
+    metrics, df = run_single_backtest(best_s, best_l)
 
     print()
     for k, v in metrics.items():
         print(f"  {k:>12s}: {v}")
     print("=" * 60)
 
-    img = plot_result(df)
+    img = plot_result(df, ma_short=best_s, ma_long=best_l)
     print(f"\n图表已保存: {img}")
 
 
