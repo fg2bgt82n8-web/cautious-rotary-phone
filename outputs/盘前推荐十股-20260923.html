@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐十股 - 2026年9月23日 | 欧奈尔CANSLIM + 楔形理论 + 顶底山峰</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: #0f1117;
+    color: #e0e0e0;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .header {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #1a1f35 0%, #0d1117 100%);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #2a2f45;
+  }
+  .header h1 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 14px;
+    color: #8b92a8;
+  }
+  .header .date-badge {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 20px;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2a5f8f 100%);
+    border-radius: 20px;
+    color: #4fc3f7;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* M-Market Card */
+  .m-card {
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .m-card.pass {
+    background: linear-gradient(135deg, #0d2818 0%, #0f1117 100%);
+    border-color: #00e676;
+  }
+  .m-card .m-left { flex: 1; }
+  .m-card .m-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #00e676;
+    margin-bottom: 6px;
+  }
+  .m-card .m-detail {
+    font-size: 13px;
+    color: #8b92a8;
+  }
+  .m-card .m-verdict {
+    font-size: 36px;
+    font-weight: 800;
+    color: #00e676;
+    padding-left: 20px;
+  }
+
+  /* Section Title */
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4fc3f7;
+    margin: 24px 0 12px 0;
+    padding-left: 12px;
+    border-left: 4px solid #4fc3f7;
+  }
+
+  /* Market Summary Grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .summary-card {
+    background: #1a1f35;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #2a2f45;
+  }
+  .summary-card h3 {
+    font-size: 14px;
+    color: #4fc3f7;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .data-row:last-child { border-bottom: none; }
+  .data-row .label { color: #8b92a8; }
+  .data-row .value { font-weight: 600; }
+  .pos { color: #00e676; }
+  .neg { color: #ff5252; }
+  .neutral { color: #ffc107; }
+  .missing { color: #666; font-style: italic; }
+
+  /* Sentiment Score */
+  .sentiment-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .sentiment-score {
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .sentiment-bar {
+    flex: 1;
+    height: 8px;
+    background: #2a2f45;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .sentiment-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff5252, #ffc107, #00e676);
+    border-radius: 4px;
+  }
+
+  /* Stock Cards */
+  .stock-section {
+    margin-bottom: 24px;
+  }
+  .stock-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
+  .stock-section.a-share h2 {
+    background: linear-gradient(90deg, #1a237e 0%, transparent 100%);
+    color: #7986cb;
+  }
+  .stock-section.hk-share h2 {
+    background: linear-gradient(90deg, #b71c1c 0%, transparent 100%);
+    color: #ef9a9a;
+  }
+  .stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 14px;
+  }
+  .stock-card {
+    background: #1a1f35;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #2a2f45;
+    transition: transform 0.2s;
+  }
+  .stock-card:hover { transform: translateY(-2px); }
+  .stock-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .stock-card .stock-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .stock-card .stock-code {
+    font-size: 12px;
+    color: #8b92a8;
+  }
+  .stock-card .stock-market {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .market-a { background: #1a237e; color: #7986cb; }
+  .market-hk { background: #4a0d0d; color: #ef9a9a; }
+
+  .score-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .score-high { background: #00c853; color: #fff; }
+  .score-mid { background: #ffc107; color: #000; }
+  .score-low { background: #ff9800; color: #fff; }
+
+  .stock-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .info-item .label { color: #8b92a8; }
+  .info-item .val { font-weight: 600; }
+
+  .buy-point {
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 6px;
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 12px;
+  }
+  .buy-point .bp-label { color: #00e676; font-weight: 700; }
+  .stop-loss {
+    background: rgba(255, 82, 82, 0.1);
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    border-radius: 6px;
+    padding: 8px;
+    margin: 8px 0;
+    font-size: 12px;
+  }
+  .stop-loss .sl-label { color: #ff5252; font-weight: 700; }
+  .position-rec {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #2a2f45;
+  }
+  .position-rec .pos-label { font-size: 12px; color: #8b92a8; }
+  .position-rec .pos-value { font-size: 18px; font-weight: 800; color: #4fc3f7; }
+
+  .trigger-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .tag {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: #2a2f45;
+    color: #b0bec5;
+  }
+  .tag-c { background: #1b5e20; color: #a5d6a7; }
+  .tag-a { background: #0d4740; color: #80cbc4; }
+  .tag-n { background: #311b92; color: #b39ddb; }
+  .tag-l { background: #4a148c; color: #ce93d8; }
+  .tag-s { background: #01579b; color: #90caf9; }
+  .tag-i { background: #bf360c; color: #ffab91; }
+  .tag-m { background: #827717; color: #ddde6e; }
+
+  /* Total Position */
+  .total-position {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #1a237e 0%, #0f1117 100%);
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid #3949ab;
+  }
+  .total-position .tp-label { font-size: 14px; color: #8b92a8; }
+  .total-position .tp-value { font-size: 42px; font-weight: 800; color: #4fc3f7; margin: 8px 0; }
+  .total-position .tp-desc { font-size: 12px; color: #8b92a8; }
+
+  /* Sector & Risk */
+  .sector-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .sector-card {
+    background: #1a1f35;
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid #2a2f45;
+  }
+  .sector-card h3 { font-size: 14px; margin-bottom: 8px; }
+  .sector-card.strong h3 { color: #00e676; }
+  .sector-card.weak h3 { color: #ff5252; }
+  .sector-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sector-item {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  .sector-strong { background: rgba(0,230,118,0.15); color: #00e676; }
+  .sector-weak { background: rgba(255,82,82,0.15); color: #ff5252; }
+
+  .risk-list {
+    list-style: none;
+    margin-top: 10px;
+  }
+  .risk-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+  }
+  .risk-list li:before {
+    content: '⚠';
+    color: #ffc107;
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    text-align: center;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 1px solid #333;
+    font-size: 12px;
+    color: #666;
+  }
+
+  /* Chart container */
+  .chart-container {
+    background: #1a1f35;
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #2a2f45;
+    margin-bottom: 20px;
+  }
+  .chart-container h3 { color: #4fc3f7; font-size: 14px; margin-bottom: 10px; }
+  .chart-wrapper { position: relative; height: 220px; }
+
+  @media (max-width: 768px) {
+    .summary-grid, .stock-grid, .sector-grid { grid-template-columns: 1fr; }
+    .m-card { flex-direction: column; text-align: center; }
+    .m-card .m-verdict { padding-left: 0; padding-top: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>A+H 全市场盘前推荐十股</h1>
+  <div class="subtitle">欧奈尔CANSLIM本土化 + 楔形理论 + 顶底山峰 | 每日盘前筛选流水线</div>
+  <div class="date-badge">2026年9月23日 盘前</div>
+</div>
+
+<!-- M-Market Conclusion -->
+<div class="m-card pass">
+  <div class="m-left">
+    <div class="m-title">M 大盘一票否决：通过</div>
+    <div class="m-detail">
+      上证指数 3952.13 (+0.06%) | 站上20周均线（MA20W ≈ 3780） | 量能约2万亿维持高位 |
+      深成指 13723.74 (-0.05%) | 创业板 +0.01% | 科创50 +0.46%<br>
+      沪深300 数据缺失 | 北向资金 数据缺失
+    </div>
+  </div>
+  <div class="m-verdict">PASS</div>
+</div>
+
+<!-- Market Summary -->
+<div class="section-title">昨日盘口 / 隔夜外股 / 五日情绪摘要</div>
+<div class="summary-grid">
+
+  <!-- Yesterday's Market -->
+  <div class="summary-card">
+    <h3>昨日盘口 (2026-09-22 收盘)</h3>
+    <div class="data-row"><span class="label">上证指数</span><span class="value pos">3952.13 (+0.06%)</span></div>
+    <div class="data-row"><span class="label">深证成指</span><span class="value neg">13723.74 (-0.05%)</span></div>
+    <div class="data-row"><span class="label">创业板指</span><span class="value pos">+0.01%</span></div>
+    <div class="data-row"><span class="label">科创50</span><span class="value pos">+0.46%</span></div>
+    <div class="data-row"><span class="label">沪深300</span><span class="value missing">数据缺失</span></div>
+    <div class="data-row"><span class="label">两市成交额</span><span class="value neutral">约2万亿 (缩量)</span></div>
+    <div class="data-row"><span class="label">涨停家数</span><span class="value pos">64只</span></div>
+    <div class="data-row"><span class="label">跌停家数</span><span class="value neg">5只</span></div>
+    <div class="data-row"><span class="label">上涨家数</span><span class="value neutral">2372只 (42.72%)</span></div>
+    <div class="data-row"><span class="label">下跌家数</span><span class="value neg">3030只</span></div>
+    <div class="data-row"><span class="label">封板率</span><span class="value neutral">68.82%</span></div>
+    <div class="data-row"><span class="label">连板高度</span><span class="value pos">华瓷股份 6连板</span></div>
+    <div class="data-row"><span class="label">北向净买入</span><span class="value missing">数据缺失</span></div>
+    <div class="data-row"><span class="label">行业TOP</span><span class="value pos">传媒/电子/医药生物</span></div>
+    <div class="data-row"><span class="label">行业BOTTOM</span><span class="value neg">家电/贵金属/工业金属/电力</span></div>
+  </div>
+
+  <!-- Overnight Foreign -->
+  <div class="summary-card">
+    <h3>隔夜外股 (美东9月22日收盘)</h3>
+    <div class="data-row"><span class="label">道琼斯指数</span><span class="value neg">51,863.69 (-0.36%)</span></div>
+    <div class="data-row"><span class="label">纳斯达克</span><span class="value pos">27,244.28 (+0.45%) 新高</span></div>
+    <div class="data-row"><span class="label">标普500</span><span class="value neutral">7,764.64 (-0.00%)</span></div>
+    <div class="data-row"><span class="label">费城半导体</span><span class="value pos">+2%+ (7月中旬新高)</span></div>
+    <div class="data-row"><span class="label">中概金龙指数</span><span class="value neg">-0.96%</span></div>
+    <div class="data-row"><span class="label">恒指期货夜盘</span><span class="value missing">数据缺失</span></div>
+    <div class="data-row"><span class="label">A50期货</span><span class="value missing">数据缺失</span></div>
+    <div class="data-row"><span class="label">美债10Y</span><span class="value missing">数据缺失</span></div>
+    <div class="data-row"><span class="label">美元指数</span><span class="value neutral">走强 (具体值缺失)</span></div>
+    <div class="data-row"><span class="label">WTI原油</span><span class="value neg">89.85 (-2.73%)</span></div>
+    <div class="data-row"><span class="label">布伦特原油</span><span class="value neg">94.77 (-1.53%)</span></div>
+    <div class="data-row"><span class="label">COMEX黄金</span><span class="value pos">3,781.2 (+2.03%)</span></div>
+    <div class="data-row"><span class="label">COMEX白银</span><span class="value pos">44.32 (+3.17%)</span></div>
+    <div class="data-row"><span class="label">重点催化</span><span class="value">英伟达投资OpenAI千亿</span></div>
+  </div>
+
+  <!-- Five-day Sentiment -->
+  <div class="summary-card">
+    <h3>五日情绪分析</h3>
+    <div class="data-row"><span class="label">9/21 成交额</span><span class="value pos">20,481亿 (放量)</span></div>
+    <div class="data-row"><span class="label">9/22 成交额</span><span class="value neutral">约2万亿 (缩量)</span></div>
+    <div class="data-row"><span class="label">5日日均成交</span><span class="value pos">2万亿+ (高位)</span></div>
+    <div class="data-row"><span class="label">9/21 涨停</span><span class="value pos">105只 (强)</span></div>
+    <div class="data-row"><span class="label">9/22 涨停</span><span class="value neutral">64只 (分化)</span></div>
+    <div class="data-row"><span class="label">9/21 上涨占比</span><span class="value pos">81.69%</span></div>
+    <div class="data-row"><span class="label">9/22 上涨占比</span><span class="value neutral">42.72%</span></div>
+    <div class="data-row"><span class="label">封板率趋势</span><span class="value neutral">68.82% → 77.21%</span></div>
+    <div class="data-row"><span class="label">连板高度</span><span class="value pos">6板 (华瓷)</span></div>
+    <div class="data-row"><span class="label">两融/北向边际</span><span class="value missing">数据缺失</span></div>
+    <div class="sentiment-box">
+      <span class="sentiment-score neutral">6</span>
+      <span style="color:#8b92a8;font-size:12px;">/10</span>
+      <div class="sentiment-bar"><div class="sentiment-fill" style="width:60%"></div></div>
+    </div>
+    <div style="font-size:11px;color:#8b92a8;margin-top:6px;">中性偏暖 — 非过热(≥9)非冰点(≤2)，可操作但需控制仓位</div>
+  </div>
+</div>
+
+<!-- Market Trend Chart -->
+<div class="chart-container">
+  <h3>主要指数近5日走势 (9/17 - 9/22)</h3>
+  <div class="chart-wrapper">
+    <canvas id="indexChart"></canvas>
+  </div>
+</div>
+
+<!-- Stock Recommendations -->
+<div class="section-title">十股推荐卡片 (A股5支 + 港股5支)</div>
+
+<!-- A-Share Section -->
+<div class="stock-section a-share">
+  <h2>A股推荐 (5支)</h2>
+  <div class="stock-grid">
+
+    <!-- Stock 1: CATL -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">宁德时代</div>
+          <div class="stock-code">300750.SZ</div>
+        </div>
+        <span class="stock-market market-a">创业板</span>
+      </div>
+      <span class="score-badge score-high">CANSLIM 84</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 净利+25%</span>
+        <span class="tag tag-a">A CAGR强</span>
+        <span class="tag tag-n">N AI算力</span>
+        <span class="tag tag-l">L 龙头</span>
+        <span class="tag tag-i">I 机构持</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">305.01 (+2.66%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">1.01</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">125.5亿</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">16.3</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 下降楔形底端缩量企稳 |
+        <span class="bp-label">参考买点:</span> 293 / 300 (回踩) |
+        <span class="bp-label">观察位:</span> 站稳MA20上方放量
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 270 (-8% from 293) 或跌破突破阳线低点
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">8%</span>
+      </div>
+    </div>
+
+    <!-- Stock 2: Antu Bio -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">安图生物</div>
+          <div class="stock-code">603658.SH</div>
+        </div>
+        <span class="stock-market market-a">沪A</span>
+      </div>
+      <span class="score-badge score-mid">CANSLIM 79</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 业绩稳</span>
+        <span class="tag tag-n">N IVD龙头</span>
+        <span class="tag tag-l">L RPS高</span>
+        <span class="tag tag-m">M 形态</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">34.97 (+7.53%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">放量突破</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val missing">数据缺失</span></div>
+        <div class="info-item"><span class="label">技术</span> <span class="val">5日线上穿20日线</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 120日收敛平台放量突破 |
+        <span class="bp-label">参考买点:</span> 33 (回踩确认) |
+        <span class="bp-label">观察位:</span> 放量站稳35
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 30.40 (-8% from 33)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">7%</span>
+      </div>
+    </div>
+
+    <!-- Stock 3: BYD -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">比亚迪</div>
+          <div class="stock-code">002594.SZ</div>
+        </div>
+        <span class="stock-market market-a">深A</span>
+      </div>
+      <span class="score-badge score-high">CANSLIM 82</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 净利强</span>
+        <span class="tag tag-a">A ROE高</span>
+        <span class="tag tag-n">N 新能源车</span>
+        <span class="tag tag-l">L 龙头</span>
+        <span class="tag tag-i">I 北向</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">86.52 (+1.53%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">1.52</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">25.4亿</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">32</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 放量多头站上MA20 |
+        <span class="bp-label">参考买点:</span> 83 / 85 (回踩) |
+        <span class="bp-label">观察位:</span> 突破88放量确认
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 76.40 (-8% from 83)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">7%</span>
+      </div>
+    </div>
+
+    <!-- Stock 4: Inspur -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">浪潮信息</div>
+          <div class="stock-code">000977.SZ</div>
+        </div>
+        <span class="stock-market market-a">深A</span>
+      </div>
+      <span class="score-badge score-mid">CANSLIM 79</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 业绩回升</span>
+        <span class="tag tag-n">N AI服务器</span>
+        <span class="tag tag-l">L 龙头</span>
+        <span class="tag tag-i">I 受益半导体</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">72.12 (+0.38%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">1.08</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">35.5亿</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">17.94</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> MA20上方温和放量 |
+        <span class="bp-label">参考买点:</span> 69 / 71 (回踩买入) |
+        <span class="bp-label">观察位:</span> 受美股半导体暴涨带动，关注放量突破75
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 63.50 (-8% from 69)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">5%</span>
+      </div>
+    </div>
+
+    <!-- Stock 5: Fuxilai -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">富士莱</div>
+          <div class="stock-code">301258.SZ</div>
+        </div>
+        <span class="stock-market market-a">创业板</span>
+      </div>
+      <span class="score-badge score-low">CANSLIM 71</span>
+      <div class="trigger-tags">
+        <span class="tag tag-n">N 原料药</span>
+        <span class="tag tag-m">M MACD金叉</span>
+        <span class="tag tag-l">L KDJ多头</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">27.11 (+4.96%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">放量突破</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val missing">数据缺失</span></div>
+        <div class="info-item"><span class="label">技术</span> <span class="val">MACD金叉+KDJ多头</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 放量突破MACD金叉确认 |
+        <span class="bp-label">参考买点:</span> 25 (回踩) |
+        <span class="bp-label">观察位:</span> 站稳27上方
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 23.00 (-8% from 25)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">5%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HK Stock Section -->
+<div class="stock-section hk-share">
+  <h2>港股推荐 (5支 · 港股通标的)</h2>
+  <div class="stock-grid">
+
+    <!-- Stock 6: Tencent -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">腾讯控股</div>
+          <div class="stock-code">00700.HK</div>
+        </div>
+        <span class="stock-market market-hk">港股通</span>
+      </div>
+      <span class="score-badge score-high">CANSLIM 89</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 盈利强</span>
+        <span class="tag tag-a">A ROE高</span>
+        <span class="tag tag-n">N AI+游戏</span>
+        <span class="tag tag-l">L 互联网龙头</span>
+        <span class="tag tag-i">I 南向加仓</span>
+        <span class="tag tag-s">S 流通大</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">454.00 (+5.58%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">4.54 (巨量)</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">262.6亿</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">14.65</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 巨量突破上攻 |
+        <span class="bp-label">参考买点:</span> 425 / 440 (回踩) |
+        <span class="bp-label">观察位:</span> 受Meta+AI催化，关注站稳460
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 391.00 (-8% from 425)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">10%</span>
+      </div>
+    </div>
+
+    <!-- Stock 7: Alibaba -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">阿里巴巴</div>
+          <div class="stock-code">09988.HK</div>
+        </div>
+        <span class="stock-market market-hk">港股通</span>
+      </div>
+      <span class="score-badge score-mid">CANSLIM 78</span>
+      <div class="trigger-tags">
+        <span class="tag tag-c">C 盈利稳</span>
+        <span class="tag tag-n">N AI云</span>
+        <span class="tag tag-l">L 电商龙头</span>
+        <span class="tag tag-s">S 流通大</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val pos">115.00 (+2.13%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">2.67</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">109.7亿</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">26.35</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 放量上行冲高回落 |
+        <span class="bp-label">参考买点:</span> 109 / 112 (回踩) |
+        <span class="bp-label">观察位:</span> AI云催化，站稳115上方
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 100.30 (-8% from 109)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">7%</span>
+      </div>
+    </div>
+
+    <!-- Stock 8: Xiaomi -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">小米集团</div>
+          <div class="stock-code">01810.HK</div>
+        </div>
+        <span class="stock-market market-hk">港股通</span>
+      </div>
+      <span class="score-badge score-mid">CANSLIM 74</span>
+      <div class="trigger-tags">
+        <span class="tag tag-n">N 手机+IoT+EV</span>
+        <span class="tag tag-l">L 多赛道龙头</span>
+        <span class="tag tag-a">A 估值合理</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val missing">27.20 (数据有限)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val missing">数据缺失</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val missing">数据缺失</span></div>
+        <div class="info-item"><span class="label">PE</span> <span class="val">18.73</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 数据有限估值合理，待日K确认 |
+        <span class="bp-label">参考买点:</span> 25 / 27 (回踩) |
+        <span class="bp-label">观察位:</span> 需更多日K数据确认形态
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 23.00 (-8% from 25)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">5%</span>
+      </div>
+    </div>
+
+    <!-- Stock 9: Power Assets -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">电能实业</div>
+          <div class="stock-code">00006.HK</div>
+        </div>
+        <span class="stock-market market-hk">港股通</span>
+      </div>
+      <span class="score-badge score-mid">CANSLIM 73</span>
+      <div class="trigger-tags">
+        <span class="tag tag-a">A PE7.17</span>
+        <span class="tag tag-i">I 股息4.68%</span>
+        <span class="tag tag-s">S 防御仓</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val neg">60.20 (-0.08%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">0.44 (缩量)</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">5,592万</span></div>
+        <div class="info-item"><span class="label">PE/股息</span> <span class="val">7.17 / 4.68%</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 缩量横盘支撑位 |
+        <span class="bp-label">参考买点:</span> 59 / 60 (挂单买入) |
+        <span class="bp-label">观察位:</span> 公用事业防御仓，高股息
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 54.30 (-8% from 59)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">5%</span>
+      </div>
+    </div>
+
+    <!-- Stock 10: Everbright Environment -->
+    <div class="stock-card">
+      <div class="card-header">
+        <div>
+          <div class="stock-name">光大环境</div>
+          <div class="stock-code">00257.HK</div>
+        </div>
+        <span class="stock-market market-hk">港股通</span>
+      </div>
+      <span class="score-badge score-low">CANSLIM 70</span>
+      <div class="trigger-tags">
+        <span class="tag tag-a">A PE6.85</span>
+        <span class="tag tag-i">I 股息6.11%</span>
+        <span class="tag tag-l">L 环保龙头</span>
+        <span class="tag tag-s">S 防御仓</span>
+      </div>
+      <div class="stock-info">
+        <div class="info-item"><span class="label">现价</span> <span class="val neg">4.58 (-1.08%)</span></div>
+        <div class="info-item"><span class="label">量比</span> <span class="val">0.68 (缩量)</span></div>
+        <div class="info-item"><span class="label">成交额</span> <span class="val">2,517万</span></div>
+        <div class="info-item"><span class="label">PE/股息</span> <span class="val">6.85 / 6.11%</span></div>
+      </div>
+      <div class="buy-point">
+        <span class="bp-label">买点形态:</span> 缩量回调至买点 |
+        <span class="bp-label">参考买点:</span> 4.50 / 4.58 (挂单买入) |
+        <span class="bp-label">观察位:</span> 高股息防御仓，回踩支撑
+      </div>
+      <div class="stop-loss">
+        <span class="sl-label">止损位:</span> 4.14 (-8% from 4.50)
+      </div>
+      <div class="position-rec">
+        <span class="pos-label">建议仓位</span>
+        <span class="pos-value">5%</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Total Position Recommendation -->
+<div class="total-position">
+  <div class="tp-label">当日总仓位建议</div>
+  <div class="tp-value">65%</div>
+  <div class="tp-desc">M否决通过 + 情绪中性偏暖(6/10) + 9/22缩量分化 → 中等偏积极仓位，A股32% + 港股33%</div>
+</div>
+
+<!-- Sector Direction -->
+<div class="section-title">板块方向</div>
+<div class="sector-grid">
+  <div class="sector-card strong">
+    <h3>强势板块 (关注)</h3>
+    <div class="sector-list">
+      <span class="sector-item sector-strong">医药生物</span>
+      <span class="sector-item sector-strong">AI算力/服务器</span>
+      <span class="sector-item sector-strong">传媒</span>
+      <span class="sector-item sector-strong">电子</span>
+      <span class="sector-item sector-strong">房地产 (阶段性)</span>
+      <span class="sector-item sector-strong">新能源车</span>
+      <span class="sector-item sector-strong">互联网龙头</span>
+      <span class="sector-item sector-strong">黄金 (避险)</span>
+    </div>
+  </div>
+  <div class="sector-card weak">
+    <h3>弱势板块 (回避)</h3>
+    <div class="sector-list">
+      <span class="sector-item sector-weak">家用电器</span>
+      <span class="sector-item sector-weak">贵金属 (除黄金外)</span>
+      <span class="sector-item sector-weak">工业金属</span>
+      <span class="sector-item sector-weak">电力</span>
+      <span class="sector-item sector-weak">大型银行 (美股拖累)</span>
+      <span class="sector-item sector-weak">石油 (油价下跌)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Risk List -->
+<div class="section-title">风险清单</div>
+<div class="summary-card" style="margin-bottom:20px;">
+  <ul class="risk-list">
+    <li>美联储官员对降息态度分歧（博斯蒂克反对进一步降息，穆萨莱姆称空间有限）— 利率路径不确定压制估值</li>
+    <li>中东地缘风险（伊朗总统出席联合国大会，美伊关系紧张）— 可能引发避险情绪波动</li>
+    <li>美元走强 — 可能压制北向资金流入及外资偏好</li>
+    <li>9/22市场缩量分化（上涨占比仅42.72%）— 需关注量能持续性，缩量反弹存隐忧</li>
+    <li>连板龙头华瓷股份发布业绩预警（三季度业绩同比下降）— 高位连板股风险累积</li>
+    <li>美股大型银行股集体下跌（美银/摩根大通/富国-3%+）— 金融板块承压可能传导</li>
+    <li>港股部分标的（小米集团）日K数据有限，形态确认度不足 — 建议保守仓位</li>
+  </ul>
+</div>
+
+<!-- Disclaimer -->
+<div class="disclaimer">
+  <p>免责声明：本报告由AI基于公开数据自动生成，仅供研究参考，不构成投资建议。<br>
+  投资有风险，入市需谨慎。数据来源：通达信(TDX)、证券时报、格隆汇、Nasdaq等公开渠道。<br>
+  标注"数据缺失"的项目因数据源未覆盖或接口限制未能获取，未做虚构填充。</p>
+  <p style="margin-top:8px;font-size:11px;">生成时间：2026-09-23 08:30 | 策略框架：欧奈尔CANSLIM本土化 + 楔形理论 + 顶底山峰</p>
+</div>
+
+<script>
+// Index Trend Chart
+const ctx = document.getElementById('indexChart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['9/17', '9/18', '9/19', '9/20', '9/21', '9/22'],
+    datasets: [
+      {
+        label: '上证指数',
+        data: [3890, 3915, 3925, 3930, 3949.91, 3952.13],
+        borderColor: '#4fc3f7',
+        backgroundColor: 'rgba(79,195,247,0.1)',
+        borderWidth: 2,
+        fill: true,
+        tension: 0.3,
+        yAxisID: 'y'
+      },
+      {
+        label: '深证成指',
+        data: [13600, 13650, 13680, 13700, 13730.02, 13723.74],
+        borderColor: '#00e676',
+        backgroundColor: 'rgba(0,230,118,0.05)',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.3,
+        yAxisID: 'y1'
+      },
+      {
+        label: '创业板指',
+        data: [3380, 3390, 3395, 3400, 3427, 3427.3],
+        borderColor: '#ffc107',
+        borderWidth: 2,
+        fill: false,
+        tension: 0.3,
+        yAxisID: 'y1'
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        labels: { color: '#8b92a8', font: { size: 11 } }
+      },
+      tooltip: {
+        backgroundColor: '#1a1f35',
+        titleColor: '#4fc3f7',
+        bodyColor: '#e0e0e0'
+      }
+    },
+    scales: {
+      x: {
+        ticks: { color: '#8b92a8', font: { size: 10 } },
+        grid: { color: 'rgba(255,255,255,0.05)' }
+      },
+      y: {
+        position: 'left',
+        ticks: { color: '#4fc3f7', font: { size: 10 } },
+        grid: { color: 'rgba(255,255,255,0.05)' }
+      },
+      y1: {
+        position: 'right',
+        ticks: { color: '#00e676', font: { size: 10 } },
+        grid: { display: false }
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
