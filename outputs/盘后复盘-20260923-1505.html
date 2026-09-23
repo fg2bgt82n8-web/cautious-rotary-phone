@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘后复盘 - 2026-09-23 15:05</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f5f7fa; color: #2c3e50; padding: 20px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .header { background: linear-gradient(135deg, #1a5276, #2874a6); color: #fff; padding: 24px 32px; border-radius: 12px; margin-bottom: 20px; }
+  .header h1 { font-size: 22px; margin-bottom: 6px; }
+  .header .meta { font-size: 13px; opacity: 0.9; }
+  .stage-indicator { display: flex; justify-content: space-between; background: #fff; padding: 16px 24px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); flex-wrap: wrap; gap: 8px; }
+  .stage { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .stage .dot { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+  .stage.done .dot { background: #27ae60; color: #fff; }
+  .stage.active .dot { background: #e67e22; color: #fff; box-shadow: 0 0 0 4px rgba(230,126,34,0.25); }
+  .stage.pending .dot { background: #bdc3c7; color: #fff; }
+  .stage .label { color: #555; }
+  .stage.active .label { color: #e67e22; font-weight: 600; }
+  .card { background: #fff; border-radius: 10px; padding: 24px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .card h2 { font-size: 16px; color: #1a5276; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #ecf0f1; }
+  .skip-box { background: #fef9e7; border-left: 5px solid #f39c12; padding: 28px; border-radius: 8px; text-align: center; }
+  .skip-box .icon { font-size: 42px; margin-bottom: 12px; }
+  .skip-box .title { font-size: 20px; color: #b7950b; font-weight: 600; margin-bottom: 10px; }
+  .skip-box .desc { font-size: 14px; color: #7d6608; line-height: 1.8; }
+  .info-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .info-item { flex: 1; min-width: 180px; background: #f8f9fa; padding: 12px 16px; border-radius: 6px; }
+  .info-item .k { font-size: 12px; color: #7f8c8d; margin-bottom: 4px; }
+  .info-item .v { font-size: 15px; font-weight: 600; color: #2c3e50; }
+  .disclaimer { background: #f8f9fa; border: 1px solid #e1e8ed; padding: 16px; border-radius: 8px; font-size: 12px; color: #7f8c8d; line-height: 1.7; }
+  .disclaimer h3 { font-size: 13px; color: #95a5a6; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>📊 盘后复盘报告</h1>
+    <div class="meta">2026-09-23（周三） · 时段 15:05 · 已收盘</div>
+  </div>
+
+  <div class="stage-indicator">
+    <div class="stage done"><span class="dot">✓</span><span class="label">盘前 09:00</span></div>
+    <div class="stage done"><span class="dot">✓</span><span class="label">盘中 10:30</span></div>
+    <div class="stage done"><span class="dot">✓</span><span class="label">午后 13:30</span></div>
+    <div class="stage done"><span class="dot">✓</span><span class="label">尾盘 14:30</span></div>
+    <div class="stage active"><span class="dot">●</span><span class="label">盘后 15:05</span></div>
+  </div>
+
+  <div class="card">
+    <h2>🛑 执行结论</h2>
+    <div class="skip-box">
+      <div class="icon">⏭️</div>
+      <div class="title">今日无盘前推荐，跳过</div>
+      <div class="desc">
+        未找到 /workspace/outputs/推荐与验证台账.csv<br>
+        今日各时段（盘前至尾盘）均无推荐记录，盘后复盘环节无可验证标的。<br>
+        本时段按流水线规则结束，不产生盈亏统计与次日展望。
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📋 交易日校验</h2>
+    <div class="info-row">
+      <div class="info-item"><div class="k">日期</div><div class="v">2026-09-23（周三）</div></div>
+      <div class="info-item"><div class="k">是否交易日</div><div class="v" style="color:#27ae60;">是（A股交易日）</div></div>
+      <div class="info-item"><div class="k">上证指数收盘</div><div class="v">3936.52（-0.39%）</div></div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <h3>⚠️ 免责声明</h3>
+    本报告由自动化流水线生成，仅供内部复盘参考，不构成任何投资建议。市场有风险，投资需谨慎。<br>
+    因今日无盘前推荐记录，本报告未包含个股全日验证表、盈亏统计及次日展望内容。
+  </div>
+
+</div>
+</body>
+</html>
