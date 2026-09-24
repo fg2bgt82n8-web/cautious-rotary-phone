@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐 · 2026-09-24 · 大盘否决休仓(0支)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root{--bg:#0d1117;--card:#161b22;--card2:#1c232e;--bd:#2a323c;--tx:#e6edf3;--mut:#8b949e;--red:#ff6b6b;--redbg:rgba(255,107,107,.12);--amber:#f0b429;--green:#3fb950;--blue:#58a6ff;--line:#2a323c}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--tx);font-family:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;line-height:1.6;padding:18px;max-width:1180px;margin:0 auto}
+  h1{font-size:22px;font-weight:700;letter-spacing:.5px}
+  h2{font-size:16px;font-weight:700;margin:22px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px}
+  h2 .n{color:var(--amber);font-family:monospace}
+  .sub{color:var(--mut);font-size:13px;margin-top:4px}
+  .topbar{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--bd)}
+  .tag{display:inline-block;padding:2px 9px;border-radius:4px;font-size:12px;font-weight:600}
+  .tag.ok{background:rgba(59,185,80,.16);color:var(--green)}
+  .tag.bad{background:var(--redbg);color:var(--red)}
+  .tag.neu{background:rgba(88,166,255,.14);color:var(--blue)}
+  .verdict{background:linear-gradient(135deg,rgba(255,107,107,.16),rgba(255,107,107,.04));border:1px solid rgba(255,107,107,.45);border-radius:12px;padding:20px 22px;margin-top:16px}
+  .verdict .vttl{font-size:20px;font-weight:800;color:var(--red);display:flex;align-items:center;gap:10px}
+  .verdict .vsub{color:var(--mut);font-size:13px;margin-top:4px}
+  .grid{display:grid;gap:12px;margin-top:14px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 16px}
+  .card h3{font-size:13px;color:var(--mut);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
+  .kv{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dashed var(--line)}
+  .kv:last-child{border:0}
+  .kv .k{color:var(--mut)}.kv .v{font-weight:600}
+  .v.up{color:var(--green)}.v.dn{color:var(--red)}.v.na{color:var(--mut)}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+  th,td{padding:7px 9px;text-align:left;border-bottom:1px solid var(--bd)}
+  th{color:var(--mut);font-weight:600;font-size:12px}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .pill{padding:1px 7px;border-radius:4px;font-size:11px;font-weight:600}
+  .pill.up{background:rgba(59,185,80,.15);color:var(--green)}
+  .pill.dn{background:var(--redbg);color:var(--red)}
+  .pill.flat{background:rgba(139,148,158,.15);color:var(--mut)}
+  .chartwrap{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;height:330px;position:relative}
+  .risk li,.gate li{margin:7px 0;font-size:13.5px}
+  .risk li strong{color:var(--red)}
+  .gate li strong{color:var(--green)}
+  .struct{background:var(--card2);border-left:3px solid var(--amber);border-radius:6px;padding:12px 16px;margin:8px 0;font-size:13.5px}
+  .struct b{color:var(--amber)}
+  .zero{background:var(--card);border:1px dashed rgba(255,107,107,.5);border-radius:10px;padding:22px;text-align:center;margin-top:12px}
+  .zero .big{font-size:40px;font-weight:800;color:var(--red)}
+  .zero .cap{color:var(--mut);font-size:13px;margin-top:6px}
+  .disc{color:var(--mut);font-size:12px;line-height:1.7;background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:14px;margin-top:18px}
+  .src{color:var(--mut);font-size:11.5px;margin-top:10px;line-height:1.6}
+  .posbar{height:8px;border-radius:4px;background:var(--bd);overflow:hidden;margin-top:8px}
+  .posbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--amber))}
+  .ma-line{font-size:12px;color:var(--mut);margin-top:8px;display:flex;gap:14px;flex-wrap:wrap}
+  .ma-line span b{font-weight:700}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <h1>A+H 盘前十股推荐 · 2026-09-24（周四）</h1>
+    <div class="sub">欧奈尔CANSLIM本土化 · 楔形理论 · 顶底山峰 · 缠论 · 波浪理论 ｜ 流水线：交易日校验 → M大盘一票否决 → 缠论/波浪研判 → 选股</div>
+  </div>
+  <div style="text-align:right">
+    <span class="tag bad">大盘否决 · 休仓</span>
+    <div class="sub">推荐 <b style="color:var(--red)">0</b> 支 ｜ 总仓位建议 <b style="color:var(--red)">0%</b></div>
+  </div>
+</div>
+
+<!-- 交易日校验 -->
+<div class="card" style="margin-top:14px">
+  <h3>① 交易日校验</h3>
+  <div class="kv"><span class="k">今日</span><span class="v mono">2026-09-24 周四 — A股交易日 ✓</span></div>
+  <div class="kv"><span class="k">属性</span><span class="v">中秋节前最后一个交易日（节前效应）</span></div>
+  <div class="kv"><span class="k">休市安排</span><span class="v" style="font-size:12.5px">中秋：9/25(五)–9/27(日)休市，9/28(一)开市 ｜ 国庆：10/1–10/7休市，10/8开市 ｜ 另9/20、10/10周末休市</span></div>
+  <div class="kv"><span class="k">来源</span><span class="v" style="color:var(--mut);font-size:12px">沪深交易所《关于2026年中秋节、国庆节休市安排的通知》</span></div>
+</div>
+
+<!-- M大盘结论卡 -->
+<h2><span class="n">②</span> M大盘一票否决 + 缠论/波浪结构研判</h2>
+<div class="verdict">
+  <div class="vttl">⛔ M大盘一票否决【不通过】 → 执行休仓，0支推荐</div>
+  <div class="vsub">规则：上证/沪深300 须站上20周线(或200日线) 且量能配合 → 二者均未站上且缩量 → 否决</div>
+
+  <div class="grid g3" style="margin-top:14px">
+    <div class="card" style="background:var(--card2)">
+      <h3>上证指数 999999</h3>
+      <div class="kv"><span class="k">9/23收盘</span><span class="v dn">3936.52 (-0.39%)</span></div>
+      <div class="kv"><span class="k">MA20</span><span class="v up">3930.15 (上方+0.16%)</span></div>
+      <div class="kv"><span class="k">MA60</span><span class="v up">3916.03 (上方)</span></div>
+      <div class="kv"><span class="k">MA100≈20周线</span><span class="v dn">3991.69 (下方-1.38%) ✗</span></div>
+      <div class="kv"><span class="k">MA200=200日线</span><span class="v dn">4010.40 (下方-1.84%) ✗</span></div>
+      <div class="kv"><span class="k">近5/60日量比</span><span class="v dn">0.89 缩量</span></div>
+    </div>
+    <div class="card" style="background:var(--card2)">
+      <h3>沪深300 000300</h3>
+      <div class="kv"><span class="k">9/23收盘</span><span class="v dn">4517.28 (-0.67%)</span></div>
+      <div class="kv"><span class="k">MA20</span><span class="v dn">4543.44 (下方-0.58%)</span></div>
+      <div class="kv"><span class="k">MA60</span><span class="v dn">4633.77 (下方)</span></div>
+      <div class="kv"><span class="k">MA100≈20周线</span><span class="v dn">4736.05 (下方-4.62%) ✗</span></div>
+      <div class="kv"><span class="k">MA200=200日线</span><span class="v dn">4694.78 (下方-3.78%) ✗</span></div>
+      <div class="kv"><span class="k">近5/60日量比</span><span class="v dn">0.78 显著缩量</span></div>
+    </div>
+    <div class="card" style="background:var(--card2)">
+      <h3>量能配合</h3>
+      <div class="kv"><span class="k">上证近5日均量</span><span class="v">482.8亿</span></div>
+      <div class="kv"><span class="k">上证近60日均量</span><span class="v">539.6亿</span></div>
+      <div class="kv"><span class="k">沪深300近5日</span><span class="v">176.3亿</span></div>
+      <div class="kv"><span class="k">沪深300近60日</span><span class="v">224.7亿</span></div>
+      <div class="kv"><span class="k">结论</span><span class="v dn">量能不配合 ✗</span></div>
+      <div class="posbar"><i style="width:18%"></i></div>
+      <div class="sub" style="margin-top:6px">仓位上限（结构偏空）</div>
+    </div>
+  </div>
+</div>
+
+<!-- 缠论+波浪结构 -->
+<div class="struct" style="margin-top:14px">
+  <b>缠论结构研判（上证·日线）：</b>近60日于 <span class="mono">3842–3990</span> 区间形成日线中枢震荡；7/20低点3741.11为前下跌段低点（一买区域），8/18反弹高点3990.30触及中枢上沿后回落；9/16回踩3842.72触及中枢下沿企稳反弹，9/18–9/23反弹至3952，<b>仍处中枢内部偏上、未放量突破上沿3990</b>，未形成三买。当前<b>未确认趋势反转</b>，买点类型：中枢震荡中的类二买/回踩买点试探，但未获放量突破确认。
+</div>
+<div class="struct">
+  <b>波浪结构研判（上证·日线）：</b>7/2高点4093.68 → 7/20低点3741.11为A浪下跌；7/20 → 8/18 3990.30为B浪反弹（反弹至跌幅0.5–0.618分位3917–3958略上方，反弹较充分）；8/18 → 9/16 3842.72为C浪下跌（<b>未破前低3741</b>，C浪未完成或为失败C浪）；9/16至今仍处C浪中继/反弹。<b>当前处于调整浪中，未出现新上升推动浪</b>，仓位总闸门下调。若后续<b>放量站上3990–4010（MA100/200）</b>可确认调整结束；若<b>跌破3741</b>则C浪延续下跌风险加大。
+</div>
+<div class="struct">
+  <b>大盘多空结论：偏空 / 中性偏弱</b>　未站上20周线与200日线、缩量、缠论中枢震荡偏弱未突破、波浪处调整浪；叠加节前效应+外围走弱（美股跌、金龙跌、A50夜盘跌、美元走强、美债收益率走高）。→ <b>仓位总闸门下调至防守区间 0–20%，今日休仓 0%</b>。
+</div>
+
+<div class="chartwrap" style="margin-top:14px">
+  <canvas id="idxChart"></canvas>
+  <div class="ma-line">
+    <span>收盘价</span>
+    <span style="color:var(--red)">— MA100≈20周线 <b>3991.69</b>（上方为通过线）</span>
+    <span style="color:var(--amber)">— MA200=200日线 <b>4010.40</b></span>
+    <span style="color:var(--blue)">— 中枢上沿压力 ≈3990</span>
+  </div>
+</div>
+
+<!-- 昨日盘口 -->
+<h2><span class="n">③</span> 昨日盘口摘要（2026-09-23 收盘）</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3>主要指数</h3>
+    <table>
+      <tr><th>指数</th><th class="num">收盘</th><th class="num">涨跌幅</th></tr>
+      <tr><td>上证指数</td><td class="num mono">3936.52</td><td class="num"><span class="pill dn">-0.39%</span></td></tr>
+      <tr><td>深证成指</td><td class="num mono">13636.07</td><td class="num"><span class="pill dn">-0.64%</span></td></tr>
+      <tr><td>创业板指</td><td class="num mono">3379.61</td><td class="num"><span class="pill dn">-0.60%</span></td></tr>
+      <tr><td>沪深300</td><td class="num mono">4517.28</td><td class="num"><span class="pill dn">-0.67%</span></td></tr>
+      <tr><td>科创50</td><td class="num">微跌</td><td class="num"><span class="pill dn">微跌</span></td></tr>
+      <tr><td>北证50</td><td class="num">—</td><td class="num"><span class="pill up">+2.60%</span></td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>成交与广度</h3>
+    <div class="kv"><span class="k">两市成交额</span><span class="v">1.78万亿（缩量）</span></div>
+    <div class="kv"><span class="k">上涨家数</span><span class="v up">1891</span></div>
+    <div class="kv"><span class="k">下跌家数</span><span class="v dn">3564</span></div>
+    <div class="kv"><span class="k">涨停 / 跌停</span><span class="v">51 / 14</span></div>
+    <div class="kv"><span class="k">连板高度</span><span class="v">4连板（000910、601811）</span></div>
+    <div class="kv"><span class="k">北向资金</span><span class="v dn">净流出 27.54亿</span></div>
+    <div class="kv"><span class="k">　沪股通/深股通</span><span class="v" style="font-size:12px">-8.35 / -19.19亿</span></div>
+  </div>
+</div>
+<div class="card" style="margin-top:12px">
+  <h3>行业板块强弱 TOP / BOTTOM（申万一级）</h3>
+  <div class="grid g2">
+    <div>
+      <div class="sub" style="margin-bottom:4px">涨幅居前</div>
+      <table>
+        <tr><td>煤炭</td><td class="num"><span class="pill up">+1.69%</span></td></tr>
+        <tr><td>银行</td><td class="num"><span class="pill up">+1.61%</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="sub" style="margin-bottom:4px">跌幅居前</div>
+      <table>
+        <tr><td>农林牧渔</td><td class="num"><span class="pill dn">-0.72%</span></td></tr>
+        <tr><td>医药生物</td><td class="num"><span class="pill dn">-0.59%</span></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="sub" style="margin-top:8px">资金面：通信行业主力资金净流入居首；科技股成交活跃（5只个股日成交超100亿：中际旭创、新易盛、兆易创新等）。</div>
+</div>
+
+<!-- 隔夜外股 -->
+<h2><span class="n">④</span> 隔夜外股（9/23美股 → 9/24盘前）</h2>
+<div class="grid g3">
+  <div class="card"><h3>美股三大指数</h3>
+    <div class="kv"><span class="k">道琼斯</span><span class="v dn">51511.59 (-0.68%)</span></div>
+    <div class="kv"><span class="k">纳斯达克</span><span class="v dn">26936.04 (-1.13%)</span></div>
+    <div class="kv"><span class="k">标普500</span><span class="v dn">7706.05 (-0.75%)</span></div>
+    <div class="kv"><span class="k">罗素2000</span><span class="v dn">-1.77%</span></div>
+  </div>
+  <div class="card"><h3>科技/中概</h3>
+    <div class="kv"><span class="k">费城半导体</span><span class="v dn">跌超1%</span></div>
+    <div class="kv"><span class="k">纳指金龙中国</span><span class="v dn">-1.43%</span></div>
+    <div class="kv"><span class="k">德国DAX30</span><span class="v dn">-0.59%</span></div>
+    <div class="kv"><span class="k">富时A50夜盘</span><span class="v dn">14462 (-0.50%)</span></div>
+  </div>
+  <div class="card"><h3>利率/商品/汇率</h3>
+    <div class="kv"><span class="k">美债10Y</span><span class="v dn">5.052%（走高）</span></div>
+    <div class="kv"><span class="k">美元指数</span><span class="v dn">101.096 (+0.49%)</span></div>
+    <div class="kv"><span class="k">COMEX黄金</span><span class="v dn">4322.7 (-1.23%)</span></div>
+    <div class="kv"><span class="k">COMEX白银</span><span class="v dn">-2.4%</span></div>
+    <div class="kv"><span class="k">WTI原油</span><span class="v up">结束五连跌(涨)</span></div>
+    <div class="kv"><span class="k">恒指期货夜盘</span><span class="v na">数据缺失</span></div>
+  </div>
+</div>
+<div class="sub" style="margin-top:8px">宏观信号：美债收益率大幅走高压制全球风险偏好；美联储10月加息预期升温；美元走强、人民币承压；中概与A50夜盘同步走弱 → 风险偏好偏空。</div>
+
+<!-- 五日情绪 -->
+<h2><span class="n">⑤</span> 近5交易日情绪评分</h2>
+<div class="card">
+  <div class="grid g3">
+    <div>
+      <div style="font-size:34px;font-weight:800;color:var(--amber)">3.5<span style="font-size:16px;color:var(--mut)">/10</span></div>
+      <div class="sub">情绪温度：偏冷 / 谨慎</div>
+    </div>
+    <div>
+      <div class="kv"><span class="k">两市日均成交</span><span class="v dn">趋缩（5/20量比0.96，5/60量比0.89）</span></div>
+      <div class="kv"><span class="k">涨停家数(9/23)</span><span class="v">51 只</span></div>
+      <div class="kv"><span class="k">连板高度</span><span class="v">4板</span></div>
+      <div class="kv"><span class="k">上涨家数占比</span><span class="v dn">约35%（1891/5455）</span></div>
+    </div>
+    <div>
+      <div class="kv"><span class="k">北向边际</span><span class="v dn">净流出27.54亿（转弱）</span></div>
+      <div class="kv"><span class="k">晋级率</span><span class="v">一般（4板为高度上限）</span></div>
+      <div class="kv"><span class="k">节前效应</span><span class="v dn">中秋+国庆长假避险</span></div>
+      <div class="kv"><span class="k">外围传导</span><span class="v dn">美股/金龙/A50夜盘齐跌</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 0支推荐 -->
+<h2><span class="n">⑥</span> 十股推荐</h2>
+<div class="zero">
+  <div class="big">0 支</div>
+  <div class="cap">M大盘一票否决【不通过】，按流程执行休仓，今日不产出个股推荐。<br>选股流程（CANSLIM本土化 + 楔形 + 缠论 + 波浪 + 顶底山峰）于大盘结构转多后启动。</div>
+</div>
+
+<!-- 风险清单 -->
+<h2><span class="n">⑦</span> 板块方向与风险清单</h2>
+<div class="grid g2">
+  <div class="card">
+    <h3>相对抗跌方向（仅观察，非推荐）</h3>
+    <ul class="gate" style="list-style:none">
+      <li>· <strong>煤炭</strong>（+1.69%）— 红利/防御属性，节前资金避险</li>
+      <li>· <strong>银行</strong>（+1.61%）— 高股息+低估值防御</li>
+      <li>· <strong>通信</strong>— 主力资金净流入居首，科技活跃股集中</li>
+      <li>· <strong>半导体/光模块</strong>— 个股成交活跃但板块整体随外围半导体回调承压</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>风险清单</h3>
+    <ul class="risk" style="list-style:none">
+      <li>· <strong>大盘结构偏空</strong>：上证/沪深300 均处20周线与200日线下方，缩量</li>
+      <li>· <strong>节前效应</strong>：中秋(9/25-27)+国庆(10/1-7)长假前避险，量能难放大</li>
+      <li>· <strong>外围走弱</strong>：美股跌、金龙-1.43%、A50夜盘-0.50%、美元+0.49%、美债10Y升至5.052%</li>
+      <li>· <strong>美联储加息预期升温</strong>：利率敏感与高估值成长股承压</li>
+      <li>· <strong>北向资金净流出</strong>：边际转弱，外资风险偏好下降</li>
+      <li>· <strong>缠论/波浪偏空</strong>：中枢未突破、处调整浪，破3741则C浪延续</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 重新开闸观察点 -->
+<h2><span class="n">⑧</span> 重新开闸观察点（满足后重启选股流程）</h2>
+<div class="card">
+  <ul class="gate" style="list-style:none;columns:2;column-gap:28px">
+    <li>① 上证 <strong>放量站上 3990–4010</strong>（MA100/200）</li>
+    <li>② 缠论出现 <strong>三买</strong>（突破中枢上沿放量回踩不破）</li>
+    <li>③ 波浪确认 <strong>新上升推动浪</strong>启动</li>
+    <li>④ 沪深300 站上 <strong>MA60(4633)</strong> 且放量</li>
+    <li>⑤ 北向资金 <strong>转净流入</strong>且两融余额回升</li>
+    <li>⑥ 节后量能回升、两市成交重回2万亿上方</li>
+  </ul>
+  <div class="sub" style="margin-top:8px">跟踪窗口：9/28节后首个交易日起重点观察；节前(9/24)维持休仓。</div>
+</div>
+
+<!-- 台账状态 -->
+<div class="card" style="margin-top:14px">
+  <h3>台账状态</h3>
+  <div class="kv"><span class="k">环节</span><span class="v">盘前推荐</span></div>
+  <div class="kv"><span class="k">日期</span><span class="v mono">2026-09-24</span></div>
+  <div class="kv"><span class="k">推荐支数</span><span class="v dn">0 支（大盘否决休仓）</span></div>
+  <div class="kv"><span class="k">结论</span><span class="v">M大盘一票否决不通过 → 休仓，本日无个股入台账</span></div>
+</div>
+
+<div class="disc">
+  <b>免责声明：</b>本报告基于欧奈尔CANSLIM本土化、楔形理论、顶底山峰、缠论、波浪理论等多方法体系自动研判产出，仅供研究参考，<b>不构成任何投资建议或交易指令</b>。缠论与精确波浪数浪为主观、易过拟合方法，结论具有不确定性；所涉数据来源于公开行情与财经报道，可能存在时效差异或缺失（已标注）。市场有风险，决策需谨慎，盈亏自负。本日因大盘一票否决不通过而休仓，不意味着个股必然下跌，亦不构成对任何标的的看空。
+</div>
+<div class="src">
+  <b>数据来源：</b>交易日历/休市——沪深北交易所《2026年中秋节、国庆节休市安排公告》；上证与沪深300日K线(2025-09-01~2026-09-23,259根)——新浪财经/腾讯财经公开行情接口；9/23盘口——证券时报、中国证券报、新浪财经、金融界；隔夜外股——财联社、证券时报、中国证券报、新华社、Nasdaq；交易日为2026-09-24，数据采集时点为盘前。<br>
+  <b>数据缺失项：</b>科创50具体收盘数值、恒生指数期货夜盘具体数值（公开来源未获确认，未取到即标注缺失，未虚构）。
+</div>
+
+<script>
+const labels=["08-05","08-06","08-07","08-10","08-11","08-12","08-13","08-14","08-17","08-18","08-19","08-20","08-21","08-24","08-25","08-26","08-27","08-28","08-31","09-01","09-02","09-03","09-04","09-07","09-08","09-09","09-10","09-11","09-14","09-15","09-16","09-17","09-18","09-21","09-22","09-23"];
+const close=[3878.43,3900.35,3940.04,3966.59,3934.09,3946.68,3926.97,3927.18,3982.65,3990.30,3894.42,3903.72,3905.20,3882.01,3889.45,3912.52,3956.57,3952.18,3986.30,3979.89,3941.39,3942.09,3930.12,3932.70,3940.55,3951.51,3934.40,3888.11,3885.33,3864.28,3891.60,3875.60,3911.87,3949.91,3952.13,3936.52];
+const ctx=document.getElementById('idxChart').getContext('2d');
+new Chart(ctx,{type:'line',data:{labels:labels,datasets:[
+  {label:'上证收盘',data:close,borderColor:'#58a6ff',backgroundColor:'rgba(88,166,255,.10)',borderWidth:2,pointRadius:0,tension:.25,fill:true},
+  {label:'MA100≈20周线 3991.69',data:Array(close.length).fill(3991.69),borderColor:'#ff6b6b',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false},
+  {label:'MA200=200日线 4010.40',data:Array(close.length).fill(4010.40),borderColor:'#f0b429',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false},
+  {label:'中枢上沿压力≈3990',data:Array(close.length).fill(3990),borderColor:'rgba(88,166,255,.6)',borderDash:[2,3],borderWidth:1,pointRadius:0,fill:false}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#8b949e',font:{size:11}}},tooltip:{callbacks:{title:(i)=>'2026-'+labels[i[0].dataIndex],label:(c)=>c.dataset.label+': '+c.parsed.y.toFixed(2)}}},scales:{x:{grid:{color:'#21262d'},ticks:{color:'#8b949e',font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:12}},y:{min:3800,max:4060,grid:{color:'#21262d'},ticks:{color:'#8b949e',font:{size:10}}}}}});
+</script>
+</body>
+</html>
