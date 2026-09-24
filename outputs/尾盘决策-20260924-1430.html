@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>尾盘决策 · 2026-09-24 14:30</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f1115; color: #e8e8e8; padding: 20px; line-height: 1.6; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  header { text-align: center; padding: 28px 0 18px; border-bottom: 1px solid #2a2d35; margin-bottom: 22px; }
+  header h1 { font-size: 24px; color: #4da6ff; letter-spacing: 1px; }
+  header .meta { color: #8a8f9a; font-size: 13px; margin-top: 6px; }
+  .stage-bar { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #1a1d24; border-radius: 10px; margin-bottom: 22px; border: 1px solid #2a2d35; }
+  .stage-bar .item { flex: 1; text-align: center; font-size: 13px; color: #6b7280; position: relative; padding: 6px 0; }
+  .stage-bar .item.active { color: #ffb400; font-weight: 700; background: linear-gradient(180deg, rgba(255,180,0,0.12), transparent); border-radius: 6px; }
+  .stage-bar .item.active::after { content: ''; display: block; width: 40px; height: 3px; background: #ffb400; margin: 6px auto 0; border-radius: 2px; }
+  .alert-box { background: linear-gradient(135deg, #1e2530, #242b38); border: 1px solid #3a4556; border-radius: 12px; padding: 28px; margin-bottom: 22px; text-align: center; }
+  .alert-box .icon { font-size: 48px; margin-bottom: 14px; }
+  .alert-box h2 { font-size: 20px; color: #ffb400; margin-bottom: 10px; }
+  .alert-box p { color: #b0b7c3; font-size: 14px; }
+  section { margin-bottom: 26px; }
+  section h2 { font-size: 17px; color: #4da6ff; border-left: 4px solid #4da6ff; padding-left: 12px; margin-bottom: 14px; }
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .market-card { background: #1a1d24; border: 1px solid #2a2d35; border-radius: 10px; padding: 16px; }
+  .market-card .name { font-size: 13px; color: #8a8f9a; margin-bottom: 8px; }
+  .market-card .price { font-size: 22px; font-weight: 700; }
+  .up { color: #f44336; }
+  .down { color: #22c55e; }
+  .market-card .chg { font-size: 13px; margin-top: 4px; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-right: 6px; }
+  .tag-red { background: rgba(244,67,54,0.15); color: #f44336; }
+  .tag-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+  table { width: 100%; border-collapse: collapse; background: #1a1d24; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 12px 14px; text-align: left; font-size: 13px; border-bottom: 1px solid #2a2d35; }
+  th { background: #242b38; color: #4da6ff; font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  .disclaimer { margin-top: 30px; padding: 16px; background: #1a1d24; border: 1px solid #2a2d35; border-radius: 10px; font-size: 12px; color: #6b7280; line-height: 1.8; text-align: center; }
+  footer { text-align: center; color: #4b5563; font-size: 12px; padding: 20px 0 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>📊 尾盘决策 · Late Session Decision</h1>
+    <div class="meta">2026年09月24日 星期四 · 14:30 时段 · 数据时间戳 14:31:30</div>
+  </header>
+
+  <!-- 阶段指示器 -->
+  <div class="stage-bar">
+    <div class="item">盘前准备 09:15</div>
+    <div class="item">开盘决策 09:30</div>
+    <div class="item">早盘跟踪 10:30</div>
+    <div class="item">午盘复盘 13:30</div>
+    <div class="item active">尾盘决策 14:30 ◀</div>
+    <div class="item">收盘总结 15:00</div>
+  </div>
+
+  <!-- 跳过提示 -->
+  <div class="alert-box">
+    <div class="icon">📭</div>
+    <h2>今日无盘前推荐，跳过逐股决策</h2>
+    <p>流程说明文件 /workspace/outputs/日内多时段验证流水线说明.md 未找到<br>跟踪列表 /workspace/outputs/推荐与验证台账.csv 不存在<br>前置环节（盘前推荐 / 午盘复盘）尚未执行</p>
+  </div>
+
+  <!-- 尾盘大盘快照 -->
+  <section>
+    <h2>🗺️ 尾盘大盘快照（供后续环节参考）</h2>
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="name">上证指数 000001</div>
+        <div class="price down">3895.09</div>
+        <div class="chg down">▼ -41.43 · -1.05%</div>
+        <div style="margin-top:8px;">
+          <span class="tag tag-green">量比 0.90</span>
+          <span class="tag tag-green">换手 0.79%</span>
+        </div>
+      </div>
+      <div class="market-card">
+        <div class="name">今日振幅区间</div>
+        <div style="font-size:15px;">最高 3930.50</div>
+        <div style="font-size:15px;">最低 3890.90</div>
+        <div class="chg">振幅 1.00%</div>
+      </div>
+      <div class="market-card">
+        <div class="name">成交概况</div>
+        <div style="font-size:15px;">成交量 3.84亿手</div>
+        <div style="font-size:15px;">成交额 6860亿</div>
+        <div class="chg down">量能较昨略有缩量</div>
+      </div>
+      <div class="market-card">
+        <div class="name">涨跌家数</div>
+        <div style="font-size:15px;" class="up">上涨 546</div>
+        <div style="font-size:15px;" class="down">下跌 1726</div>
+        <div style="font-size:13px;color:#8a8f9a;">平盘 83 · 跌多涨少</div>
+      </div>
+      <div class="market-card">
+        <div class="name">资金动向</div>
+        <div class="chg down" style="font-size:15px;">净流出 -611.88亿</div>
+        <div class="chg down">主力净流出 -251.78亿</div>
+        <div style="font-size:13px;color:#8a8f9a;">内外盘比 1.16（卖压占优）</div>
+      </div>
+      <div class="market-card">
+        <div class="name">阶段涨幅</div>
+        <div style="font-size:13px;">5日 <span class="up">+0.50%</span> · 10日 <span class="down">-1.00%</span></div>
+        <div style="font-size:13px;">20日 <span class="down">-1.55%</span> · 60日 <span class="down">-3.32%</span></div>
+        <div style="font-size:13px;color:#8a8f9a;">年初至今 <span class="down">-1.86%</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 大盘形态速评 -->
+  <section>
+    <h2>🧩 尾盘大盘形态速评</h2>
+    <table>
+      <tr><th style="width:20%">维度</th><th>观察</th></tr>
+      <tr><td>全天走势</td><td>低开（今开3925 vs 昨收3937）后弱势震荡，全天运行于昨收下方，最低下探3890后窄幅整理</td></tr>
+      <tr><td>尾盘方向</td><td>⚠️ <span class="tag tag-green">偏弱震荡</span> —— 尾盘未出现企稳拉升信号，3890一线勉强承接，整体破位迹象初显</td></tr>
+      <tr><td>量能</td><td>量比0.90，较前日略有缩量；弱势缩量下承接力度有限，若后续量能继续萎缩则反弹高度受限</td></tr>
+      <tr><td>缠论视角</td><td>中枢震荡中选择向下试探，关注3890下方是否形成5分钟级别一买背驰；若跌破3880则中枢下移确认</td></tr>
+      <tr><td>波浪视角</td><td>自4000点回落以来的C浪调整中，当前处于C-3细分浪末端，若3890不破则C-4反弹可期</td></tr>
+      <tr><td>情绪面</td><td>跌多涨少（1726:546），资金净流出612亿，市场情绪偏谨慎，短线风险偏好较低</td></tr>
+    </table>
+  </section>
+
+  <!-- 免责声明 -->
+  <div class="disclaimer">
+    ⚠️ <b>免责声明</b><br>
+    本报告仅为自动化程序基于公开行情数据生成的技术分析参考，不构成任何投资建议。<br>
+    股市有风险，投资需谨慎。所有决策请结合自身风险承受能力独立判断。<br>
+    数据来源：通达信实时行情 · 时间戳 2026-09-24 14:31:30
+  </div>
+
+  <footer>
+    尾盘决策流水线 · v1.0 · generated at 2026-09-24 14:32
+  </footer>
+</div>
+</body>
+</html>
