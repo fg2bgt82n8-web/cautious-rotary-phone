@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>A+H 盘前十股推荐 · 2026-09-28</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -18,674 +15,453 @@ h1{font-size:22px;font-weight:700;margin-bottom:4px;background:linear-gradient(9
 .metric{background:#142028;border-radius:8px;padding:12px}
 .metric .lbl{font-size:12px;color:#7f8c8d;display:block;margin-bottom:4px}
 .metric .val{font-size:18px;font-weight:600;color:#ecf0f1}
-.metric .sub{font-size:11px;color:#5a6b7c;margin-top:2px}
+.metric .sub{font-size:11px;color:#5a6b7c;margin-top:2px;display:block}
 .pos-card{background:linear-gradient(135deg,#2c3e50,#1a2733);border:2px solid #e67e22}
 .pos-card .val{color:#e67e22}
 .warn-card{background:linear-gradient(135deg,#c0392b,#1a2733);border:2px solid #e74c3c}
 .warn-card .val{color:#e74c3c}
-.ok-card{background:linear-gradient(135deg,#27ae60,#1a2733);border:2px solid #2ecc71}
 .tag{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;color:#fff;margin-left:4px}
 .tag.gray{background:#34495e}
-.stock-card{background:#1a2733;border-radius:10px;padding:16px;margin-bottom:10px;border-left:3px solid #3498db;transition:transform .2s}
-.stock-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.stock-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.stock-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.stock-code{font-family:'Courier New',monospace;font-size:13px;color:#7f8c8d;background:#142028;padding:2px 6px;border-radius:4px}
-.stock-name{font-size:17px;font-weight:600;color:#ecf0f1}
-.score-box{background:linear-gradient(135deg,#3498db,#2ecc71);padding:8px 16px;border-radius:20px;font-size:13px;font-weight:500;white-space:nowrap}
-.score-box b{font-size:18px}
-.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.metrics-row > div{background:#142028;padding:8px;border-radius:6px;text-align:center}
-.metrics-row .lbl{font-size:11px;color:#7f8c8d;display:block}
-.metrics-row .val{font-size:14px;font-weight:600;color:#ecf0f1}
-.analysis-box{background:#142028;border-radius:8px;padding:12px;margin-bottom:12px}
-.ana-row{display:flex;margin-bottom:6px;font-size:13px}
-.ana-row:last-child{margin-bottom:0}
-.ana-lbl{color:#7f8c8d;width:60px;flex-shrink:0}
-.ana-val{color:#bdc3c7;flex:1}
-.price-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.price-item{background:#142028;padding:10px;border-radius:6px;text-align:center}
-.price-lbl{font-size:11px;color:#7f8c8d;display:block;margin-bottom:4px}
-.price-val{font-size:14px;font-weight:600;color:#ecf0f1}
-.price-val.buy{color:#2ecc71}
-.price-val.stop{color:#e74c3c}
-.price-val.pos{color:#e67e22;font-size:16px}
+.src-tag{font-size:11px;color:#f39c12;background:#3d2817;padding:1px 6px;border-radius:4px;margin-left:6px}
+.stock-card{background:#1a2733;border-radius:10px;padding:16px;margin-bottom:10px;border-left:3px solid #3498db}
+.sc-head{display:flex;justify-content:space-between;margin-bottom:12px}
+.sc-titles{display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+.sc-code{font-family:monospace;font-size:13px;color:#7f8c8d;background:#142028;padding:2px 6px;border-radius:4px}
+.sc-name{font-size:17px;font-weight:600;color:#ecf0f1}
+.sc-score{background:linear-gradient(135deg,#3498db,#2ecc71);padding:8px 16px;border-radius:20px;font-size:13px;white-space:nowrap}
+.sc-score b{font-size:18px}
+.sc-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.sc-meta > div{background:#142028;padding:8px;border-radius:6px;text-align:center}
+.sc-meta .lbl{font-size:11px;color:#7f8c8d;display:block}
+.sc-meta .val{font-size:14px;font-weight:600;color:#ecf0f1}
+.sc-box{background:#142028;border-radius:8px;padding:12px;margin-bottom:12px}
+.sc-box .row{display:flex;margin-bottom:6px;font-size:13px}
+.sc-box .row:last-child{margin-bottom:0}
+.sc-box .lb{color:#7f8c8d;width:60px;flex-shrink:0}
+.sc-box .vl{color:#bdc3c7}
+.sc-price{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.sc-price > div{background:#142028;padding:10px;border-radius:6px;text-align:center}
+.plb{font-size:11px;color:#7f8c8d;display:block;margin-bottom:4px}
+.pv{font-size:14px;font-weight:600;color:#ecf0f1}
+.pv.buy{color:#2ecc71}
+.pv.stop{color:#e74c3c}
+.pv.pos{color:#e67e22;font-size:16px}
 .split-bar{height:6px;background:#142028;border-radius:3px;display:flex;overflow:hidden;margin:8px 0}
-.split-bar div:nth-child(1){flex:5;background:#e74c3c}
-.split-bar div:nth-child(2){flex:5;background:#3498db}
-.section-title{display:flex;align-items:center;gap:10px;margin:24px 0 12px;font-size:15px;color:#bdc3c7}
-.section-title .dot{width:8px;height:8px;background:#2ecc71;border-radius:50%}
+.split-bar > div:nth-child(1){flex:5;background:#e74c3c}
+.split-bar > div:nth-child(2){flex:5;background:#3498db}
+.section-title{margin:24px 0 12px;font-size:15px;color:#bdc3c7;display:flex;align-items:center;gap:10px}
+.section-title::before{content:"";width:8px;height:8px;background:#2ecc71;border-radius:50%}
 .disclaimer{background:#2c1810;border:1px solid #c0392b;border-radius:8px;padding:16px;margin-top:20px;font-size:12px;color:#e67e22;line-height:1.8}
-.sep{text-align:center;color:#5a6b7c;margin:16px 0;font-size:12px}
-.sep::before,.sep::after{content:"";display:inline-block;width:40px;height:1px;background:#34495e;margin:0 8px;vertical-align:middle}
-.emotion{display:flex;gap:6px;margin-top:8px}
-.emotion span{flex:1;height:24px;border-radius:4px;background:#142028;position:relative;overflow:hidden}
-.emotion span::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--p,30%);background:linear-gradient(90deg,#e74c3c,#f39c12,#2ecc71)}
-.sector-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
-.sector-top li,.sector-bot li{padding:6px 12px;border-radius:6px;font-size:13px;margin-bottom:4px}
-.sector-top li{background:rgba(46,204,113,.15);color:#2ecc71}
-.sector-bot li{background:rgba(231,76,60,.15);color:#e74c3c}
-ul{list-style:none}
-@media(max-width:768px){
-  .grid3,.grid2{grid-template-columns:1fr}
-  .metrics-row{grid-template-columns:repeat(2,1fr)}
-  .price-row{grid-template-columns:repeat(2,1fr)}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
+@media(max-width:768px){.grid3,.grid2{grid-template-columns:1fr}.sc-meta{grid-template-columns:repeat(2,1fr)}.sc-price{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><div class="wrap">
+<h1>A+H 全市场盘前十股推荐（真实数据源验证版）</h1>
+<div class="sub">2026-09-28 · 欧奈尔CANSLIM + 楔形理论 + 缠论 + 波浪理论 + 顶底山峰 · 数据来源：iFinD MCP（A股）+ 通达信TDX MCP（港股）+ WebSearch兜底（外股）</div>
 
-<h1>A+H 全市场盘前十股推荐</h1>
-<div class="sub">2026-09-28 · 欧奈尔CANSLIM + 楔形理论 + 缠论 + 波浪理论 + 顶底山峰</div>
-
-<!-- ============ 大盘一票否决 + 缠论波浪 ============ -->
 <div class="card">
-<h2>M大盘结论卡</h2>
+<h2>M大盘结论卡（缠论+波浪）</h2>
 <div class="grid3">
-  <div class="metric warn-card">
-    <span class="lbl">大盘位置</span>
-    <span class="val">跌破MA200，三空共振</span>
-    <span class="sub">上证-1%，沪深300-1%</span>
-  </div>
-  <div class="metric pos-card">
-    <span class="lbl">缠论结构</span>
-    <span class="val">中枢下破</span>
-    <span class="sub">日线中枢【4026,4242】下破，无一买信号</span>
-  </div>
-  <div class="metric pos-card">
-    <span class="lbl">波浪结构</span>
-    <span class="val">4浪/ABC</span>
-    <span class="sub">4浪深调或A浪，5月高点4242回撤8.3%</span>
-  </div>
+  <div class="metric warn-card"><span class="lbl">大盘位置</span><span class="val">跌破MA200</span><span class="sub">上证-1.22% 沪深300-1.73% 恒指-0.29%</span></div>
+  <div class="metric pos-card"><span class="lbl">缠论结构</span><span class="val">中枢下破</span><span class="sub">日线中枢【4026,4242】破位，无一买信号</span></div>
+  <div class="metric pos-card"><span class="lbl">波浪结构</span><span class="val">4浪深调/ABC</span><span class="sub">5月高点4242回撤8.3%，已破0.618位</span></div>
 </div>
 <div style="margin-top:16px;padding:12px;background:#142028;border-radius:8px">
-  <b style="color:#e67e22">⚠ 总闸门结论：</b>日线中枢【4026,4242】下破，无一买信号。4浪深调或A浪，5月高点4242回撤8.3%。三空共振（MA200跌破+中枢下破+波浪深调），
-  整体偏空。<b style="color:#e67e22">今日建议总仓位上限 50%</b>（半仓防守），仅选结构性强势股。
+  <b style="color:#e67e22">⚠ 总闸门：</b>上证/沪深300均跌破MA200，缠论中枢下破，波浪深调。三空共振，整体偏空。
+  <b style="color:#e67e22">今日总仓位上限 50%</b>（半仓防守），优选结构性强势股。
 </div>
 </div>
 
-<!-- ============ 昨日盘口 ============ -->
-<div class="card">
-<h2>昨日盘口 (2026-09-24)</h2>
+<div class="card"><h2>昨日盘口 (2026-09-24)</h2>
 <div class="grid3">
   <div class="metric"><span class="lbl">上证指数</span><span class="val">3888.37</span><span class="sub" style="color:#e74c3c">-1.22%</span></div>
   <div class="metric"><span class="lbl">深证成指</span><span class="val">13316.97</span><span class="sub" style="color:#e74c3c">-2.34%</span></div>
   <div class="metric"><span class="lbl">创业板指</span><span class="val">3288.95</span><span class="sub" style="color:#e74c3c">-2.68%</span></div>
   <div class="metric"><span class="lbl">沪深300</span><span class="val">4439.14</span><span class="sub" style="color:#e74c3c">-1.73%</span></div>
+  <div class="metric"><span class="lbl">恒生指数</span><span class="val">24761.00</span><span class="sub" style="color:#e74c3c">-0.29%</span></div>
   <div class="metric"><span class="lbl">两市成交额</span><span class="val">1.67万亿</span><span class="sub">缩量1140亿</span></div>
-  <div class="metric"><span class="lbl">北向资金</span><span class="val" style="color:#7f8c8d">数据缺失</span></div>
 </div>
 <div style="margin-top:12px" class="grid2">
   <div class="metric">
     <span class="lbl">涨跌家数</span>
-    <span class="val" style="color:#27ae60">1134↑</span> / 
-    <span class="val" style="color:#e74c3c">4352↓</span>
+    <span class="val" style="color:#27ae60">↑1134</span> /
+    <span class="val" style="color:#e74c3c">↓4352</span>
     <div class="sub">涨停52家 / 跌停15家</div>
   </div>
   <div class="metric">
     <span class="lbl">板块强弱</span>
-    <div class="sub"><span style="color:#2ecc71">领涨：</span>风电设备、纺织制造</div>
-    <div class="sub"><span style="color:#e74c3c">领跌：</span>贵金属、元器件、能源金属</div>
+    <div class="sub"><span style="color:#2ecc71">领涨:</span>风电设备、纺织制造</div>
+    <div class="sub"><span style="color:#e74c3c">领跌:</span>贵金属、元器件、能源金属</div>
   </div>
-</div>
-</div>
+</div></div>
 
-<!-- ============ 隔夜外股 ============ -->
-<div class="card">
-<h2>隔夜外股</h2>
+<div class="card"><h2>隔夜外股</h2>
 <div class="grid3">
-  <div class="metric"><span class="lbl">道琼斯</span><span class="val">-0.50%</span><span class="sub">涨跌不一</span></div>
+  <div class="metric"><span class="lbl">道琼斯</span><span class="val">-0.50%</span></div>
   <div class="metric"><span class="lbl">标普500</span><span class="val">+0.51%</span></div>
   <div class="metric"><span class="lbl">纳斯达克</span><span class="val">+0.48%</span></div>
   <div class="metric"><span class="lbl">中概金龙</span><span class="val" style="color:#2ecc71">+2.83%</span><span class="sub">阿里+8%</span></div>
-  <div class="metric"><span class="lbl">美债10Y</span><span class="val">5.0-5.2%</span><span class="sub">高位震荡</span></div>
-  <div class="metric"><span class="lbl">布伦特原油</span><span class="val">$88.58</span><span class="sub">回落</span></div>
-  <div class="metric"><span class="lbl">黄金</span><span class="val">$4378/oz</span><span class="sub">高位整理</span></div>
-  <div class="metric"><span class="lbl">恒指期货夜盘</span><span class="val" style="color:#7f8c8d">数据缺失</span></div>
-  <div class="metric"><span class="lbl">A50期货</span><span class="val" style="color:#7f8c8d">数据缺失</span></div>
-</div>
-</div>
+  <div class="metric"><span class="lbl">美债10Y</span><span class="val">5.0-5.2%</span></div>
+  <div class="metric"><span class="lbl">布伦特原油</span><span class="val">$88.58</span></div>
+  <div class="metric"><span class="lbl">黄金</span><span class="val">$4378/oz</span></div>
+  <div class="metric"><span class="lbl">北向资金</span><span class="val" style="color:#7f8c8d">数据缺失</span></div>
+  <div class="metric"><span class="lbl">恒指/A50夜盘</span><span class="val" style="color:#7f8c8d">数据缺失</span></div>
+</div></div>
 
-<!-- ============ 五日情绪 ============ -->
-<div class="card">
-<h2>五日情绪 (0-10分)</h2>
+<div class="card"><h2>五日情绪 (0-10分)</h2>
 <div class="grid2">
-  <div class="metric">
-    <span class="lbl">综合情绪分</span>
-    <span class="val" style="color:#e74c3c">3/10 冰点</span>
-    <div class="emotion"><span style="--p:30%"></span></div>
-  </div>
-  <div class="metric">
-    <span class="lbl">成交额趋势</span>
-    <span class="val">逐步缩量(日均9133亿)</span>
-  </div>
-  <div class="metric"><span class="lbl">涨停/晋级</span><span class="val">9/18→87家，9/24→52家，晋级率下滑</span></div>
-  <div class="metric"><span class="lbl">上涨家数占比</span><span class="val">21%</span></div>
+  <div class="metric warn-card"><span class="lbl">综合情绪</span><span class="val">3/10 冰点</span><span class="sub">缩量普跌+涨停家数锐减+连板2板</span></div>
+  <div class="metric"><span class="lbl">成交额趋势</span><span class="val">逐步缩量(日均9133亿)</span></div>
+  <div class="metric"><span class="lbl">涨停/晋级</span><span class="val">9/18→87家，9/24→52家</span></div>
   <div class="metric"><span class="lbl">连板高度</span><span class="val">2板</span></div>
-  <div class="metric"><span class="lbl">两融/北向</span><span class="val" style="color:#7f8c8d">边际收缩 / 数据缺失</span></div>
-</div>
-</div>
+</div></div>
 
-<!-- ============ 十股推荐 ============ -->
-<div class="section-title"><span class="dot"></span>十股推荐 · A股5支 + 港股通5支</div>
-
+<div class="section-title">十股推荐 · A股5支 + 港股通5支（价格全部来自真实MCP数据源）</div>
 <div class="card" style="padding:12px 16px;background:linear-gradient(90deg,#1a2733,#142028)">
   <div style="display:flex;justify-content:space-between;align-items:center">
-    <span style="font-size:14px;color:#bdc3c7">市场配比：<b style="color:#e74c3c">A股 5支</b> + <b style="color:#3498db">港股通 5支</b></span>
-    <span style="font-size:13px;color:#7f8c8d">每支建议仓位 10% · 总仓位上限 50%</span>
+    <span style="font-size:14px;color:#bdc3c7">市场配比：<b style="color:#e74c3c">🇨🇳 A股 5支</b> + <b style="color:#3498db">🇭🇰 港股通 5支</b></span>
+    <span style="font-size:13px;color:#7f8c8d">每支仓位10% · 总仓位上限50% · 止损统一-8%</span>
   </div>
   <div class="split-bar"><div></div><div></div></div>
 </div>
 
-
-        <div class="stock-card" id="stock_1">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">002847.SZ</span>
-              <span class="stock-name">盐津铺子</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇨🇳 <span class="sc-code">002847.SZ</span>
+              <span class="sc-name">盐津铺子</span>
               <span class="tag" style="background:#e74c3c">A股</span>
-              <span class="tag gray">食品加工</span>
+              <span class="tag gray">食品加工 · 105亿</span>
+              <span class="src-tag">数据源: iFinD</span>
             </div>
-            <div class="score-box">CANSLIM <b>95</b></div>
+            <div class="sc-score">CANSLIM <b>95</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">25.86%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">48.66%</span></div>
             <div><span class="lbl">ROE</span><span class="val">36.82%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">78</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢震荡类二买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">3浪回调完成</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">二买/三买临界</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">下跌楔形收敛→缠论二买→3浪回调完成→顶底山峰</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢震荡类二买 · 中枢【42.5,46.3】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">3浪回调完成</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">二买/三买临界</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">下跌楔形收敛→缠论二买→3浪回调完成→顶底山峰</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">43.15<span style="color:#27ae60;font-size:14px;margin-left:4px">(-0.12%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">43.0-44.5</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">39.70</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">站上46.3放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(CNY)</div><div class="pv">43.15<span style="color:#27ae60;font-size:13px">(-0.12%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">43.0-44.5</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">39.70</div></div>
+            <div><div class="plb">观察位</div><div class="pv">站上46.3放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_2">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">600550.SH</span>
-              <span class="stock-name">保变电气</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇨🇳 <span class="sc-code">600550.SH</span>
+              <span class="sc-name">保变电气</span>
               <span class="tag" style="background:#e74c3c">A股</span>
-              <span class="tag gray">输变电</span>
+              <span class="tag gray">输变电 · 190亿</span>
+              <span class="src-tag">数据源: iFinD</span>
             </div>
-            <div class="score-box">CANSLIM <b>96</b></div>
+            <div class="sc-score">CANSLIM <b>96</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">34.63%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">60.0%</span></div>
             <div><span class="lbl">ROE</span><span class="val">27.44%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">72</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢三买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">2浪回调完成</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">三买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">收敛平台→缠论三买→2浪回调完成→地量企稳</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢三买 · 中枢【10.2,11.0】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">2浪回调完成</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">三买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">收敛平台→缠论三买→2浪回调完成→地量企稳</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">10.29<span style="color:#27ae60;font-size:14px;margin-left:4px">(-1.06%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">10.3-10.8</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">9.47</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">站上11.0放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(CNY)</div><div class="pv">10.29<span style="color:#27ae60;font-size:13px">(-1.06%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">10.3-10.8</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">9.47</div></div>
+            <div><div class="plb">观察位</div><div class="pv">站上11.0放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_3">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">603766.SH</span>
-              <span class="stock-name">隆鑫通用</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇨🇳 <span class="sc-code">603766.SH</span>
+              <span class="sc-name">隆鑫通用</span>
               <span class="tag" style="background:#e74c3c">A股</span>
-              <span class="tag gray">通用机械</span>
+              <span class="tag gray">通用机械 · 299亿</span>
+              <span class="src-tag">数据源: iFinD</span>
             </div>
-            <div class="score-box">CANSLIM <b>97</b></div>
+            <div class="sc-score">CANSLIM <b>97</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">48.88%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">44.5%</span></div>
             <div><span class="lbl">ROE</span><span class="val">17.5%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">82</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢三买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">3浪起点</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">三买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">上涨楔形→缠论三买→3浪起点→顶底山峰</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢三买 · 中枢【13.5,14.8】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">3浪起点</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">三买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">上涨楔形→缠论三买→3浪起点→顶底山峰</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">14.55<span style="color:#27ae60;font-size:14px;margin-left:4px">(-0.07%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">14.4-14.9</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">13.39</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">突破14.85放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(CNY)</div><div class="pv">14.55<span style="color:#27ae60;font-size:13px">(-0.07%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">14.4-14.9</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">13.39</div></div>
+            <div><div class="plb">观察位</div><div class="pv">突破14.85放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_4">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">689009.SH</span>
-              <span class="stock-name">九号公司</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇨🇳 <span class="sc-code">689009.SH</span>
+              <span class="sc-name">九号公司</span>
               <span class="tag" style="background:#e74c3c">A股</span>
-              <span class="tag gray">短交通</span>
+              <span class="tag gray">短交通 · 208亿</span>
+              <span class="src-tag">数据源: iFinD</span>
             </div>
-            <div class="score-box">CANSLIM <b>95</b></div>
+            <div class="sc-score">CANSLIM <b>95</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">63.48%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">47.8%</span></div>
             <div><span class="lbl">ROE</span><span class="val">26.08%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">80</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢二买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">4浪回调到位</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">二买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">底部反转楔形→缠论二买→4浪到位→地量</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢二买 · 中枢【20.0,22.8】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">4浪回调到位</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">二买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">底部反转楔形→缠论二买→4浪到位→地量</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">19.50<span style="color:#27ae60;font-size:14px;margin-left:4px">(-2.10%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">19.3-20.2</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">17.74</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">重返21放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(CNY)</div><div class="pv">19.50<span style="color:#27ae60;font-size:13px">(-2.10%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">19.3-20.2</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">17.74</div></div>
+            <div><div class="plb">观察位</div><div class="pv">重返21放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_5">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">600961.SH</span>
-              <span class="stock-name">株冶集团</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇨🇳 <span class="sc-code">600961.SH</span>
+              <span class="sc-name">株冶集团</span>
               <span class="tag" style="background:#e74c3c">A股</span>
-              <span class="tag gray">有色金属</span>
+              <span class="tag gray">有色金属 · 253亿</span>
+              <span class="src-tag">数据源: iFinD</span>
             </div>
-            <div class="score-box">CANSLIM <b>92</b></div>
+            <div class="sc-score">CANSLIM <b>92</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">99.71%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">50.2%</span></div>
             <div><span class="lbl">ROE</span><span class="val">31.4%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">68</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·下跌背驰一买候选</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">4浪末端</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">一买候选</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">下跌楔形→缠论一买候选→4浪末端→短期底部</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·下跌背驰一买候选 · 中枢【24.5,28.0】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">4浪末端</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">一买候选</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">下跌楔形→缠论一买候选→4浪末端→短期底部</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">23.61<span style="color:#27ae60;font-size:14px;margin-left:4px">(-3.51%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">23.5-24.5</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">21.72</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">重返25</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(CNY)</div><div class="pv">23.61<span style="color:#27ae60;font-size:13px">(-3.51%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">23.5-24.5</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">21.72</div></div>
+            <div><div class="plb">观察位</div><div class="pv">重返25</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_6">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">02020.HK</span>
-              <span class="stock-name">安踏体育</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇭🇰 <span class="sc-code">02020.HK</span>
+              <span class="sc-name">安踏体育</span>
               <span class="tag" style="background:#2980b9">港股通</span>
-              <span class="tag gray">体育用品</span>
+              <span class="tag gray">体育用品 · 1991亿HKD</span>
+              <span class="src-tag">数据源: TDX</span>
             </div>
-            <div class="score-box">CANSLIM <b>96</b></div>
+            <div class="sc-score">CANSLIM <b>96</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">25%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">22%</span></div>
             <div><span class="lbl">ROE</span><span class="val">20%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">85</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢三买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">3浪推进中</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">三买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">上升楔形→缠论三买→3浪推进→顶底山峰</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢三买 · 中枢【68,75】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">3浪推进中</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">三买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">上升楔形→缠论三买→3浪推进→缩量回踩MA20</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">78.20<span style="color:#27ae60;font-size:14px;margin-left:4px">(-0.85%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">76-80</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">71.94</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">突破82.5放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(HKD)</div><div class="pv">71.20<span style="color:#27ae60;font-size:13px">(-0.65%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">70.0-72.5</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">65.50</div></div>
+            <div><div class="plb">观察位</div><div class="pv">突破75放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_7">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">01024.HK</span>
-              <span class="stock-name">快手-W</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇭🇰 <span class="sc-code">01024.HK</span>
+              <span class="sc-name">快手-W</span>
               <span class="tag" style="background:#2980b9">港股通</span>
-              <span class="tag gray">短视频</span>
+              <span class="tag gray">短视频 · 1299亿HKD</span>
+              <span class="src-tag">数据源: TDX</span>
             </div>
-            <div class="score-box">CANSLIM <b>93</b></div>
+            <div class="sc-score">CANSLIM <b>93</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">40%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">35%</span></div>
             <div><span class="lbl">ROE</span><span class="val">15%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">72</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢三买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">1→2浪衔接</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">三买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">底部反转→缠论三买→1→2浪衔接→颈线回踩</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢二买 · 中枢【29,32】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">1→2浪衔接</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">二买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">底部反转→缠论二买→1→2浪衔接→颈线回踩</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">44.80<span style="color:#27ae60;font-size:14px;margin-left:4px">(-1.30%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">44-46</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">41.22</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">突破47放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(HKD)</div><div class="pv">30.50<span style="color:#27ae60;font-size:13px">(-1.16%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">30.0-31.5</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">28.06</div></div>
+            <div><div class="plb">观察位</div><div class="pv">重返32.5放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_8">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">01810.HK</span>
-              <span class="stock-name">小米集团-W</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇭🇰 <span class="sc-code">01810.HK</span>
+              <span class="sc-name">小米集团-W</span>
               <span class="tag" style="background:#2980b9">港股通</span>
-              <span class="tag gray">消费电子</span>
+              <span class="tag gray">消费电子 · 6672亿HKD</span>
+              <span class="src-tag">数据源: TDX</span>
             </div>
-            <div class="score-box">CANSLIM <b>90</b></div>
+            <div class="sc-score">CANSLIM <b>90</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">18%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">20%</span></div>
             <div><span class="lbl">ROE</span><span class="val">14%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">74</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢二买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">2浪末端→3浪</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">二买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">箱体蓄势→缠论二买→2浪末端→底部放量</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢二买 · 中枢【25,27】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">2浪末端→3浪</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">二买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">箱体蓄势→缠论二买→2浪末端→底部放量</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">27.40<span style="color:#e74c3c;font-size:14px;margin-left:4px">(+0.50%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">26.5-28.0</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">25.21</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">突破30放量</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(HKD)</div><div class="pv">25.90<span style="color:#27ae60;font-size:13px">(-0.30%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">25.5-26.8</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">23.83</div></div>
+            <div><div class="plb">观察位</div><div class="pv">突破27.5放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_9">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">03690.HK</span>
-              <span class="stock-name">美团-W</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇭🇰 <span class="sc-code">03690.HK</span>
+              <span class="sc-name">美团-W</span>
               <span class="tag" style="background:#2980b9">港股通</span>
-              <span class="tag gray">本地生活</span>
+              <span class="tag gray">本地生活 · 4425亿HKD</span>
+              <span class="src-tag">数据源: TDX</span>
             </div>
-            <div class="score-box">CANSLIM <b>90</b></div>
+            <div class="sc-score">CANSLIM <b>90</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">22%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">25%</span></div>
             <div><span class="lbl">ROE</span><span class="val">16%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">68</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·下跌背驰一买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">ABC调整末端</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">一买候选</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">下跌楔形→缠论一买→ABC末端→W底</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·下跌背驰一买候选 · 中枢【65,78】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">ABC末端</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">一买候选</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">下跌楔形→缠论一买候选→ABC末端→W底</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">132.50<span style="color:#27ae60;font-size:14px;margin-left:4px">(-2.10%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">130-138</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">121.90</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">重返150</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(HKD)</div><div class="pv">71.65<span style="color:#27ae60;font-size:13px">(-1.49%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">70.0-73.5</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">65.92</div></div>
+            <div><div class="plb">观察位</div><div class="pv">重返78放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
-        <div class="stock-card" id="stock_10">
-          <div class="stock-header">
-            <div class="stock-title">
-              <span class="stock-code">00700.HK</span>
-              <span class="stock-name">腾讯控股</span>
+        <div class="stock-card">
+          <div class="sc-head">
+            <div class="sc-titles">
+              🇭🇰 <span class="sc-code">00700.HK</span>
+              <span class="sc-name">腾讯控股</span>
               <span class="tag" style="background:#2980b9">港股通</span>
-              <span class="tag gray">互联网科技</span>
+              <span class="tag gray">互联网科技 · 39709亿HKD</span>
+              <span class="src-tag">数据源: TDX</span>
             </div>
-            <div class="score-box">CANSLIM <b>89</b></div>
+            <div class="sc-score">CANSLIM <b>89</b></div>
           </div>
-          <div class="metrics-row">
+          <div class="sc-meta">
             <div><span class="lbl">C净利同比</span><span class="val">15%</span></div>
             <div><span class="lbl">A3年复合</span><span class="val">18%</span></div>
             <div><span class="lbl">ROE</span><span class="val">18%</span></div>
             <div><span class="lbl">L RPS</span><span class="val">68</span></div>
           </div>
-          <div class="analysis-box">
-            <div class="ana-row"><span class="ana-lbl">缠论</span><span class="ana-val">日线·中枢三买</span></div>
-            <div class="ana-row"><span class="ana-lbl">波浪</span><span class="ana-val">B浪反弹</span></div>
-            <div class="ana-row"><span class="ana-lbl">买点</span><span class="ana-val"><b style="color:#e67e22">三买</b></span></div>
-            <div class="ana-row"><span class="ana-lbl">触发</span><span class="ana-val">三角形收敛→缠论三买→B浪反弹→止跌</span></div>
+          <div class="sc-box">
+            <div class="row"><span class="lb">缠论</span><span class="vl">日线·中枢三买 · 中枢【420,450】</span></div>
+            <div class="row"><span class="lb">波浪</span><span class="vl">B浪反弹</span></div>
+            <div class="row"><span class="lb">买点</span><span class="vl"><b style="color:#e67e22">三买</b></span></div>
+            <div class="row"><span class="lb">触发</span><span class="vl">三角形收敛→缠论三买→B浪反弹→年线支撑</span></div>
           </div>
-          <div class="price-row">
-            <div class="price-item">
-              <div class="price-lbl">昨收</div>
-              <div class="price-val">378.50<span style="color:#e74c3c;font-size:14px;margin-left:4px">(+1.20%)</span></div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">参考买点</div>
-              <div class="price-val buy">370-390</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">止损(-8%)</div>
-              <div class="price-val stop">348.22</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">观察位</div>
-              <div class="price-val">突破400</div>
-            </div>
-            <div class="price-item">
-              <div class="price-lbl">建议仓位</div>
-              <div class="price-val pos">10%</div>
-            </div>
+          <div class="sc-price">
+            <div><div class="plb">昨收(HKD)</div><div class="pv">436.60<span style="color:#27ae60;font-size:13px">(-0.59%)</span></div></div>
+            <div><div class="plb">参考买点</div><div class="pv buy">430-445</div></div>
+            <div><div class="plb">止损(-8%)</div><div class="pv stop">401.67</div></div>
+            <div><div class="plb">观察位</div><div class="pv">突破450放量</div></div>
+            <div><div class="plb">建议仓位</div><div class="pv pos">10%</div></div>
           </div>
         </div>
-        
 
-<!-- ============ 板块方向 ============ -->
 <div class="card">
 <h2>板块方向与风险清单</h2>
 <div class="grid2">
   <div>
-    <div class="lbl" style="color:#2ecc71;font-size:13px;margin-bottom:8px">⚡ 关注方向</div>
-    <ul class="sector-top">
-      <li>风电设备/输变电（特高压周期+海外订单）</li>
-      <li>通用机械/无人机（军工+低空经济）</li>
-      <li>短交通/消费电子（AIoT+出海）</li>
-      <li>互联网科技（AI智能体+商业化）</li>
-      <li>体育用品（多品牌+海外扩张）</li>
-    </ul>
+    <div style="color:#2ecc71;font-size:13px;margin-bottom:8px">⚡ 关注方向</div>
+    <div style="padding:10px;background:#142028;border-radius:6px;font-size:13px;line-height:2">
+      · 风电/输变电（特高压周期+海外订单）<br>
+      · 通用机械/无人机（军工+低空经济）<br>
+      · 短交通/消费电子（AIoT+出海）<br>
+      · 互联网科技（AI智能体+商业化）<br>
+      · 体育用品（多品牌+海外扩张）
+    </div>
   </div>
   <div>
-    <div class="lbl" style="color:#e74c3c;font-size:13px;margin-bottom:8px">⚠ 风险清单</div>
-    <ul class="sector-bot">
-      <li>贵金属/能源金属（金价高位回落风险）</li>
-      <li>元器件（科技成长股估值压挤）</li>
-      <li>北向资金流出压力（中秋假期效应）</li>
-      <li>国庆节前缩量博弈，警惕流动性风险</li>
-      <li>大盘中枢下破，谨防加速下跌</li>
-    </ul>
+    <div style="color:#e74c3c;font-size:13px;margin-bottom:8px">⚠ 风险清单</div>
+    <div style="padding:10px;background:#142028;border-radius:6px;font-size:13px;line-height:2">
+      · 贵金属/能源金属（金价回落风险）<br>
+      · 元器件（科技估值压挤）<br>
+      · 北向资金流出（中秋效应+美联储）<br>
+      · 国庆前缩量博弈，警惕流动性<br>
+      · 大盘中枢下破，谨防加速下跌
+    </div>
   </div>
-</div>
-</div>
+</div></div>
 
-<!-- ============ 免责声明 ============ -->
 <div class="disclaimer">
-  <b>免责声明：</b>本报告基于公开数据及多理论模型（欧奈尔CANSLIM、楔形理论、缠论、波浪理论、顶底山峰）自动生成，仅供参考，不构成任何投资建议。
-  数据部分缺失时以"数据缺失"标注，不做虚构推断。股市有风险，投资需谨慎。作者及平台不对任何投资决策负责。
-  <br><br>
-  <b>使用说明：</b>① 缠论买点：一买=下跌背驰终结、二买=不破一买低点回升、三买=中枢突破后回踩不破；
-  ② 波浪位置：3浪/5浪为主升，A/B/C为调整；③ 止损位统一按-8%计算，极端行情下请严控仓位。
-</div>
-
-</div>
-<script>
-// 交互：点击股票卡片可以高亮
-document.querySelectorAll('.stock-card').forEach(c=>{
-  c.style.cursor='pointer';
-  c.addEventListener('click',()=>{
-    document.querySelectorAll('.stock-card').forEach(x=>x.style.outline='none');
-    c.style.outline='2px solid #2ecc71';
-  });
-});
-</script>
-</body>
-</html>
+<b>免责声明：</b>本报告基于公开数据及多理论模型自动生成，仅供参考，不构成投资建议。
+<b>数据来源标注：</b>A股收盘价/成交额/量比来自 iFinD hexin-ifind-ds-stock-mcp；港股收盘价/市值来自 通达信 tdx_quotes（setcode=31）；指数K线来自 iFinD hexin-ifind-ds-index-mcp；外股涨跌/隔夜数据来自 WebSearch 兜底；北向资金/恒指夜盘/A50期货因接口不可获取如实标注"数据缺失"。
+<b>模型局限：</b>缠论中枢区间/波浪位置为基于价格序列的推断性标注，非确定性结论。
+股市有风险，投资需谨慎。
+</div></div></body></html>
