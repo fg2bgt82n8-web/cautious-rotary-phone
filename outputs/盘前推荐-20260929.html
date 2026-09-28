@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐 · 2026-09-29（A股5+港股5）</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#0f1419;color:#e7e9ea;line-height:1.6;}
+  .container{max-width:1200px;margin:0 auto;padding:20px 20px 60px;}
+  .pipeline{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
+  .pipeline-step{flex:1;min-width:110px;text-align:center;padding:10px;border-radius:8px;font-size:12px;font-weight:600;}
+  .step-current{background:linear-gradient(135deg,#f91880,#ff7a00);color:#fff;animation:pulse 2s infinite;}
+  .step-pending{background:#1a2332;color:#71767b;border:1px solid #2f3336;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.7;}}
+  .header{background:linear-gradient(135deg,#1a2332 0%,#0f1419 100%);border:1px solid #2f3336;border-radius:12px;padding:24px;margin-bottom:20px;}
+  .header h1{font-size:26px;color:#1d9bf0;margin-bottom:8px;}
+  .header .meta{color:#8b98a5;font-size:13px;display:flex;gap:20px;flex-wrap:wrap;}
+  .section{background:#16181c;border:1px solid #2f3336;border-radius:12px;padding:20px;margin-bottom:20px;}
+  .section h2{font-size:19px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #2f3336;display:flex;align-items:center;gap:9px;}
+  .section h3{font-size:15px;color:#1d9bf0;margin:14px 0 8px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:11px;}
+  .card{background:#1a2332;border:1px solid #2f3336;border-radius:8px;padding:13px;}
+  .card .name{font-size:12px;color:#8b98a5;margin-bottom:3px;}
+  .card .value{font-size:19px;font-weight:700;}
+  .card .sub{font-size:12px;margin-top:2px;color:#8b98a5;}
+  .up{color:#00ba7c;}.down{color:#f91880;}.flat{color:#71767b;}
+  .mcard{background:linear-gradient(135deg,#20180f,#16181c);border:1px solid #ff7a00;border-radius:12px;padding:20px;margin-bottom:20px;}
+  .mcard .verdict{font-size:22px;font-weight:800;color:#ff7a00;margin-bottom:6px;}
+  .mcard .line{font-size:14px;color:#c9d1d9;margin-bottom:6px;}
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  thead th{background:#1a2332;color:#8b98a5;font-weight:600;padding:9px 8px;text-align:left;border-bottom:1px solid #2f3336;}
+  tbody td{padding:9px 8px;border-bottom:1px solid #2f3336;vertical-align:middle;}
+  tbody tr:hover{background:#1a2332;}
+  .mono{font-family:monospace;color:#1d9bf0;font-weight:600;}
+  .tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+  .tag-a{background:rgba(249,24,128,.15);color:#f91880;}
+  .tag-hk{background:rgba(29,155,240,.15);color:#1d9bf0;}
+  .tag-src{background:rgba(255,122,0,.15);color:#ff7a00;}
+  .stock{background:#1a2332;border:1px solid #2f3336;border-left:4px solid #1d9bf0;border-radius:10px;padding:15px;margin-bottom:13px;}
+  .stock.hk{border-left-color:#ff7a00;}
+  .stock .top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:8px;}
+  .stock .title{font-size:17px;font-weight:700;}
+  .stock .score{font-size:20px;font-weight:800;color:#ffd166;}
+  .stock .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;font-size:13px;color:#c9d1d9;}
+  .stock .row .k{color:#71767b;font-size:12px;display:block;}
+  .kw{background:#0f1419;border:1px solid #2f3336;border-radius:6px;padding:6px 9px;}
+  .box{background:#1a2332;border:1px solid #2f3336;border-radius:8px;padding:15px;margin-top:12px;}
+  .box ul{padding-left:20px;font-size:13px;color:#aeb8c2;}
+  .box li{margin-bottom:6px;}
+  .disclaimer{background:#1a2332;border:1px solid #2f3336;border-radius:8px;padding:16px;margin-top:16px;font-size:12px;color:#8b98a5;line-height:1.9;}
+  .disclaimer strong{color:#f91880;}
+  .chart-wrap{position:relative;height:240px;margin-top:10px;}
+  .warn{color:#ff7a00;}
+  .miss{color:#f91880;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="pipeline">
+    <div class="pipeline-step step-current">盘前推荐（本次）</div>
+    <div class="pipeline-step step-pending">开盘验证</div>
+    <div class="pipeline-step step-pending">午盘验证</div>
+    <div class="pipeline-step step-pending">尾盘验证</div>
+    <div class="pipeline-step step-pending">收盘验证</div>
+  </div>
+
+  <div class="header">
+    <h1>📊 A+H 全市场盘前十股推荐 — 2026-09-29（周二）</h1>
+    <div class="meta">
+      <span>🗓️ 交易日校验：<span class="up">2026-09-29 为交易日</span>（周二，非节假日）</span>
+      <span>📌 数据基准日：2026-09-28（周一）收盘</span>
+      <span>🧮 策略：欧奈尔 CANSLIM-A 本土化 + 楔形理论 + 顶底山峰</span>
+      <span>⚖️ 配比：A股 5 支 + 港股 5 支</span>
+    </div>
+  </div>
+
+  <!-- M 大盘结论卡 -->
+  <div class="mcard">
+    <div class="verdict">M · 大盘结论：弱势调整，防御为王（总仓位建议 50%）</div>
+    <div class="line">2026-09-28 A股放量杀跌：<span class="down">上证 -1.67%</span>、<span class="down">深成 -3.44%</span>、<span class="down">创业板 -4.53%</span>、<span class="down">科创50 -4.06%</span>，双创指数领跌，全市场逾 4500 只个股下跌。</div>
+    <div class="line">杀跌主线为 <b>算力硬件 / 半导体 / 元件 / CPO</b> 等高位科技成长（受海外提案与美债 10Y 升至 5.20% 压制）；资金转向 <b>汽车整车、风电设备、猪肉、医药、内银</b> 等低位/防御方向，属典型"高低切换 + 抱团防御"。</div>
+    <div class="line">隔夜外股偏暖（道指 +0.93%、费半 +1.41%），但中概金龙 <span class="down">-0.64%</span>、A50 期指 <span class="down">-0.20%</span>、恒指期货 <span class="down">-0.66%</span>，对 A/H 传导中性偏弱。</div>
+    <div class="line">结论：<b>不追高、控仓位、只做强势方向的回踩买点</b>；回避高位科技（算力/半导体/CPO/元件）与贵金属，优先汽车整车、风电、医药、电力公用事业。</div>
+  </div>
+
+  <!-- 昨日盘口 -->
+  <div class="section">
+    <h2>🏛️ 昨日盘口（2026-09-28 收盘）</h2>
+    <div class="grid">
+      <div class="card"><div class="name">上证指数</div><div class="value down">3823.62</div><div class="sub down">-1.67% ｜ 8045.44 亿</div></div>
+      <div class="card"><div class="name">深证成指</div><div class="value down">12858.75</div><div class="sub down">-3.44% ｜ 8982.55 亿</div></div>
+      <div class="card"><div class="name">创业板指</div><div class="value down">3139.82</div><div class="sub down">-4.53% ｜ 4332.30 亿</div></div>
+      <div class="card"><div class="name">沪深300</div><div class="value down">4340.76</div><div class="sub down">-2.22% ｜ 4286.20 亿</div></div>
+      <div class="card"><div class="name">科创50</div><div class="value down">1555.98</div><div class="sub down">-4.06% ｜ 805.86 亿</div></div>
+      <div class="card"><div class="name">两市成交额</div><div class="value">1.70 万亿</div><div class="sub">较上日放量约 494 亿</div></div>
+      <div class="card"><div class="name">涨跌家数</div><div class="value down">874 / 4298</div><div class="sub">上涨占比仅 16.9%</div></div>
+      <div class="card"><div class="name">涨停 / 跌停</div><div class="value down">35 / 57</div><div class="sub">沪 15/31 ｜ 深 20/26 · 跌停多于涨停</div></div>
+      <div class="card"><div class="name">北向资金净买入</div><div class="value miss">数据缺失</div><div class="sub">iFinD EDB 当日返回空值</div></div>
+      <div class="card"><div class="name">两融余额</div><div class="value">26373.03 亿</div><div class="sub">2026-09-24（09-28 未更新）</div></div>
+    </div>
+
+    <h3>行业板块强弱</h3>
+    <table>
+      <thead><tr><th>方向</th><th>板块</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="up">TOP 强势</td><td>汽车整车、小家电、猪肉、养鸡、风电设备</td><td>低位补涨 + 政策/超跌属性，资金防御性过渡</td></tr>
+        <tr><td class="up">TOP 局部</td><td>生物疫苗、房地产、网络</td><td>丽珠集团/ST万邦涨停；深物业A、深华发A涨停</td></tr>
+        <tr><td class="down">BOTTOM 弱势</td><td>元件、CPO、铜缆高速连接、通信设备、MLCC</td><td>算力硬件链全线溃败，机构调仓</td></tr>
+        <tr><td class="down">BOTTOM 弱势</td><td>贵金属、半导体、消费电子、算力硬件</td><td>山东黄金跌停；高位人气股大面积跳水跌停</td></tr>
+      </tbody>
+    </table>
+    <div class="box"><ul>
+      <li>数据来源：同花顺 iFinD（index_data / index_highfreq_quotes / edb）、财经收评（格隆汇、中国经济网、cnfin）。板块排序取自 09-28 收评快照，iFinD 申万行业接口本次返回口径异常，已用收评口径交叉校验。</li>
+    </ul></div>
+  </div>
+
+  <!-- 隔夜外盘 -->
+  <div class="section">
+    <h2>🌍 隔夜外盘传导（最近已收盘美股交易日：2026-09-25）</h2>
+    <div class="grid">
+      <div class="card"><div class="name">道琼斯工业</div><div class="value up">51828.62</div><div class="sub up">+0.93%</div></div>
+      <div class="card"><div class="name">纳斯达克综指</div><div class="value up">27068.72</div><div class="sub up">+0.48%</div></div>
+      <div class="card"><div class="name">标普500</div><div class="value up">7743.41</div><div class="sub up">+0.51%</div></div>
+      <div class="card"><div class="name">费城半导体</div><div class="value up">12668.93</div><div class="sub up">+1.41%</div></div>
+      <div class="card"><div class="name">纳斯达克中国金龙</div><div class="value down">5687.91</div><div class="sub down">-0.64%</div></div>
+      <div class="card"><div class="name">富时A50期指主连</div><div class="value down">14286.0</div><div class="sub down">-0.20%</div></div>
+      <div class="card"><div class="name">恒生指数期货（当月）</div><div class="value down">24527</div><div class="sub down">-0.66%</div></div>
+      <div class="card"><div class="name">美债10年期收益率</div><div class="value down">5.203%</div><div class="sub warn">09-25 5.17% → 09-28 5.20%，长端续升</div></div>
+      <div class="card"><div class="name">美元指数</div><div class="value">101.03</div><div class="sub">09-25，维持强势区</div></div>
+      <div class="card"><div class="name">WTI原油</div><div class="value">92.41</div><div class="sub">美元/桶（09-25）</div></div>
+      <div class="card"><div class="name">伦敦金现</div><div class="value">4261.05</div><div class="sub down">美元/盎司（09-25，走弱）</div></div>
+    </div>
+    <div class="box"><ul>
+      <li>美股三大指数与费半收涨，对 A 股科技链开盘情绪有弱正向牵引；但 <b>美债10Y 升至 5.20% 高位 + 美元偏强</b>，持续压制高估值成长股估值中枢。</li>
+      <li><b>中概金龙 -0.64%、A50期指 -0.20%、恒指期货 -0.66%</b> 三项均走弱，说明外部资金对中国资产隔夜是净偏空，不宜期待高开强反弹。</li>
+      <li>恒指 09-28 实际收跌（恒科 -3.3%），港股科技与半导体遭明显抛压，与 A 股科技杀跌形成共振。</li>
+    </ul></div>
+  </div>
+
+  <!-- 五日情绪 -->
+  <div class="section">
+    <h2>🌡️ 五日情绪评分：<span class="warn">3.0 / 10（偏冷，未到冰点）</span></h2>
+    <div class="chart-wrap"><canvas id="amtChart"></canvas></div>
+    <table style="margin-top:14px;">
+      <thead><tr><th>指标</th><th>读数</th><th>方向</th></tr></thead>
+      <tbody>
+        <tr><td>两市成交额（09-21→09-28，亿元）</td><td>20315 → 21356 → 17650 → 16534 → 17028</td><td class="down">冲高后连续缩量，量能中枢下移</td></tr>
+        <tr><td>涨停 / 跌停家数（09-28）</td><td>35 / 57</td><td class="down">跌停多于涨停，情绪偏弱</td></tr>
+        <tr><td>涨停晋级率</td><td class="miss">数据缺失</td><td class="miss">iFinD 未提供近 5 日涨停股逐日连板明细</td></tr>
+        <tr><td>上涨家数占比（09-28）</td><td>16.9%（874 / 4298）</td><td class="down">普跌格局，赚钱效应差</td></tr>
+        <tr><td>两融余额（09-21→09-24，亿元）</td><td>26528 → 26563 → 26550 → 26373</td><td class="down">边际回落，杠杆资金谨慎</td></tr>
+        <tr><td>北向资金边际</td><td class="miss">数据缺失</td><td class="miss">iFinD EDB 无当日数据</td></tr>
+        <tr><td>连板高度</td><td>3 板（金辰股份 3 连板；江淮汽车 4 天 3 板）</td><td class="flat">高度受限于 3-4 板，无高位接力</td></tr>
+      </tbody>
+    </table>
+    <div class="box"><ul>
+      <li><b>情绪分 3.0/10</b>：量能缩、跌停多、上涨占比低、高位股跳水，属"偏冷但未冰点"（冰点≤2）。</li>
+      <li>含义：<b>不宜重仓追涨，宜轻仓分批、只做强势方向回踩买点</b>；一旦连板高度回落到 2 板以下且跌停继续放大，需进一步降仓。</li>
+    </ul></div>
+  </div>
+
+  <!-- 推荐 -->
+  <div class="section">
+    <h2>💎 今日十股推荐（A股 5 支 + 港股 5 支）</h2>
+    <p style="font-size:13px;color:#8b98a5;margin-bottom:14px;">评分口径：C20 + A20 + N15 + L15 + S10 + I10 + 形态10；≥70 为"入选"，&lt;70 列为"备选/条件触发"。港股均为港股通标的。</p>
+
+    <h3>🅰️ A股（5 支）</h3>
+
+    <div class="stock">
+      <div class="top"><div class="title"><span class="tag tag-a">A股</span> <span class="mono">600006.SH</span> 东风股份 <span style="color:#8b98a5;font-size:13px;">汽车整车</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">74</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">现价 / 昨收</span><b>5.83</b> <span class="up">+6.19%</span></div>
+        <div class="kw"><span class="k">触发维度</span>N 新高 + L 板块 + C + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>放量突破创 44 日新高</b>（20日量比 4.28）；非高位上升楔形</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>5.70 - 5.90</b></div>
+        <div class="kw"><span class="k">观察位</span>6.10（整数关/前高延伸）</div>
+        <div class="kw"><span class="k">止损位</span><b>5.36</b>（-8%，≈MA20 5.36）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>7%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>C：2026 中报扣非净利同比 <b>+73.90%</b>（达标）。A：加权 ROE 1.58%（不达标）。S：流通市值 116.6 亿（50-800 亿达标）。I：基金持股仅 0.37%（弱）。</li>
+        <li>逻辑：09-28 逆势放量大涨，是汽车整车最强主线核心票，量价配合良好；属"下降楔形/平台上沿放量突破"型买点。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock">
+      <div class="top"><div class="title"><span class="tag tag-a">A股</span> <span class="mono">601218.SH</span> 吉鑫科技 <span style="color:#8b98a5;font-size:13px;">风电设备</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">70</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">现价 / 昨收</span><b>6.05</b> <span class="up">+10.00%</span></div>
+        <div class="kw"><span class="k">触发维度</span>N 涨停新高 + L 板块 + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>涨停放量突破创 47 日新高</b>（20日量比 2.80）</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>5.90 - 6.10</b>（回踩不破涨停价）</div>
+        <div class="kw"><span class="k">观察位</span>6.20</div>
+        <div class="kw"><span class="k">止损位</span><b>5.57</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>C：扣非净利同比仅 +4.93%（<span class="warn">未达 25% 门槛</span>）。A：ROE 3.96%（不达标）。S：流通市值 58.6 亿（达标）。</li>
+        <li>逻辑：风电设备 09-28 尾盘异动走高，涨停封板，属低位超跌 + 政策预期驱动的资金过渡方向，形态上是平台放量突破。基本面偏弱，仅作<b>短线博弈</b>，务必严设止损。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock">
+      <div class="top"><div class="title"><span class="tag tag-a">A股</span> <span class="mono">002935.SZ</span> 天奥电子 <span style="color:#8b98a5;font-size:13px;">军工电子/时频</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">71</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">现价 / 昨收</span><b>18.26</b> <span class="up">+1.00%</span></div>
+        <div class="kw"><span class="k">触发维度</span>N 新高 + C + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>放量创 48 日新高</b>（20日量比 3.42）；MA20 上方 +13.3%</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>17.80 - 18.40</b></div>
+        <div class="kw"><span class="k">观察位</span>19.00</div>
+        <div class="kw"><span class="k">止损位</span><b>16.80</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>6%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>C：2026 中报扣非净利同比 <b>+161.67%</b>（达标）。A：ROE 0.57%（不达标）。</li>
+        <li>逻辑：逆市创阶段新高且显著放量，形态健康（上升趋势中放量突破，未见高位滞涨）。军工电子方向 09-28 相对抗跌。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock">
+      <div class="top"><div class="title"><span class="tag tag-a">A股</span> <span class="mono">603127.SH</span> 昭衍新药 <span style="color:#8b98a5;font-size:13px;">CXO/医药</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">76</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">现价 / 昨收</span><b>45.44</b> <span class="down">-2.05%</span></div>
+        <div class="kw"><span class="k">触发维度</span>C（最强）+ I（基金重仓）+ A</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>回调后重新站上 MA20 企稳</b>（MA20 上方 +2.2%），顶底山峰拐头</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>44.50 - 46.00</b></div>
+        <div class="kw"><span class="k">观察位</span>47.00（MA10 46.32 上方）</div>
+        <div class="kw"><span class="k">止损位</span><b>41.80</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>6%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>C：扣非净利同比 <b>+2931.69%</b>（大幅达标）。A：ROE 8.61%。I：基金持股 16.18%（较强）。S：流通市值 285 亿（达标）。</li>
+        <li>逻辑：医药/CXO 是 09-28 逆势活跃方向（创新药、疫苗），公司为 CXO 龙头之一，净利润基数修复弹性极大；技术上回踩回升站上 MA20，属"顶底山峰回踩企稳向上"共振。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock">
+      <div class="top"><div class="title"><span class="tag tag-a">A股</span> <span class="mono">000560.SZ</span> 我爱我家 <span style="color:#8b98a5;font-size:13px;">房地产服务</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">68</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">现价 / 昨收</span><b>3.71</b> <span class="up">+1.37%</span></div>
+        <div class="kw"><span class="k">触发维度</span>N 板块 + C + 顶底山峰</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>阶段新高后缩量回踩企稳</b>（距 55 日高仅 -3.9%，MA20 上方 +19.3%）</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>3.62 - 3.72</b></div>
+        <div class="kw"><span class="k">观察位</span>3.86（阶段高点）</div>
+        <div class="kw"><span class="k">止损位</span><b>3.41</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>C：扣非净利同比 +76.28%（达标）。A：ROE 0.87%（不达标）。</li>
+        <li>逻辑：09-28 房地产板块异动（深物业A、深华发A 涨停），公司为房产经纪龙头；形态上"顶底山峰"共振（创新高后缩量回踩、仍在 MA20 上方拐头）。估值低、弹性大，但基本面弱，仓位从严。</li>
+      </ul></div>
+    </div>
+
+    <h3 style="margin-top:22px;">🇭🇰 港股（5 支，均为港股通标的）</h3>
+
+    <div class="stock hk">
+      <div class="top"><div class="title"><span class="tag tag-hk">港股</span> <span class="mono">0836.HK</span> 华润电力 <span style="color:#8b98a5;font-size:13px;">电力/公用事业</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">71</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">价格 / 涨跌</span><b>18.99</b> <span class="down">-0.37%</span></div>
+        <div class="kw"><span class="k">触发维度</span>L 防御主线 + S + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>沿 MA20 上方强势整理</b>（+0.67%），收敛平台待突破</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>18.70 - 19.10</b></div>
+        <div class="kw"><span class="k">观察位</span>19.64（55 日高）</div>
+        <div class="kw"><span class="k">止损位</span><b>17.47</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>6%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>总市值约 983 亿港元，区间（09-24→09-28）<b>+4.63%</b>；中信证券 09-27 明确建议港股优先关注<b>电力</b>等防御属性强、分红稳定行业。</li>
+        <li>逻辑：高利率环境下防御资产占优，走势强于恒指（恒指 09-28 大跌），属回调市中的避风港配置。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock hk">
+      <div class="top"><div class="title"><span class="tag tag-hk">港股</span> <span class="mono">0902.HK</span> 华能国际电力股份 <span style="color:#8b98a5;font-size:13px;">电力</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">69</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">价格 / 涨跌</span><b>5.615</b> <span class="down">-1.06%</span></div>
+        <div class="kw"><span class="k">触发维度</span>L 板块 + 区间强势</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>区间强势（+7.01%）后回踩 MA20 附近</b>（-0.84%），需站回确认</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>5.55 - 5.70</b></div>
+        <div class="kw"><span class="k">观察位</span>5.85</div>
+        <div class="kw"><span class="k">止损位</span><b>5.17</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>总市值约 1005 亿港元，区间（09-24→09-28）<b>+7.01%</b>，为本次港股筛选中区间涨幅居前的电力股。</li>
+        <li><span class="warn">形态提示：</span>当前收盘略低于 MA20（-0.84%），形态强度弱于同组其他标的，属"条件触发"——<b>需站回 5.68（MA20）上方再确认买点</b>。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock hk">
+      <div class="top"><div class="title"><span class="tag tag-hk">港股</span> <span class="mono">2238.HK</span> 广汽集团 <span style="color:#8b98a5;font-size:13px;">汽车（港股通）</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">72</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">价格 / 涨跌</span><b>2.43</b> <span class="down">-4.71%</span></div>
+        <div class="kw"><span class="k">触发维度</span>N 板块共振 + L + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>阶段新高后回踩 MA10</b>（MA10 2.44 / MA20 2.32，均在 MA20 上方）</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>2.38 - 2.45</b></div>
+        <div class="kw"><span class="k">观察位</span>2.55（55 日高）</div>
+        <div class="kw"><span class="k">止损位</span><b>2.24</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>总市值约 444 亿港元，区间（09-24→09-28）<b>+5.41%</b>；与 A 股汽车整车主线（东风股份、金龙汽车等）形成 <b>AH 共振</b>。</li>
+        <li>逻辑：低位整车 + 政策预期 + 超跌属性；技术上前期创新高后回踩 MA10，20 日涨幅仍为正（+8.0%），回踩不破 MA20 可低吸。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock hk">
+      <div class="top"><div class="title"><span class="tag tag-hk">港股</span> <span class="mono">0135.HK</span> 昆仑能源 <span style="color:#8b98a5;font-size:13px;">燃气/公用事业</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">68</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">价格 / 涨跌</span><b>7.63</b> <span class="up">+0.66%</span></div>
+        <div class="kw"><span class="k">触发维度</span>L 防御 + 形态</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>MA20 上方窄幅企稳</b>（+0.10%），45 日涨幅 +9.2%</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>7.50 - 7.70</b></div>
+        <div class="kw"><span class="k">观察位</span>7.73（55 日高）</div>
+        <div class="kw"><span class="k">止损位</span><b>7.02</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>总市值约 659 亿港元，公用事业（燃气）防御属性；09-28 逆市收红（+0.66%）。</li>
+        <li>逻辑：低波动红利型资产，贴合当前"高利率 + 防御"的资金偏好；形态为 MA20 上方横盘，属稳健型买点。</li>
+      </ul></div>
+    </div>
+
+    <div class="stock hk">
+      <div class="top"><div class="title"><span class="tag tag-hk">港股</span> <span class="mono">1093.HK</span> 石药集团 <span style="color:#8b98a5;font-size:13px;">医药</span> <span class="tag tag-src">数据源: 同花顺iFinD</span></div><div class="score">70</div></div>
+      <div class="row">
+        <div class="kw"><span class="k">价格 / 涨跌</span><b>9.33</b> <span class="down">-0.11%</span></div>
+        <div class="kw"><span class="k">触发维度</span>L 板块（医药逆势）+ 顶底山峰</div>
+        <div class="kw"><span class="k">楔形 / 山峰状态</span><b>阶段新高后回踩 MA10 企稳</b>（MA10 9.21 / MA20 9.12，均线上方）</div>
+        <div class="kw"><span class="k">参考买点区间</span><b>9.15 - 9.40</b></div>
+        <div class="kw"><span class="k">观察位</span>9.71（55 日高）</div>
+        <div class="kw"><span class="k">止损位</span><b>8.58</b>（-8%）</div>
+        <div class="kw"><span class="k">建议仓位</span><b>5%</b></div>
+      </div>
+      <div class="box" style="margin-top:10px;"><ul>
+        <li>逻辑：中信证券指出港股"恒生科技偏弱、生物科技偏强"，创新药/医药是 09-28 港股唯一逆势活跃方向（石四药 +7%、丽珠医药等走强）。</li>
+        <li>形态：3 日前创阶段新高后缩量回踩 MA10 并企稳，属"顶底山峰"共振买点，45 日涨幅 +9.1%。</li>
+      </ul></div>
+    </div>
+  </div>
+
+  <!-- 板块方向与风险 -->
+  <div class="section">
+    <h2>🧭 板块方向与风险清单</h2>
+    <h3>✅ 当日优先方向</h3>
+    <div class="box"><ul>
+      <li><b>汽车整车</b>：09-28 最强主线（江淮汽车 4 天 3 板、众泰涨停），低位 + 政策 + 超跌，AH 共振（东风股份 / 广汽集团）。</li>
+      <li><b>风电设备</b>：尾盘异动走高（吉鑫科技触及涨停），政策预期驱动。</li>
+      <li><b>医药 / CXO / 创新药</b>：逆势活跃（丽珠集团、ST万邦涨停），港股生物科技偏强（昭衍新药 / 石药集团）。</li>
+      <li><b>电力 · 燃气 · 公用事业</b>：高利率 + 资金防御首选（华润电力 / 华能国际 / 昆仑能源）。</li>
+      <li><b>军工电子</b>：相对抗跌，独立形态走强（天奥电子）。</li>
+    </ul></div>
+    <h3>⛔ 风险清单</h3>
+    <div class="box"><ul>
+      <li><b>高位科技链风险</b>：算力硬件、半导体、CPO、元件、消费电子 09-28 集体重挫，机构在调仓而非情绪折价，<b>短期不碰</b>，避免"抄底抄在半山腰"。</li>
+      <li><b>利率风险</b>：美债 10Y 升至 5.203% 高位、美元指数 101 偏强，压制高估值成长股估值中枢。</li>
+      <li><b>情绪风险</b>：情绪分仅 3.0/10，跌停家数（57）多于涨停（35），上涨占比 16.9%，普跌格局下个股易补跌。</li>
+      <li><b>港股流动性风险</b>：恒生科技 09-28 跌 3.3%，南向资金 2026 年整体偏弱、外资主导边际定价，港股波动大于 A 股，仓位应低于 A 股。</li>
+      <li><b>个股风险</b>：吉鑫科技（C 仅 +4.93%）、我爱我家（ROE 0.87%）、昆仑能源（低波动）基本面偏弱，属博弈/防御型，须严格执行 -8% 止损。</li>
+      <li><b>数据缺口</b>：北向资金净买入、涨停晋级率、申万行业涨跌幅明细本次 iFinD 接口未返回，已在文中标注"数据缺失"，未做估算替代。</li>
+    </ul></div>
+    <div class="box"><ul>
+      <li><b>总仓位建议：50%</b>（单只 5%-7%；A 股合计 29%，港股合计 26%）。若 09-29 早盘两市成交额未回到 1.8 万亿以上、或双创继续放量下跌，建议进一步降至 30%-40%。</li>
+    </ul></div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>⚠️ 免责声明</strong><br>
+    本报告由 AI 基于公开数据自动生成，仅供研究参考，不构成投资建议。<br>
+    数据来源：同花顺 iFinD（index_data / index_highfreq_quotes / get_stock_performance / get_stock_financials / search_stocks / global_stock_quotes / search_global_stocks / edb）、腾讯港股日 K 接口、公开财经收评（格隆汇、中国经济网、cnfin、中信证券）。港股日 K 线数据基准日截至 2026-09-25，港股 09-28 收盘价参考 iFinD 快照。凡接口未返回的指标均标注"数据缺失"，未做任何估算或虚构。<br>
+    股票市场有风险，投资需谨慎。买点区间、观察位、止损位均基于技术面与基本面的主观判断，实际走势可能显著偏离预期；过往业绩不代表未来表现。<br>
+    报告生成时间：2026-09-28 盘后 ｜ 数据基准日：2026-09-28 ｜ 适用交易日：2026-09-29。
+  </div>
+
+</div>
+
+<script>
+const ctx = document.getElementById('amtChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['09-21','09-22','09-23','09-24','09-28'],
+    datasets: [{
+      label: '两市成交额（亿元）',
+      data: [20315, 21356, 17650, 16534, 17028],
+      backgroundColor: ['rgba(29,155,240,.65)','rgba(29,155,240,.65)','rgba(255,122,0,.65)','rgba(255,122,0,.65)','rgba(255,122,0,.65)'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { labels: { color: '#8b98a5' } },
+      title: { display: true, text: '近5个交易日两市成交额趋势（亿元）', color: '#e7e9ea', font: { size: 14 } }
+    },
+    scales: {
+      x: { ticks: { color: '#8b98a5' }, grid: { color: '#2f3336' } },
+      y: { ticks: { color: '#8b98a5' }, grid: { color: '#2f3336' } }
+    }
+  }
+});
+</script>
+</body>
+</html>
