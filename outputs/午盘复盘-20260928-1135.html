@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>午盘复盘 - 2026-09-28 11:35</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f1419; color: #e7e9ea; line-height: 1.6; padding: 20px; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  h1 { font-size: 26px; color: #f5c542; margin-bottom: 6px; }
+  .subtitle { color: #8b98a5; font-size: 14px; margin-bottom: 24px; }
+  .stage-indicator { display: flex; background: #1a2332; border-radius: 12px; padding: 16px; margin-bottom: 24px; gap: 8px; }
+  .stage { flex: 1; text-align: center; padding: 12px 8px; border-radius: 8px; font-size: 13px; color: #5b7083; position: relative; }
+  .stage .label { display: block; font-size: 11px; margin-bottom: 4px; }
+  .stage .time { font-size: 12px; color: #5b7083; }
+  .stage.done { color: #2ecc71; }
+  .stage.active { background: linear-gradient(135deg, #f5c542 0%, #e8a317 100%); color: #0f1419; font-weight: bold; }
+  .stage.active .time { color: #0f1419; }
+  .alert-box { background: #2d1f1f; border-left: 4px solid #e74c3c; padding: 16px 20px; border-radius: 8px; margin-bottom: 24px; }
+  .alert-box.info { border-left-color: #3498db; background: #1a2a3a; }
+  .alert-box h3 { color: #e74c3c; margin-bottom: 8px; font-size: 16px; }
+  .alert-box.info h3 { color: #3498db; }
+  .alert-box p { color: #e7e9ea; font-size: 14px; }
+  .section { background: #1a2332; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; }
+  .section h2 { font-size: 18px; color: #f5c542; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #2d3a4a; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #243044; color: #f5c542; padding: 10px 12px; text-align: left; font-weight: 600; }
+  td { padding: 10px 12px; border-bottom: 1px solid #2d3a4a; }
+  tr:hover td { background: #243044; }
+  .up { color: #e74c3c; font-weight: 600; }
+  .down { color: #2ecc71; font-weight: 600; }
+  .flat { color: #8b98a5; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; margin-right: 4px; }
+  .tag-red { background: #3d1f1f; color: #e74c3c; }
+  .tag-green { background: #1f3d1f; color: #2ecc71; }
+  .tag-blue { background: #1f2d3d; color: #3498db; }
+  .tag-yellow { background: #3d351f; color: #f5c542; }
+  .tag-purple { background: #2d1f3d; color: #9b59b6; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .stat-card { background: #243044; border-radius: 8px; padding: 16px; text-align: center; }
+  .stat-card .value { font-size: 24px; font-weight: bold; margin-bottom: 4px; }
+  .stat-card .label { font-size: 12px; color: #8b98a5; }
+  .strategy-item { background: #243044; border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; border-left: 3px solid #f5c542; }
+  .strategy-item h4 { color: #f5c542; font-size: 14px; margin-bottom: 6px; }
+  .strategy-item p { font-size: 13px; color: #c5ccd3; }
+  .disclaimer { background: #1a2332; border-radius: 8px; padding: 16px; font-size: 12px; color: #5b7083; text-align: center; margin-top: 24px; line-height: 1.8; }
+  .disclaimer strong { color: #8b98a5; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📊 午盘复盘报告</h1>
+<p class="subtitle">2026年09月28日（周一）11:35 · 中秋假期后首个交易日 · A股正常开市</p>
+
+<!-- 阶段指示器 -->
+<div class="stage-indicator">
+  <div class="stage done">
+    <span class="label">盘前推荐</span>
+    <span class="time">08:30</span>
+  </div>
+  <div class="stage done">
+    <span class="label">开盘验证</span>
+    <span class="time">09:35</span>
+  </div>
+  <div class="stage active">
+    <span class="label">午盘复盘</span>
+    <span class="time">11:35</span>
+  </div>
+  <div class="stage">
+    <span class="label">尾盘跟踪</span>
+    <span class="time">14:45</span>
+  </div>
+  <div class="stage">
+    <span class="label">盘后验证</span>
+    <span class="time">15:30</span>
+  </div>
+</div>
+
+<!-- 交易日校验 & 跳过说明 -->
+<div class="alert-box info">
+  <h3>ℹ️ 今日无盘前推荐，10股跟踪列表跳过</h3>
+  <p>未读取到 <code>/workspace/outputs/推荐与验证台账.csv</code> 中的今日盘前推荐记录（盘前时段未产出跟踪台账），故本次午盘复盘跳过「10股半日表现汇总」「持仓盈亏估算」「买点/止损统计」模块。以下提供大盘半日研判、盘中新增候选、板块轮动及下午策略，供参考。</p>
+</div>
+
+<!-- 大盘半日表现 -->
+<div class="section">
+  <h2>一、三大指数半日表现</h2>
+  <div class="grid-3" style="margin-bottom:16px;">
+    <div class="stat-card">
+      <div class="value down">-1.74%</div>
+      <div class="label">上证指数 3820.82</div>
+    </div>
+    <div class="stat-card">
+      <div class="value down">-3.37%</div>
+      <div class="label">深证成指 12868.28</div>
+    </div>
+    <div class="stat-card">
+      <div class="value down">-4.32%</div>
+      <div class="label">创业板指 3146.90</div>
+    </div>
+  </div>
+  <table>
+    <tr>
+      <th>指数</th><th>上午收盘</th><th>半日涨跌幅</th><th>半日成交额</th><th>量比</th><th>换手率</th><th>上涨/下跌家数</th><th>主力净流入</th>
+    </tr>
+    <tr>
+      <td>上证指数</td>
+      <td>3820.82</td>
+      <td class="down">-1.74%</td>
+      <td>5482.49亿</td>
+      <td>1.257</td>
+      <td>0.62%</td>
+      <td>325 / 1987</td>
+      <td class="down">-321.02亿</td>
+    </tr>
+    <tr>
+      <td>深证成指</td>
+      <td>12868.28</td>
+      <td class="down">-3.37%</td>
+      <td>6127.83亿</td>
+      <td>1.232</td>
+      <td>1.49%</td>
+      <td>325 / 2558</td>
+      <td class="down">-358.95亿</td>
+    </tr>
+    <tr>
+      <td>创业板指</td>
+      <td>3146.90</td>
+      <td class="down">-4.32%</td>
+      <td>2944.60亿</td>
+      <td>1.226</td>
+      <td>1.84%</td>
+      <td>117 / 1275</td>
+      <td class="down">-204.36亿</td>
+    </tr>
+  </table>
+  <p style="margin-top:12px;font-size:13px;color:#8b98a5;">
+    📌 半日总成交约 <strong style="color:#e7e9ea;">1.16万亿</strong>，较节前放量；涨停 <strong style="color:#e74c3c;">24只</strong>，全市场下跌家数远超上涨家数，呈普跌格局。三大指数集体低开低走，创业板跌幅最大，主力资金合计净流出约 <strong style="color:#2ecc71;">884亿</strong>。
+  </p>
+</div>
+
+<!-- 缠论+波浪研判 -->
+<div class="section">
+  <h2>二、大盘缠论 + 波浪研判</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color:#3498db;font-size:15px;margin-bottom:10px;">🔷 缠论视角</h3>
+      <ul style="font-size:13px;color:#c5ccd3;padding-left:20px;">
+        <li><strong>30分钟级别</strong>：上证跌破前期中枢下沿（约3860），形成向下离开段，当前处于30分钟下跌一笔中。</li>
+        <li><strong>背驰状态</strong>：半日量比1.257略有放量，下跌动能仍在释放，<span class="tag tag-red">尚未出现底背驰</span>，需观察下午是否缩量企稳。</li>
+        <li><strong>中枢位置</strong>：上方中枢区间3860-3900构成压力，下方3800整数关口为短期支撑。</li>
+        <li><strong>半日多空方向</strong>：<span class="tag tag-green">空头占优</span>，主力大幅净流出，反弹需量能配合。</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="color:#9b59b6;font-size:15px;margin-bottom:10px;">🌊 波浪视角</h3>
+      <ul style="font-size:13px;color:#c5ccd3;padding-left:20px;">
+        <li><strong>浪型位置</strong>：上证自9月中旬高点回调，当前或处于<strong>C浪下跌</strong>或<strong>5浪末段</strong>，需确认。</li>
+        <li><strong>回调幅度</strong>：半日跌1.74%，60日涨幅-5.51%，中期趋势转弱。</li>
+        <li><strong>关键信号</strong>：若下午跌破3800且放量，可能进入加速下跌；若缩量守住3800，<span class="tag tag-yellow">5浪末警示</span>需关注超跌反弹。</li>
+        <li><strong>操作建议</strong>：<span class="tag tag-red">不宜盲目抄底</span>，等待背驰信号或企稳K线确认。</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 盘中新增候选 -->
+<div class="section">
+  <h2>三、盘中新增候选（放量突破 + MACD金叉）</h2>
+  <table>
+    <tr>
+      <th>代码</th><th>名称</th><th>现价</th><th>半日涨幅</th><th>选股触发条件</th><th>缠论/波浪标签</th><th>建议</th>
+    </tr>
+    <tr>
+      <td>600241</td>
+      <td>时代万恒</td>
+      <td>8.04</td>
+      <td class="up">+9.99%</td>
+      <td>放量突破 · 5日线上穿20日线 · BIAS金叉 · 10天内涨停收盘</td>
+      <td><span class="tag tag-red">三买确认</span><span class="tag tag-yellow">放量突破</span></td>
+      <td>涨停封板，观察封单强度，不宜追高</td>
+    </tr>
+    <tr>
+      <td>603418</td>
+      <td>友升股份</td>
+      <td>48.59</td>
+      <td class="up">+7.71%</td>
+      <td>放量突破 · 10日内放量 · 10日内平台整理 · 60日内平台整理</td>
+      <td><span class="tag tag-red">三买确认</span><span class="tag tag-blue">主升浪推进</span></td>
+      <td>平台突破，回踩不破可关注，止损设平台下沿</td>
+    </tr>
+    <tr>
+      <td>603797</td>
+      <td>联泰环保</td>
+      <td>5.17</td>
+      <td class="up">+5.51%</td>
+      <td>放量突破 · 10日内创新高 · BIAS金叉 · CCI上穿100</td>
+      <td><span class="tag tag-red">背驰确认</span><span class="tag tag-yellow">放量突破</span></td>
+      <td>创新高走势，关注量能持续性</td>
+    </tr>
+    <tr>
+      <td>603909</td>
+      <td>建发合诚</td>
+      <td>10.36</td>
+      <td class="up">+4.86%</td>
+      <td>放量突破 · BIAS金叉 · MACD多头排列</td>
+      <td><span class="tag tag-blue">主升浪推进</span><span class="tag tag-yellow">放量突破</span></td>
+      <td>多头排列，回踩5日线可关注</td>
+    </tr>
+  </table>
+  <p style="margin-top:12px;font-size:13px;color:#8b98a5;">
+    ⚠️ 以上为盘中筛选候选，需结合缠论中枢位置、波浪浪型及大盘环境综合判断，<strong>不构成买入建议</strong>。大盘弱势环境下，突破个股需警惕假突破。
+  </p>
+</div>
+
+<!-- 板块轮动 -->
+<div class="section">
+  <h2>四、上午板块轮动 TOP5</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color:#e74c3c;font-size:15px;margin-bottom:10px;">🔥 强势板块</h3>
+      <table>
+        <tr><th>排名</th><th>板块</th><th>代表个股</th></tr>
+        <tr><td>1</td><td>电力</td><td>浙江新能(涨停)、大连热电、江苏新能</td></tr>
+        <tr><td>2</td><td>船舶</td><td>板块逆势上涨</td></tr>
+        <tr><td>3</td><td>医药</td><td>丽珠集团(涨停)</td></tr>
+        <tr><td>4</td><td>传媒娱乐</td><td>新华传媒(涨停)、博纳影业(涨停)</td></tr>
+        <tr><td>5</td><td>日用化工</td><td>九阳股份(涨停)</td></tr>
+      </table>
+    </div>
+    <div>
+      <h3 style="color:#2ecc71;font-size:15px;margin-bottom:10px;">❄️ 弱势板块</h3>
+      <table>
+        <tr><th>排名</th><th>板块</th><th>说明</th></tr>
+        <tr><td>1</td><td>半导体</td><td>大幅回调，拖累创业板</td></tr>
+        <tr><td>2</td><td>有色金属</td><td>跌幅居前</td></tr>
+        <tr><td>3</td><td>通信设备</td><td>走弱</td></tr>
+        <tr><td>4</td><td>煤炭</td><td>回调</td></tr>
+        <tr><td>5</td><td>PCB / CRO</td><td>概念板块跌幅居前</td></tr>
+      </table>
+    </div>
+  </div>
+  <p style="margin-top:12px;font-size:13px;color:#8b98a5;">
+    📌 市场呈防御特征：电力（公用事业）、医药、传媒等防御/内需板块逆势走强；周期（有色、煤炭）和成长（半导体、通信）遭抛售。资金从高估值成长向低估值防御切换。
+  </p>
+</div>
+
+<!-- 盈亏统计 -->
+<div class="section">
+  <h2>五、盈亏统计</h2>
+  <div class="alert-box info" style="margin-bottom:0;">
+    <h3>ℹ️ 今日无盘前推荐持仓</h3>
+    <p>由于今日盘前时段未产出跟踪台账，无持仓盈亏可统计。建议尽快补全盘前推荐流程，以便后续时段进行盈亏跟踪与买点/止损统计。</p>
+  </div>
+</div>
+
+<!-- 策略调整 -->
+<div class="section">
+  <h2>六、午盘策略调整</h2>
+  <div class="strategy-item">
+    <h4>📉 上午强弱判断</h4>
+    <p>三大指数集体低开低走，普跌格局，主力资金大幅净流出（合计-884亿）。创业板跌幅最深（-4.32%），成长股承压。仅电力、医药、传媒等防御板块逆势。<strong>整体偏弱，空头主导</strong>。</p>
+  </div>
+  <div class="strategy-item">
+    <h4>⚖️ 仓位建议：<span class="down">下调仓位</span></h4>
+    <p>建议仓位由中性<strong>下调至偏低（3-4成）</strong>。大盘处于下跌一笔中，未出现底背驰信号前不宜重仓。等待30分钟级别背驰确认或缩量企稳后再考虑加仓。</p>
+  </div>
+  <div class="strategy-item">
+    <h4>🎯 下午操作重点</h4>
+    <p>
+      <strong>加仓：</strong>无明确信号，暂不加仓。若盘中新增候选（友升股份、建发合诚）回踩不破突破位且缩量，可小仓位试探。<br>
+      <strong>减仓：</strong>持仓中若个股跌破关键支撑（中枢下沿/止损位），坚决减仓；半导体、有色等弱势板块持仓优先减仓。<br>
+      <strong>观望：</strong>大盘整体观望为主，等待3800关口支撑确认。<br>
+      <strong>止损：</strong>已有持仓触发止损线的无条件执行；盘中追高的强势股需设紧止损（-3%）。
+    </p>
+  </div>
+  <div class="strategy-item">
+    <h4>🔗 缠论+波浪共振优先</h4>
+    <p>关注3800整数关口能否形成<strong>30分钟底背驰</strong>（缩量+止跌K线）。若出现背驰+5浪末信号共振，可视为超跌反弹买点；若放量跌破3800，则C浪延伸，继续空仓观望。</p>
+  </div>
+</div>
+
+<!-- 下午关注点 -->
+<div class="section">
+  <h2>七、下午关注点</h2>
+  <table>
+    <tr><th>类别</th><th>内容</th><th>关键价位/时间</th></tr>
+    <tr>
+      <td>大盘支撑</td>
+      <td>上证3800整数关口、30分钟底背驰信号</td>
+      <td>3800 / 3780</td>
+    </tr>
+    <tr>
+      <td>大盘压力</td>
+      <td>反弹需站上5日线，中枢下沿3860为第一压力</td>
+      <td>3860 / 3900</td>
+    </tr>
+    <tr>
+      <td>量能</td>
+      <td>下午若缩量企稳为积极信号；若放量下跌则加速</td>
+      <td>半日1.16万亿</td>
+    </tr>
+    <tr>
+      <td>板块</td>
+      <td>电力/医药持续性；半导体能否止跌</td>
+      <td>全天</td>
+    </tr>
+    <tr>
+      <td>事件</td>
+      <td>国庆假期临近（10/1-10/7休市），资金避险情绪升温；关注节前政策面消息</td>
+      <td>全天</td>
+    </tr>
+  </table>
+</div>
+
+<!-- 免责声明 -->
+<div class="disclaimer">
+  <strong>⚠️ 免责声明</strong><br>
+  本报告由自动化流程于2026-09-28 11:35生成，基于通达信实时行情数据与公开信息整理，仅供研究参考，不构成任何投资建议。<br>
+  股市有风险，投资需谨慎。缠论/波浪研判为技术分析工具，存在滞后性与主观性，实际操作请结合自身风险承受能力独立决策。<br>
+  数据来源：通达信(tdx_quotes/tdx_screener)、公开财经资讯。盘中数据时效性强，以交易所最终披露为准。
+</div>
+
+</div>
+</body>
+</html>
