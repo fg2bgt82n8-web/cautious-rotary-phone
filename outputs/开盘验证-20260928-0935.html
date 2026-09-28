@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>开盘验证 - 2026年9月28日 09:35</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f1419; color: #e7e9ea; line-height: 1.6; }
+  .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%); border: 1px solid #2f3336; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .header h1 { font-size: 28px; color: #f91880; margin-bottom: 8px; }
+  .header .meta { color: #71767b; font-size: 14px; display: flex; gap: 24px; flex-wrap: wrap; }
+  .pipeline { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .pipeline-step { flex: 1; min-width: 100px; text-align: center; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+  .step-done { background: rgba(0, 186, 124, 0.15); color: #00ba7c; border: 1px solid rgba(0, 186, 124, 0.3); }
+  .step-active { background: linear-gradient(135deg, #f91880, #ff7a00); color: #fff; animation: pulse 2s infinite; }
+  .step-pending { background: #1a2332; color: #71767b; border: 1px solid #2f3336; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.75; } }
+  .section { background: #16181c; border: 1px solid #2f3336; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .section h2 { font-size: 20px; color: #e7e9ea; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #2f3336; display: flex; align-items: center; gap: 10px; }
+  .sentiment-card { background: linear-gradient(135deg, #1a2332, #16181c); border: 1px solid #2f3336; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .sentiment-score { display: flex; align-items: center; gap: 20px; margin-bottom: 16px; }
+  .score-circle { width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(#f91880 30%, #2f3336 0); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .score-circle .inner { width: 84px; height: 84px; border-radius: 50%; background: #16181c; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .score-circle .num { font-size: 32px; font-weight: 800; color: #f91880; }
+  .score-circle .label { font-size: 11px; color: #71767b; }
+  .sentiment-text h3 { color: #e7e9ea; font-size: 18px; margin-bottom: 8px; }
+  .sentiment-text p { color: #8b98a5; font-size: 13px; line-height: 1.7; }
+  .overnight-summary { background: #1a2332; border-radius: 8px; padding: 14px; margin-top: 14px; font-size: 13px; color: #8b98a5; line-height: 1.8; }
+  .overnight-summary strong { color: #1d9bf0; }
+  .index-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+  .index-card { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 14px; }
+  .index-card .name { font-size: 13px; color: #71767b; margin-bottom: 4px; }
+  .index-card .value { font-size: 22px; font-weight: 700; }
+  .index-card .change { font-size: 14px; font-weight: 600; margin-top: 2px; }
+  .index-card .breadth { font-size: 11px; color: #71767b; margin-top: 6px; }
+  .up { color: #00ba7c; }
+  .down { color: #f91880; }
+  .flat { color: #71767b; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  thead th { background: #1a2332; color: #71767b; font-weight: 600; padding: 10px 6px; text-align: center; border-bottom: 1px solid #2f3336; position: sticky; top: 0; white-space: nowrap; }
+  tbody td { padding: 10px 6px; border-bottom: 1px solid #2f3336; text-align: center; vertical-align: middle; }
+  tbody tr:hover { background: #1a2332; }
+  .stock-code { font-family: monospace; color: #1d9bf0; font-weight: 600; }
+  .stock-name { font-weight: 600; color: #e7e9ea; text-align: left; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .tag-a { background: rgba(249, 24, 128, 0.15); color: #f91880; }
+  .tag-hk { background: rgba(29, 155, 240, 0.15); color: #1d9bf0; }
+  .tag-trigger { background: rgba(0, 186, 124, 0.15); color: #00ba7c; }
+  .tag-over { background: rgba(255, 122, 0, 0.15); color: #ff7a00; }
+  .tag-warn { background: rgba(249, 24, 128, 0.15); color: #f91880; }
+  .strategy-box { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  .strategy-box h3 { color: #1d9bf0; font-size: 16px; margin-bottom: 10px; }
+  .strategy-box ul { padding-left: 20px; color: #8b98a5; font-size: 13px; }
+  .strategy-box li { margin-bottom: 6px; }
+  .disclaimer { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 16px; margin-top: 16px; font-size: 12px; color: #71767b; line-height: 1.8; }
+  .disclaimer strong { color: #f91880; }
+  .chan-box { background: #1a2332; border-left: 3px solid #f91880; border-radius: 6px; padding: 14px 16px; margin-top: 14px; }
+  .chan-box h3 { color: #f91880; font-size: 15px; margin-bottom: 8px; }
+  .chan-box p { color: #8b98a5; font-size: 13px; line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 流水线阶段指示器 -->
+  <div class="pipeline">
+    <div class="pipeline-step step-done">✓ 盘前推荐</div>
+    <div class="pipeline-step step-active">● 开盘验证 09:35</div>
+    <div class="pipeline-step step-pending">午盘验证 11:30</div>
+    <div class="pipeline-step step-pending">尾盘验证 14:50</div>
+    <div class="pipeline-step step-pending">收盘验证 15:05</div>
+  </div>
+
+  <!-- 头部 -->
+  <div class="header">
+    <h1>📊 开盘验证 — 2026年9月28日 09:35</h1>
+    <div class="meta">
+      <span>🗓️ 中秋节后首个交易日</span>
+      <span>🕐 验证时段：开盘后5分钟</span>
+      <span>📈 上证 <span class="down">3846.05 (-1.09%)</span></span>
+      <span>🇭🇰 恒指 <span class="up">24,692 (+0.74%)</span></span>
+    </div>
+  </div>
+
+  <!-- 情绪快评卡 -->
+  <div class="sentiment-card">
+    <h2 style="border:none; padding:0; margin-bottom:16px;"><span>🎯</span>开盘情绪快评</h2>
+    <div class="sentiment-score">
+      <div class="score-circle">
+        <div class="inner">
+          <div class="num">3</div>
+          <div class="label">/ 10</div>
+        </div>
+      </div>
+      <div class="sentiment-text">
+        <h3>弱势开盘 · 港股逆势 · 等待修复</h3>
+        <p>上证低开低走跌1.09%，深成指跌2.28%，创业板指跌2.99%，三大指数全线走低。沪市上涨仅485家 vs 下跌1783家，市场广度极度弱势。但港股恒指逆势上涨0.74%，科技股领涨，隔夜中概金龙暴涨10.85%的利好正在港股兑现。A股呈现"利好兑现+节前获利了结"特征，午后或有修复。</p>
+      </div>
+    </div>
+    <div class="overnight-summary">
+      <strong>隔夜外盘传导摘要：</strong>纳指中国金龙 <strong class="up">+10.85%</strong>（2022年以来最大单日涨幅）、富时A50期货夜盘 <strong class="up">+2.24%</strong> 创一年新高、费城半导体 <strong class="up">+1.41%</strong>、美股三大指数集体收涨。美债10Y收益率 5.16% 高位、美元偏强。正向传导极强，但A股开盘选择"卖利好"，港股正常反映。
+    </div>
+    <!-- 缠论+波浪研判 -->
+    <div class="chan-box">
+      <h3>📐 大盘缠论 + 波浪研判</h3>
+      <p><strong>缠论：</strong>上证指数处于下跌中枢构建中，开盘跌破3878开盘价后加速下行至3845，目前在中枢下沿区域运行。5日/10日/20日均线空头排列，短线MACD绿柱放大，<strong>尚未出现底背驰信号</strong>，需等待3800-3820区域支撑确认。若午后能在3840上方企稳并形成1分钟级别背驰，可确认短线买点。</p>
+      <p><strong>波浪：</strong>上证自近期高点回落，目前处于<strong>C浪下跌末端</strong>或<strong>4浪回调中后段</strong>。若3800整数关口不破，有望启动5浪反弹；若有效跌破3800，则可能延伸至3750-3780区域。<strong>开盘方向判定：延续下跌（低开低走）</strong>，但下跌斜率有放缓迹象。</p>
+    </div>
+  </div>
+
+  <!-- 大盘指数 -->
+  <div class="section">
+    <h2><span class="icon">📈</span>大盘指数快照</h2>
+    <div class="index-grid">
+      <div class="index-card">
+        <div class="name">上证指数</div>
+        <div class="value down">3,846.05</div>
+        <div class="change down">-1.09%</div>
+        <div class="breadth">↑485 ↓1783 平85</div>
+      </div>
+      <div class="index-card">
+        <div class="name">深证成指</div>
+        <div class="value down">13,013.61</div>
+        <div class="change down">-2.28%</div>
+        <div class="breadth">↑481 ↓2357 平87</div>
+      </div>
+      <div class="index-card">
+        <div class="name">创业板指</div>
+        <div class="value down">3,190.53</div>
+        <div class="change down">-2.99%</div>
+        <div class="breadth">↑198 ↓1187 平20</div>
+      </div>
+      <div class="index-card">
+        <div class="name">涨停家数</div>
+        <div class="value flat">数据缺失</div>
+        <div class="change flat">未获取</div>
+        <div class="breadth">需盘后补充</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10股开盘表现表 -->
+  <div class="section">
+    <h2><span class="icon">💎</span>10股开盘表现与买点验证</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>市场</th>
+          <th>代码</th>
+          <th>名称</th>
+          <th>昨收</th>
+          <th>开盘</th>
+          <th>现价</th>
+          <th>涨跌幅</th>
+          <th>量比</th>
+          <th>开盘<br>方向</th>
+          <th>一字<br>涨跌停</th>
+          <th>缠论<br>买点</th>
+          <th>波浪<br>位置</th>
+          <th>买点<br>状态</th>
+          <th>止损<br>预警</th>
+          <th>操作<br>提示</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">688256</td>
+          <td class="stock-name">寒武纪</td>
+          <td>1091.48</td>
+          <td>1075.00</td>
+          <td class="down">1043.03</td>
+          <td class="down">-4.44%</td>
+          <td>3.23</td>
+          <td><span class="down">低开</span></td>
+          <td>否</td>
+          <td>3买</td>
+          <td>C浪末</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>挂单低吸<br>1020-1030</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">300059</td>
+          <td class="stock-name">东方财富</td>
+          <td>18.28</td>
+          <td>18.20</td>
+          <td class="down">18.16</td>
+          <td class="down">-0.66%</td>
+          <td>1.62</td>
+          <td><span class="down">低开</span></td>
+          <td>否</td>
+          <td>2买</td>
+          <td>4浪回调</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>挂单低吸<br>17.80-17.95</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">601899</td>
+          <td class="stock-name">紫金矿业</td>
+          <td>30.01</td>
+          <td>29.60</td>
+          <td class="down">29.51</td>
+          <td class="down">-1.67%</td>
+          <td>3.14</td>
+          <td><span class="down">低开</span></td>
+          <td>否</td>
+          <td>1买</td>
+          <td>5浪末</td>
+          <td><span class="tag tag-over">已超买点</span></td>
+          <td>否</td>
+          <td>观察等待<br>回调至29.0以下</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">002594</td>
+          <td class="stock-name">比亚迪</td>
+          <td>84.34</td>
+          <td>83.61</td>
+          <td class="down">83.71</td>
+          <td class="down">-0.75%</td>
+          <td>1.64</td>
+          <td><span class="down">低开</span></td>
+          <td>否</td>
+          <td>2买</td>
+          <td>4浪回调</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>挂单低吸<br>82.50-83.00</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">002371</td>
+          <td class="stock-name">北方华创</td>
+          <td>653.06</td>
+          <td>654.19</td>
+          <td class="down">646.10</td>
+          <td class="down">-1.07%</td>
+          <td>1.69</td>
+          <td><span class="up">高开</span></td>
+          <td>否</td>
+          <td>3买</td>
+          <td>4浪回调</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>挂单低吸<br>640-645</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">00700</td>
+          <td class="stock-name">腾讯控股</td>
+          <td>436.60</td>
+          <td>441.40</td>
+          <td class="up">444.60</td>
+          <td class="up">+1.83%</td>
+          <td>3.04</td>
+          <td><span class="up">高开</span></td>
+          <td>否</td>
+          <td>3买</td>
+          <td>1浪初</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>可立即执行<br>438-442</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">09999</td>
+          <td class="stock-name">网易</td>
+          <td>180.90</td>
+          <td>184.00</td>
+          <td class="up">186.00</td>
+          <td class="up">+2.82%</td>
+          <td>8.35</td>
+          <td><span class="up">高开</span></td>
+          <td>否</td>
+          <td>3买</td>
+          <td>1浪中</td>
+          <td><span class="tag tag-over">已超买点</span></td>
+          <td>否</td>
+          <td>观察等待<br>回调至185以下</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">03690</td>
+          <td class="stock-name">美团-W</td>
+          <td>71.65</td>
+          <td>71.65</td>
+          <td class="up">71.80</td>
+          <td class="up">+0.21%</td>
+          <td>1.99</td>
+          <td><span class="flat">平开</span></td>
+          <td>否</td>
+          <td>2买</td>
+          <td>C浪末</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>可立即执行<br>71.0-71.8</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">01211</td>
+          <td class="stock-name">比亚迪股份</td>
+          <td>78.10</td>
+          <td>77.95</td>
+          <td class="up">78.15</td>
+          <td class="up">+0.06%</td>
+          <td>2.63</td>
+          <td><span class="down">低开</span></td>
+          <td>否</td>
+          <td>2买</td>
+          <td>4浪回调</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>可立即执行<br>77.5-78.0</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">09866</td>
+          <td class="stock-name">蔚来-SW</td>
+          <td>28.06</td>
+          <td>28.36</td>
+          <td class="up">28.56</td>
+          <td class="up">+1.78%</td>
+          <td>5.51</td>
+          <td><span class="up">高开</span></td>
+          <td>否</td>
+          <td>3买</td>
+          <td>1浪初</td>
+          <td><span class="tag tag-trigger">买点触发</span></td>
+          <td>否</td>
+          <td>观察等待<br>高开较多等回踩</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 操作建议 -->
+  <div class="section">
+    <h2><span class="icon">🛒</span>开盘操作建议</h2>
+    <div class="strategy-box">
+      <h3>✅ A股可挂单买入第一批（逢低分批）</h3>
+      <ul>
+        <li><strong>寒武纪 (688256)</strong>：挂单 1020-1030，低开大幅回调后进入买点区间下沿，缠论3买+C浪末，性价比高</li>
+        <li><strong>东方财富 (300059)</strong>：挂单 17.80-17.95，券商板块Q3盈利确定性强，市场反弹弹性标的</li>
+        <li><strong>比亚迪 (002594)</strong>：挂单 82.50-83.00，新能源车龙头，消费以旧换新受益，缠论2买</li>
+        <li><strong>北方华创 (002371)</strong>：挂单 640-645，半导体设备龙头，高开回落至买点区间，国产替代主线</li>
+      </ul>
+    </div>
+    <div class="strategy-box">
+      <h3>🇭🇰 港股可立即执行（T+0，趁回调介入）</h3>
+      <ul>
+        <li><strong>腾讯控股 (00700)</strong>：438-442 区间介入，港股科技龙头，中概金龙暴涨共振，1浪初启动</li>
+        <li><strong>美团-W (03690)</strong>：71.0-71.8 区间介入，消费复苏+本地生活龙头超跌反弹，C浪末</li>
+        <li><strong>比亚迪股份 (01211)</strong>：77.5-78.0 区间介入，H股折价+新能源车出海逻辑</li>
+      </ul>
+    </div>
+    <div class="strategy-box">
+      <h3>⏸️ 观察等待（已超买点或高开过多）</h3>
+      <ul>
+        <li><strong>紫金矿业 (601899)</strong>：现价 29.51 略超买点上沿 29.50，等待回调至 29.0 以下再介入</li>
+        <li><strong>网易 (09999)</strong>：现价 186.00 已超买点上沿 185，且涨幅 +2.82% 较大，等待回踩 183-185</li>
+        <li><strong>蔚来-SW (09866)</strong>：高开 +1.78%，吉利换电利好已部分兑现，等待回踩 28.0-28.3</li>
+      </ul>
+    </div>
+    <div class="strategy-box">
+      <h3>⚠️ 风险提示</h3>
+      <ul>
+        <li>A股全线低开低走，<strong>10股中无止损预警</strong>，但需密切关注上证 3800 关口支撑</li>
+        <li>若上证有效跌破 3800，建议暂停买入，等待企稳信号</li>
+        <li>单只仓位不超过 15%，A股整体仓位控制在 60% 以内，预留资金应对国庆前波动</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 免责声明 -->
+  <div class="disclaimer">
+    <strong>⚠️ 风险提示与免责声明</strong><br>
+    本报告为日内开盘验证记录，不构成任何投资建议。股票市场有风险，投资需谨慎。报告中的缠论买点、波浪位置、买点状态均基于技术面的主观判断，实际走势可能偏离预期。
+    行情数据来源于通达信实时行情接口（A股数据时间约09:56，港股数据约09:41，港股行情延迟15分钟）。涨停家数数据缺失，需盘后补充。
+    投资者应独立判断并承担投资风险。本报告生成时间：2026-09-28 09:35。
+  </div>
+
+</div>
+</body>
+</html>
