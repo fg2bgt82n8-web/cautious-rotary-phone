@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐 - 2026年9月28日</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f1419; color: #e7e9ea; line-height: 1.6; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .header { background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%); border: 1px solid #2f3336; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .header h1 { font-size: 28px; color: #1d9bf0; margin-bottom: 8px; }
+  .header .meta { color: #71767b; font-size: 14px; display: flex; gap: 24px; flex-wrap: wrap; }
+  .header .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .badge-up { background: rgba(0, 186, 124, 0.15); color: #00ba7c; border: 1px solid rgba(0, 186, 124, 0.3); }
+  .badge-down { background: rgba(249, 24, 128, 0.15); color: #f91880; border: 1px solid rgba(249, 24, 128, 0.3); }
+  .badge-info { background: rgba(29, 155, 240, 0.15); color: #1d9bf0; border: 1px solid rgba(29, 155, 240, 0.3); }
+  .section { background: #16181c; border: 1px solid #2f3336; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .section h2 { font-size: 20px; color: #e7e9ea; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid #2f3336; display: flex; align-items: center; gap: 10px; }
+  .section h2 .icon { font-size: 22px; }
+  .overnight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .overnight-card { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 14px; }
+  .overnight-card .name { font-size: 13px; color: #71767b; margin-bottom: 4px; }
+  .overnight-card .value { font-size: 20px; font-weight: 700; }
+  .overnight-card .change { font-size: 14px; font-weight: 600; margin-top: 2px; }
+  .up { color: #00ba7c; }
+  .down { color: #f91880; }
+  .flat { color: #71767b; }
+  .theme-item { background: #1a2332; border-left: 3px solid #1d9bf0; border-radius: 6px; padding: 12px 16px; margin-bottom: 10px; }
+  .theme-item .title { font-weight: 600; color: #e7e9ea; margin-bottom: 4px; }
+  .theme-item .desc { font-size: 13px; color: #8b98a5; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: #1a2332; color: #71767b; font-weight: 600; padding: 10px 8px; text-align: left; border-bottom: 1px solid #2f3336; position: sticky; top: 0; }
+  tbody td { padding: 10px 8px; border-bottom: 1px solid #2f3336; vertical-align: middle; }
+  tbody tr:hover { background: #1a2332; }
+  .stock-code { font-family: monospace; color: #1d9bf0; font-weight: 600; }
+  .stock-name { font-weight: 600; color: #e7e9ea; }
+  .tag { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 11px; font-weight: 500; }
+  .tag-a { background: rgba(249, 24, 128, 0.15); color: #f91880; }
+  .tag-hk { background: rgba(29, 155, 240, 0.15); color: #1d9bf0; }
+  .strategy-box { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 16px; margin-top: 16px; }
+  .strategy-box h3 { color: #1d9bf0; font-size: 16px; margin-bottom: 10px; }
+  .strategy-box ul { padding-left: 20px; color: #8b98a5; font-size: 13px; }
+  .strategy-box li { margin-bottom: 6px; }
+  .disclaimer { background: #1a2332; border: 1px solid #2f3336; border-radius: 8px; padding: 16px; margin-top: 16px; font-size: 12px; color: #71767b; line-height: 1.8; }
+  .disclaimer strong { color: #f91880; }
+  .pipeline { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .pipeline-step { flex: 1; min-width: 100px; text-align: center; padding: 10px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+  .step-active { background: linear-gradient(135deg, #1d9bf0, #00ba7c); color: #fff; }
+  .step-done { background: rgba(0, 186, 124, 0.15); color: #00ba7c; border: 1px solid rgba(0, 186, 124, 0.3); }
+  .step-pending { background: #1a2332; color: #71767b; border: 1px solid #2f3336; }
+  .step-current { background: linear-gradient(135deg, #f91880, #ff7a00); color: #fff; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 流水线阶段指示器 -->
+  <div class="pipeline">
+    <div class="pipeline-step step-done">盘前推荐</div>
+    <div class="pipeline-step step-pending">开盘验证 09:35</div>
+    <div class="pipeline-step step-pending">午盘验证 11:30</div>
+    <div class="pipeline-step step-pending">尾盘验证 14:50</div>
+    <div class="pipeline-step step-pending">收盘验证 15:05</div>
+  </div>
+
+  <!-- 头部 -->
+  <div class="header">
+    <h1>📊 盘前推荐 — 2026年9月28日（周一）</h1>
+    <div class="meta">
+      <span>🗓️ 交易日：中秋节后首个交易日</span>
+      <span>🕐 生成时间：09:35</span>
+      <span>📈 A股：<span class="down">上证 3850.85 (-0.96%)</span></span>
+      <span>🇭🇰 港股：<span class="up">恒指 24,692 (+0.74%)</span></span>
+    </div>
+  </div>
+
+  <!-- 隔夜外盘 -->
+  <div class="section">
+    <h2><span class="icon">🌍</span>隔夜外盘传导</h2>
+    <div class="overnight-grid">
+      <div class="overnight-card">
+        <div class="name">道琼斯工业</div>
+        <div class="value up">+0.93%</div>
+        <div class="change up">终结周线三连跌</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">标普500</div>
+        <div class="value up">+0.51%</div>
+        <div class="change up">周累涨1.22%</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">纳斯达克</div>
+        <div class="value up">+0.48%</div>
+        <div class="change up">周累涨超2%</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">费城半导体</div>
+        <div class="value up">+1.41%</div>
+        <div class="change up">芯片股活跃</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">纳指中国金龙</div>
+        <div class="value up">+10.85%</div>
+        <div class="change up">2022年以来最大单日涨幅</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">富时A50期货夜盘</div>
+        <div class="value up">+2.24%</div>
+        <div class="change up">13093点 创一年新高</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">美债10年期收益率</div>
+        <div class="value down">5.16%</div>
+        <div class="change down">长端利率高位</div>
+      </div>
+      <div class="overnight-card">
+        <div class="name">美元指数</div>
+        <div class="value up">偏强</div>
+        <div class="change up">接近7/29以来最高</div>
+      </div>
+    </div>
+    <div class="strategy-box">
+      <h3>⚡ 传导研判</h3>
+      <ul>
+        <li><strong>中概金龙暴涨10.85%</strong> + <strong>A50期货创一年新高</strong>，对A股与港股构成强烈正向传导，节后修复反弹逻辑成立。</li>
+        <li>费城半导体+1.41%，利好A股半导体设备/AI算力链开盘情绪。</li>
+        <li>美债10Y收益率维持5.16%高位、美元偏强，对高估值成长股估值中枢构成压制，需控制仓位。</li>
+        <li>中信建投判断：节前缩量为交易性+季节性因素，<strong>节后有望修复性反弹</strong>，国庆后一周上证上涨概率62.5%。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 今日主题 -->
+  <div class="section">
+    <h2><span class="icon">🎯</span>今日核心主题与催化</h2>
+    <div class="theme-item">
+      <div class="title">🤖 AI算力 / 国产半导体链</div>
+      <div class="desc">国泰海通：中国科技板块泡沫风险不高，看好国产AI算力链。推荐国产芯片/半导体设备及材料、通信设备/PCB。费半+1.41%共振。</div>
+    </div>
+    <div class="theme-item">
+      <div class="title">📈 券商板块</div>
+      <div class="desc">券商三季度盈利增长确定性较强，长鑫科技投资浮盈贡献，国际业务+财富管理+科创投资共振，看好头部券商ROE提升。</div>
+    </div>
+    <div class="theme-item">
+      <div class="title">⛏️ 工业金属 / 资源</div>
+      <div class="desc">中信建投推荐工业金属、煤炭、石油、油运。加息周期压制但基本面仍有支撑，关注回调配置机会。</div>
+    </div>
+    <div class="theme-item">
+      <div class="title">🚗 新能源汽车 / 换电</div>
+      <div class="desc">蔚来与吉利签署换电及充电业务战略合作协议，蔚来能源投后估值约160亿元。中秋假期消费以旧换新带动销售115.3亿元。</div>
+    </div>
+    <div class="theme-item">
+      <div class="title">🏗️ 政策性资金 / 六张网</div>
+      <div class="desc">新型政策性金融工具已投放608.5亿元、支持153个项目，专项债四季度集中释放约1.1万亿。建筑企业参与"六张网"路径明晰。</div>
+    </div>
+  </div>
+
+  <!-- 10股推荐表 -->
+  <div class="section">
+    <h2><span class="icon">💎</span>今日推荐股票池（A股5 + 港股5）</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>市场</th>
+          <th>代码</th>
+          <th>名称</th>
+          <th>所属主题</th>
+          <th>昨收</th>
+          <th>现价</th>
+          <th>涨跌幅</th>
+          <th>参考买点区间</th>
+          <th>止损位</th>
+          <th>推荐逻辑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">688256</td>
+          <td class="stock-name">寒武纪</td>
+          <td>AI算力芯片</td>
+          <td>1091.48</td>
+          <td class="down">1040.75</td>
+          <td class="down">-4.65%</td>
+          <td>1020 - 1050</td>
+          <td>990</td>
+          <td>国产AI算力龙头，节后回调低吸</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">300059</td>
+          <td class="stock-name">东方财富</td>
+          <td>券商/互联网券商</td>
+          <td>18.28</td>
+          <td class="down">18.17</td>
+          <td class="down">-0.60%</td>
+          <td>17.80 - 18.20</td>
+          <td>17.20</td>
+          <td>券商Q3盈利确定性强，市场反弹弹性</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">601899</td>
+          <td class="stock-name">紫金矿业</td>
+          <td>工业金属(铜金)</td>
+          <td>30.01</td>
+          <td class="down">29.41</td>
+          <td class="down">-2.00%</td>
+          <td>28.80 - 29.50</td>
+          <td>28.00</td>
+          <td>铜金龙头，资源品基本面支撑</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">002594</td>
+          <td class="stock-name">比亚迪</td>
+          <td>新能源汽车</td>
+          <td>84.34</td>
+          <td class="down">83.81</td>
+          <td class="down">-0.63%</td>
+          <td>82.50 - 84.00</td>
+          <td>80.00</td>
+          <td>新能源车龙头，消费以旧换新受益</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-a">A股</span></td>
+          <td class="stock-code">002371</td>
+          <td class="stock-name">北方华创</td>
+          <td>半导体设备</td>
+          <td>653.06</td>
+          <td class="down">652.08</td>
+          <td class="down">-0.15%</td>
+          <td>640 - 655</td>
+          <td>620</td>
+          <td>半导体设备龙头，国产替代主线</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">00700</td>
+          <td class="stock-name">腾讯控股</td>
+          <td>互联网龙头</td>
+          <td>436.60</td>
+          <td class="up">444.40</td>
+          <td class="up">+1.79%</td>
+          <td>438 - 445</td>
+          <td>425</td>
+          <td>港股科技龙头，估值修复+游戏AI</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">09999</td>
+          <td class="stock-name">网易</td>
+          <td>游戏/AI</td>
+          <td>180.90</td>
+          <td class="up">184.20</td>
+          <td class="up">+1.82%</td>
+          <td>181 - 185</td>
+          <td>175</td>
+          <td>游戏+AI叙事，中概金龙暴涨共振</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">03690</td>
+          <td class="stock-name">美团-W</td>
+          <td>本地生活/消费</td>
+          <td>71.65</td>
+          <td class="up">72.30</td>
+          <td class="up">+0.91%</td>
+          <td>71.0 - 72.5</td>
+          <td>69.0</td>
+          <td>消费复苏+本地生活龙头超跌反弹</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">01211</td>
+          <td class="stock-name">比亚迪股份</td>
+          <td>新能源汽车</td>
+          <td>78.10</td>
+          <td class="up">78.50</td>
+          <td class="up">+0.51%</td>
+          <td>77.5 - 78.8</td>
+          <td>75.5</td>
+          <td>H股折价+新能源车出海逻辑</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-hk">港股</span></td>
+          <td class="stock-code">09866</td>
+          <td class="stock-name">蔚来-SW</td>
+          <td>换电/新能源汽车</td>
+          <td>28.06</td>
+          <td class="up">28.90</td>
+          <td class="up">+2.99%</td>
+          <td>28.0 - 29.0</td>
+          <td>27.0</td>
+          <td>吉利换电战略合作利好，估值160亿</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 操作策略 -->
+  <div class="section">
+    <h2><span class="icon">📋</span>开盘操作策略</h2>
+    <div class="strategy-box">
+      <h3>🎯 核心判断</h3>
+      <ul>
+        <li>隔夜中概金龙+10.85%、A50期货创一年新高，<strong>正向传导极强</strong>，但A股开盘表现为"利好兑现+节前获利了结"，上证低开低走-0.96%，上涨仅430家vs下跌1843家。</li>
+        <li>港股已率先反映利好（恒指+0.74%，科技股领涨），A股有望在消化抛压后<strong>午后修复</strong>。</li>
+        <li>策略：<strong>不追高、逢回调分批低吸</strong>。A股跌破昨收后买点区间更具性价比；港股可趁回调介入强势科技股。</li>
+      </ul>
+    </div>
+    <div class="strategy-box">
+      <h3>🛒 分批建仓建议</h3>
+      <ul>
+        <li><strong>第一批（开盘回调至买点区间下沿）</strong>：寒武纪(1020-1030)、东方财富(17.80-17.95)、紫金矿业(28.80-29.00)、北方华创(640-645)</li>
+        <li><strong>港股可立即执行</strong>：腾讯(438-442)、网易(181-183)、蔚来(28.0-28.5) — 港股已反映利好但仍在买点区间内</li>
+        <li><strong>观察等待</strong>：比亚迪(A/H) — 等待消费数据进一步验证</li>
+        <li><strong>仓位控制</strong>：单只不超过总仓位15%，A股整体仓位不超过60%，预留资金应对国庆前波动</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 免责声明 -->
+  <div class="disclaimer">
+    <strong>⚠️ 风险提示与免责声明</strong><br>
+    本报告仅为个人盘前分析记录，不构成任何投资建议。股票市场有风险，投资需谨慎。报告中涉及的个股买点区间、止损位均基于技术面与基本面的主观判断，实际走势可能偏离预期。
+    隔夜外盘数据来源于公开财经资讯（证券时报、格隆汇、金吾财讯等），个股行情数据来源于通达信实时行情接口。过往业绩不代表未来表现，投资者应独立判断并承担投资风险。
+    本报告生成时间：2026-09-28 09:35，数据截至报告生成时刻。
+  </div>
+
+</div>
+</body>
+</html>
