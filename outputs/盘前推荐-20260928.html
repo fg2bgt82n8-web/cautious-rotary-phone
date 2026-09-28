@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐-20260928</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#f59e0b;--up:#ef4444;--down:#22c55e;--border:#334155;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.container{max-width:1200px;margin:0 auto;padding:20px;}
+h1{text-align:center;font-size:1.8rem;margin-bottom:4px;}
+.subtitle{text-align:center;color:var(--muted);font-size:0.9rem;margin-bottom:24px;}
+.card{background:var(--card);border-radius:12px;padding:20px;margin-bottom:20px;border:1px solid var(--border);}
+.card h2{font-size:1.2rem;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:0.75rem;font-weight:600;}
+.badge-a{background:#3b82f6;color:#fff;}
+.badge-hk{background:#8b5cf6;color:#fff;}
+.badge-source{background:var(--accent);color:#000;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+@media(max-width:900px){.grid-2,.grid-3,.grid-5{grid-template-columns:1fr;}}
+.metric{text-align:center;padding:12px;background:#0f172a;border-radius:8px;}
+.metric .val{font-size:1.4rem;font-weight:700;}
+.metric .lab{font-size:0.8rem;color:var(--muted);margin-top:4px;}
+.up{color:var(--up);}
+.down{color:var(--down);}
+.neutral{color:var(--muted);}
+.stock-card{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);position:relative;}
+.stock-card .top{display:flex;justify-content:space-between;align-items:start;margin-bottom:10px;}
+.stock-card .code{font-size:0.85rem;color:var(--muted);}
+.stock-card .name{font-size:1.1rem;font-weight:700;}
+.stock-card .score{font-size:1.6rem;font-weight:800;color:var(--accent);}
+.stock-card .score-label{font-size:0.7rem;color:var(--muted);}
+.stock-card table{width:100%;font-size:0.82rem;margin-top:10px;border-collapse:collapse;}
+.stock-card td{padding:4px 0;border-bottom:1px solid var(--border);}
+.stock-card td:first-child{color:var(--muted);width:80px;}
+.stock-card .tag-source{position:absolute;top:10px;right:10px;}
+.risk-list{font-size:0.9rem;}
+.risk-list li{margin-bottom:6px;margin-left:18px;}
+.disclaimer{font-size:0.8rem;color:var(--muted);text-align:center;padding:20px;border-top:1px solid var(--border);margin-top:20px;}
+.emotion-gauge{width:100%;height:24px;background:#0f172a;border-radius:12px;overflow:hidden;margin-top:10px;}
+.emotion-fill{height:100%;background:linear-gradient(90deg,#22c55e,#eab308,#ef4444);width:20%;}
+.sector-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.8rem;background:#0f172a;margin:2px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>A+H 全市场盘前十股推荐</h1>
+<div class="subtitle">2026年09月28日 | 欧奈尔CANSLIM本土化 + 楔形理论 + 顶底山峰</div>
+
+<!-- 大盘结论卡 -->
+<div class="card">
+<h2>大盘结论</h2>
+<div class="grid-5">
+<div class="metric"><div class="val">上证 3888.37</div><div class="lab">涨跌幅: 数据缺失</div></div>
+<div class="metric"><div class="val">深成 13316.97</div><div class="lab">涨跌幅: 数据缺失</div></div>
+<div class="metric"><div class="val">创业 3288.95</div><div class="lab">涨跌幅: 数据缺失</div></div>
+<div class="metric"><div class="val">沪深300 4439.14</div><div class="lab">涨跌幅: 数据缺失</div></div>
+<div class="metric"><div class="val">科创50 1621.87</div><div class="lab">涨跌幅: 数据缺失</div></div>
+</div>
+<div style="margin-top:16px;font-size:0.9rem;color:var(--muted);">
+<b>结论：</b>9月28日（周一）两市合计上涨约1035家、下跌约5529家，涨停36家、跌停57家，市场情绪处于冰点区域。周末效应叠加外围波动，早盘宜谨慎，控制仓位。美股纳斯达克微涨+0.01%，恒指期货夜盘+0.79%；美债10Y升至5.24%，美元指数101.19，黄金大跌-4.07%，流动性环境偏紧。
+</div>
+</div>
+
+<!-- 情绪与外盘 -->
+<div class="grid-2">
+<div class="card">
+<h2>五日情绪 (冰点 2/10)</h2>
+<div class="emotion-gauge"><div class="emotion-fill" style="width:20%"></div></div>
+<div style="margin-top:10px;font-size:0.85rem;color:var(--muted);">
+<p>近5日两市日均成交额：上证约1.07万亿/日、深证约1.20万亿/日（合计约2.27万亿/日）</p>
+<p>涨停家数：9/23约30家，9/24约23家，9/28约14家（上证成份），呈下降趋势</p>
+<p>上涨家数占比：9/28约15.8%，处于极低位</p>
+<p>两融余额：9/24为26373亿，较9/22的26563亿萎缩约190亿</p>
+<p>北向净买入：9/22+108亿，9/23+30亿，9/24+25亿（9/25数据缺失）</p>
+<p>连板高度：数据缺失</p>
+</div>
+</div>
+<div class="card">
+<h2>隔夜外股与宏观</h2>
+<table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+<tr><td style="color:var(--muted);width:110px;">道指</td><td>数据缺失</td></tr>
+<tr><td style="color:var(--muted);">纳指</td><td>+0.01%</td></tr>
+<tr><td style="color:var(--muted);">标普500</td><td>数据缺失</td></tr>
+<tr><td style="color:var(--muted);">费城半导体</td><td>数据缺失</td></tr>
+<tr><td style="color:var(--muted);">中概金龙</td><td>数据缺失</td></tr>
+<tr><td style="color:var(--muted);">恒指期货</td><td class="up">+0.79%</td></tr>
+<tr><td style="color:var(--muted);">A50期货</td><td>数据缺失</td></tr>
+<tr><td style="color:var(--muted);">美债10Y</td><td>5.24%</td></tr>
+<tr><td style="color:var(--muted);">美元指数</td><td>101.19</td></tr>
+<tr><td style="color:var(--muted);">WTI原油</td><td class="up">+0.95%</td></tr>
+<tr><td style="color:var(--muted);">COMEX黄金</td><td class="down">-4.07%</td></tr>
+</table>
+</div>
+</div>
+
+<!-- 板块方向 -->
+<div class="card">
+<h2>板块方向与风险清单</h2>
+<div style="font-size:0.9rem;color:var(--muted);margin-bottom:10px;">
+<b>强势方向（基于近期资金与政策推演）：</b>
+<span class="sector-tag">客车/出海</span>
+<span class="sector-tag">功能饮料/消费</span>
+<span class="sector-tag">扫地机器人/家电</span>
+<span class="sector-tag">游戏/文娱</span>
+<span class="sector-tag">工程机械</span>
+<span class="sector-tag">创新药</span>
+</div>
+<div style="font-size:0.9rem;color:var(--muted);margin-bottom:10px;">
+<b>弱势回避：</b>
+<span class="sector-tag">光伏（数据缺失）</span>
+<span class="sector-tag">锂电中游（产能过剩）</span>
+<span class="sector-tag">地产链</span>
+</div>
+<ul class="risk-list">
+<li>风险1：市场情绪冰点，跌停家数显著多于涨停家数，短线容错率低。</li>
+<li>风险2：美债10Y升至5.24%，高估值成长板块承压。</li>
+<li>风险3：黄金大跌4%，反映流动性担忧或避险资金撤退。</li>
+<li>风险4：行业板块涨跌排名数据缺失，无法精确校准板块方向。</li>
+<li>风险5：部分外盘指数（道指/标普/费城半导体/中概金龙）数据缺失，外围参照不足。</li>
+<li>风险6：港股多只标的MRQ财务数据缺失，年度数据与最新季报可能存在较大偏差。</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>十股推荐（A股7支 + 港股3支） 总仓位建议 20%</h2>
+<div style="font-size:0.85rem;color:var(--muted);margin-bottom:12px;">
+选股规则：CANSLIM-A七要素打分（C20 A20 N15 L15 S10 I10 +形态10，≥70入选）→ 楔形理论过滤 → 顶底山峰共振 → 板块与情绪校准。<br>
+<b>港股缺口2支及原因：</b>龙蟠科技(2465.HK)CANSLIM-A综合分68分、君实生物(1877.HK)综合分69分，均未达70分入选线；余额由A股（中际联合、九号公司）递补。港股入池标准未降低。
+</div>
+<div class="grid-2">
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">宇通客车 <span class="badge badge-a">A股</span></div>
+<div class="code">600066.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">72</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/I</td></tr>
+<tr><td>楔形状态</td><td>近期回调22%后缩量整理，未出现明确下降楔形上破信号，观察MA20能否站稳</td></tr>
+<tr><td>顶底山峰</td><td>阶段高点33.8后缩量回踩，尚未出现MA10/20企稳拐头，等待确认</td></tr>
+<tr><td>买点区间</td><td>25.0-26.5</td></tr>
+<tr><td>观察位</td><td>26.8</td></tr>
+<tr><td>止损位</td><td>24.0 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>6%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+32%/MRQ+15.8%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 38%/MRQ 13%</td></tr>
+<tr><td>N-催化</td><td>客车出海+新能源公交政策催化</td></tr>
+<tr><td>L-龙头</td><td>客车行业龙头，RPS数据缺失</td></tr>
+<tr><td>S-市值</td><td>流通市值580亿，流动性佳</td></tr>
+<tr><td>I-机构</td><td>北向12.56%+基金6.83%重仓</td></tr>
+<tr><td>形态评估</td><td>回调幅度较大，观望企稳</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">若羽臣 <span class="badge badge-a">A股</span></div>
+<div class="code">003010.SZ</div>
+</div>
+<div style="text-align:right;">
+<div class="score">76</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/S/I</td></tr>
+<tr><td>楔形状态</td><td>9/28放量大跌5.4%，跌破短期平台，暂无楔形买点</td></tr>
+<tr><td>顶底山峰</td><td>阶段新高31.6后快速回调，缩量不明显，等待MA20附近企稳</td></tr>
+<tr><td>买点区间</td><td>26.0-27.5</td></tr>
+<tr><td>观察位</td><td>28.5</td></tr>
+<tr><td>止损位</td><td>24.5 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>5%</td></tr>
+<tr><td>C-业绩</td><td>MRQ扣非+128.6%</td></tr>
+<tr><td>A-增速</td><td>MRQ ROE 22.1%</td></tr>
+<tr><td>N-催化</td><td>代运营转型自有品牌高增</td></tr>
+<tr><td>L-龙头</td><td>电商代运营细分龙头</td></tr>
+<tr><td>S-市值</td><td>流通市值63亿，偏小</td></tr>
+<tr><td>I-机构</td><td>基金12.84%高配</td></tr>
+<tr><td>形态评估</td><td>回调中，未现买点</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">东鹏饮料 <span class="badge badge-a">A股</span></div>
+<div class="code">605499.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">74</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>A/N/L/S/I</td></tr>
+<tr><td>楔形状态</td><td>从142回调至111后缩量微涨，关注110平台支撑，若放量突破115视为收敛平台突破</td></tr>
+<tr><td>顶底山峰</td><td>阶段高点142后回调22%，9/28微涨0.25%，量能萎缩，观察是否形成阶段底</td></tr>
+<tr><td>买点区间</td><td>108-112</td></tr>
+<tr><td>观察位</td><td>115</td></tr>
+<tr><td>止损位</td><td>102 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>5%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+28%/MRQ+14.4%</td></tr>
+<tr><td>A-增速</td><td>MRQ ROE 19.8%</td></tr>
+<tr><td>N-催化</td><td>电解质水+咖啡品类扩张</td></tr>
+<tr><td>L-龙头</td><td>功能饮料绝对龙头</td></tr>
+<tr><td>S-市值</td><td>流通市值751亿</td></tr>
+<tr><td>I-机构</td><td>北向3.94%+基金4.27%</td></tr>
+<tr><td>形态评估</td><td>大跌后缩量企稳，观察</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">科沃斯 <span class="badge badge-a">A股</span></div>
+<div class="code">603486.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">75</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近期相对抗跌，跌幅约1%，维持区间震荡，关注放量突破上沿</td></tr>
+<tr><td>顶底山峰</td><td>未出现明显阶段顶，维持在MA20上方运行，趋势尚可</td></tr>
+<tr><td>买点区间</td><td>50-52</td></tr>
+<tr><td>观察位</td><td>53</td></tr>
+<tr><td>止损位</td><td>46 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>4%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+126%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 22.2%</td></tr>
+<tr><td>N-催化</td><td>扫地机器人+洗地机出海</td></tr>
+<tr><td>L-龙头</td><td>清洁电器双龙头之一</td></tr>
+<tr><td>S-市值</td><td>流通市值290亿</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>相对抗跌，趋势 intact</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">吉比特 <span class="badge badge-a">A股</span></div>
+<div class="code">603444.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">76</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近期小幅回调0.75%，维持高位震荡，未出现明确楔形结构</td></tr>
+<tr><td>顶底山峰</td><td>阶段新高后横盘整理，未出现缩量回踩MA20结构</td></tr>
+<tr><td>买点区间</td><td>330-340</td></tr>
+<tr><td>观察位</td><td>345</td></tr>
+<tr><td>止损位</td><td>305 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>4%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+97%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 33.3%</td></tr>
+<tr><td>N-催化</td><td>新游戏上线预期</td></tr>
+<tr><td>L-龙头</td><td>A股游戏研发龙头</td></tr>
+<tr><td>S-市值</td><td>流通市值242亿</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>高位震荡，等待催化</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">中际联合 <span class="badge badge-a">A股</span></div>
+<div class="code">605305.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">76</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近期维持区间震荡，未出现明确下降楔形上破，关注放量突破</td></tr>
+<tr><td>顶底山峰</td><td>阶段新高后缩量整理，未出现MA10/20回踩企稳结构</td></tr>
+<tr><td>买点区间</td><td>48-50</td></tr>
+<tr><td>观察位</td><td>51</td></tr>
+<tr><td>止损位</td><td>44 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>3%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+86%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 19.1%</td></tr>
+<tr><td>N-催化</td><td>风电高空作业设备出海</td></tr>
+<tr><td>L-龙头</td><td>风电高空安全设备龙头</td></tr>
+<tr><td>S-市值</td><td>流通市值64亿</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>区间震荡，等待突破</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">九号公司 <span class="badge badge-a">A股</span></div>
+<div class="code">689009.SH</div>
+</div>
+<div style="text-align:right;">
+<div class="score">76</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近期缩量整理，未出现明确楔形结构，维持上升通道</td></tr>
+<tr><td>顶底山峰</td><td>阶段新高后缩量横盘，MA20上方运行，趋势 intact</td></tr>
+<tr><td>买点区间</td><td>58-60</td></tr>
+<tr><td>观察位</td><td>62</td></tr>
+<tr><td>止损位</td><td>53 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>3%</td></tr>
+<tr><td>C-业绩</td><td>年度扣非+63%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 26.1%</td></tr>
+<tr><td>N-催化</td><td>短交通+割草机器人新品</td></tr>
+<tr><td>L-龙头</td><td>智能短交通龙头</td></tr>
+<tr><td>S-市值</td><td>流通市值206亿</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>趋势 intact，缩量整理</td></tr>
+</table>
+</div>
+</div>
+<div style="margin-top:16px;"></div>
+<div class="grid-2">
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">中联重科 <span class="badge badge-hk">港股</span></div>
+<div class="code">1157.HK</div>
+</div>
+<div style="text-align:right;">
+<div class="score">71</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>A+H联动，近期港股涨0.45%相对抗跌，未出现明确楔形突破</td></tr>
+<tr><td>顶底山峰</td><td>阶段高点后缩量整理，等待MA20拐头</td></tr>
+<tr><td>买点区间</td><td>4.8-5.0</td></tr>
+<tr><td>观察位</td><td>5.1</td></tr>
+<tr><td>止损位</td><td>4.4 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>4%</td></tr>
+<tr><td>C-业绩</td><td>年度净利+38.9%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 38.9%</td></tr>
+<tr><td>N-催化</td><td>工程机械出海+基建</td></tr>
+<tr><td>L-龙头</td><td>工程机械行业龙头</td></tr>
+<tr><td>S-市值</td><td>市值574亿港元</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>相对抗跌</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">哔哩哔哩-W <span class="badge badge-hk">港股</span></div>
+<div class="code">9626.HK</div>
+</div>
+<div style="text-align:right;">
+<div class="score">72</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近60日涨2.92%，相对强势，维持上升通道，未出现楔形卖点</td></tr>
+<tr><td>顶底山峰</td><td>从139低点反弹至119.8，未形成阶段顶，趋势向上</td></tr>
+<tr><td>买点区间</td><td>115-120</td></tr>
+<tr><td>观察位</td><td>125</td></tr>
+<tr><td>止损位</td><td>106 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>4%</td></tr>
+<tr><td>C-业绩</td><td>MRQ净利+160.6%</td></tr>
+<tr><td>A-增速</td><td>MRQ ROE 3.5%</td></tr>
+<tr><td>N-催化</td><td>扭亏为盈+游戏发行</td></tr>
+<tr><td>L-龙头</td><td>年轻人视频平台龙头</td></tr>
+<tr><td>S-市值</td><td>市值509亿港元</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>相对强势，趋势向上</td></tr>
+</table>
+</div>
+<div class="stock-card">
+<div class="tag-source"><span class="badge badge-source">数据源: iFinD</span></div>
+<div class="top">
+<div>
+<div class="name">津上机床中国 <span class="badge badge-hk">港股</span></div>
+<div class="code">1651.HK</div>
+</div>
+<div style="text-align:right;">
+<div class="score">70</div>
+<div class="score-label">CANSLIM-A分</div>
+</div>
+</div>
+<table>
+<tr><td>触发维度</td><td>C/A/N/L/S</td></tr>
+<tr><td>楔形状态</td><td>近期涨0.85%，维持缓慢上升通道</td></tr>
+<tr><td>顶底山峰</td><td>未出现明显阶段顶，沿MA20缓慢爬升</td></tr>
+<tr><td>买点区间</td><td>11.5-12.0</td></tr>
+<tr><td>观察位</td><td>12.3</td></tr>
+<tr><td>止损位</td><td>10.6 (-8%)</td></tr>
+<tr><td>建议仓位</td><td>3%</td></tr>
+<tr><td>C-业绩</td><td>年度净利+62.1%</td></tr>
+<tr><td>A-增速</td><td>年度ROE 62.1%</td></tr>
+<tr><td>N-催化</td><td>工业母机+高端制造</td></tr>
+<tr><td>L-龙头</td><td>精密机床细分龙头</td></tr>
+<tr><td>S-市值</td><td>市值168亿港元</td></tr>
+<tr><td>I-机构</td><td>机构持仓数据缺失</td></tr>
+<tr><td>形态评估</td><td>缓慢上升通道</td></tr>
+</table>
+</div>
+</div>
+</div><div class="disclaimer">
+AI基于公开数据自动生成，仅供研究参考，不构成投资建议。市场有风险，投资需谨慎。<br>
+数据来源：同花顺 iFinD（部分指标因权限或接口限制返回数据缺失，已如实标注）。
+</div>
+</div>
+</body>
+</html>
