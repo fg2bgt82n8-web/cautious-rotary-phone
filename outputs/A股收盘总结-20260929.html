@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A股收盘总结 - 2026-09-29</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #0f1419;
+    color: #e6e6e6;
+    line-height: 1.6;
+    padding: 24px;
+  }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .header {
+    background: linear-gradient(135deg, #1a2332 0%, #2d1a3a 100%);
+    border-radius: 12px;
+    padding: 24px 32px;
+    margin-bottom: 24px;
+    border: 1px solid #2a3548;
+  }
+  .header h1 { font-size: 24px; color: #fff; margin-bottom: 8px; }
+  .header .meta { font-size: 13px; color: #8b95a7; }
+  .header .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    background: rgba(80, 200, 120, 0.15);
+    color: #50c878;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-left: 8px;
+    border: 1px solid rgba(80, 200, 120, 0.3);
+  }
+  .section {
+    background: #1a2332;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    border: 1px solid #2a3548;
+  }
+  .section h2 {
+    font-size: 17px;
+    color: #fff;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a3548;
+    display: flex;
+    align-items: center;
+  }
+  .section h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: #50c878;
+    margin-right: 10px;
+    border-radius: 2px;
+  }
+  /* 大盘总结卡 */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .market-card {
+    background: #0f1419;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid #2a3548;
+  }
+  .market-card .name { font-size: 12px; color: #8b95a7; margin-bottom: 6px; }
+  .market-card .value { font-size: 20px; color: #fff; font-weight: 600; }
+  .market-card .chg { font-size: 13px; margin-top: 4px; }
+  .up { color: #ff4d4f; }  /* A股惯例：红涨绿跌 */
+  .down { color: #50c878; }
+  .flat { color: #8b95a7; }
+  .summary-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px dashed #2a3548;
+  }
+  .summary-item .label { font-size: 12px; color: #8b95a7; margin-bottom: 4px; }
+  .summary-item .num { font-size: 18px; color: #fff; font-weight: 600; }
+  /* 表格 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    padding: 10px 8px;
+    text-align: center;
+    border-bottom: 1px solid #2a3548;
+  }
+  th {
+    background: #0f1419;
+    color: #8b95a7;
+    font-weight: 500;
+    font-size: 12px;
+    position: sticky;
+    top: 0;
+  }
+  td:first-child, th:first-child { text-align: left; padding-left: 12px; }
+  tr:hover td { background: rgba(80, 200, 120, 0.04); }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+  .tag-pass { background: rgba(255, 77, 79, 0.12); color: #ff4d4f; border: 1px solid rgba(255, 77, 79, 0.3); }
+  .tag-fail { background: rgba(80, 200, 120, 0.12); color: #50c878; border: 1px solid rgba(80, 200, 120, 0.3); }
+  .tag-mid { background: rgba(255, 193, 7, 0.12); color: #ffc107; border: 1px solid rgba(255, 193, 7, 0.3); }
+  .tag-info { background: rgba(139, 149, 167, 0.12); color: #8b95a7; border: 1px solid rgba(139, 149, 167, 0.3); }
+  .form-cell { font-size: 12px; color: #c9d1d9; text-align: left; }
+  /* 形态评估 */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 12px;
+  }
+  .form-card {
+    background: #0f1419;
+    border-radius: 8px;
+    padding: 14px 16px;
+    border: 1px solid #2a3548;
+    border-left: 3px solid #50c878;
+  }
+  .form-card .fc-title { font-size: 14px; color: #fff; font-weight: 600; margin-bottom: 6px; }
+  .form-card .fc-desc { font-size: 12px; color: #8b95a7; line-height: 1.7; }
+  .form-card.warn { border-left-color: #ffc107; }
+  .form-card.danger { border-left-color: #ff4d4f; }
+  .form-card.muted { border-left-color: #8b95a7; }
+  /* 操作建议 */
+  .advice-list { list-style: none; }
+  .advice-list li {
+    background: #0f1419;
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-left: 3px solid #50c878;
+    font-size: 13px;
+  }
+  .advice-list li.warn { border-left-color: #ffc107; }
+  .advice-list li.danger { border-left-color: #ff4d4f; }
+  .advice-list li.info { border-left-color: #8b95a7; }
+  .advice-list strong { color: #fff; }
+  .advice-list .advice-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    margin-right: 8px;
+    background: rgba(80, 200, 120, 0.15);
+    color: #50c878;
+  }
+  .advice-list li.warn .advice-tag { background: rgba(255, 193, 7, 0.15); color: #ffc107; }
+  .advice-list li.danger .advice-tag { background: rgba(255, 77, 79, 0.15); color: #ff4d4f; }
+  .advice-list li.info .advice-tag { background: rgba(139, 149, 167, 0.15); color: #8b95a7; }
+  /* 统计条 */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 12px 16px;
+    background: #0f1419;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .stats-bar .sb-item .label { color: #8b95a7; margin-right: 6px; }
+  .stats-bar .sb-item .val { color: #fff; font-weight: 600; }
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #5a6577;
+    padding: 16px;
+    margin-top: 8px;
+  }
+  .footer .risk {
+    color: #8b95a7;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .data-source {
+    display: inline-block;
+    background: rgba(80, 200, 120, 0.08);
+    color: #50c878;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+  }
+  @media (max-width: 768px) {
+    body { padding: 12px; }
+    .header, .section { padding: 16px; }
+    table { font-size: 12px; }
+    th, td { padding: 8px 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>A股收盘总结 <span class="badge">2026-09-29 15:00</span></h1>
+    <div class="meta">
+      盘前推荐十股 · A股7只收盘复盘 · 数据时点 2026-09-29 15:08 · 
+      <span class="data-source">数据来源：同花顺 iFinD</span>
+    </div>
+  </div>
+
+  <!-- 大盘总结卡 -->
+  <div class="section">
+    <h2>大盘总结</h2>
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="name">上证指数</div>
+        <div class="value">3830.45</div>
+        <div class="chg up">+6.83 / +0.18%</div>
+      </div>
+      <div class="market-card">
+        <div class="name">深证成指</div>
+        <div class="value">12901.95</div>
+        <div class="chg up">+43.19 / +0.34%</div>
+      </div>
+      <div class="market-card">
+        <div class="name">创业板指</div>
+        <div class="value">3142.56</div>
+        <div class="chg up">+2.74 / +0.09%</div>
+      </div>
+      <div class="market-card">
+        <div class="name">沪深300</div>
+        <div class="value">4345.21</div>
+        <div class="chg up">+4.45 / +0.10%</div>
+      </div>
+      <div class="market-card">
+        <div class="name">科创50</div>
+        <div class="value">1569.34</div>
+        <div class="chg up">+13.36 / +0.86%</div>
+      </div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-item">
+        <div class="label">两市成交额</div>
+        <div class="num">14,091.97<span style="font-size:12px;color:#8b95a7;"> 亿元（≈1.41万亿）</span></div>
+      </div>
+      <div class="summary-item">
+        <div class="label">上涨家数</div>
+        <div class="num up">3,315</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">下跌家数</div>
+        <div class="num down">1,821</div>
+      </div>
+      <div class="summary-item">
+        <div class="label">涨停 / 跌停</div>
+        <div class="num"><span class="up">56</span> <span style="color:#8b95a7;">/</span> <span class="down">11</span></div>
+      </div>
+      <div class="summary-item">
+        <div class="label">北向资金净买入</div>
+        <div class="num flat" style="font-size:14px;">暂无数据</div>
+        <div style="font-size:11px;color:#5a6577;margin-top:2px;">披露自2024年8月已停止</div>
+      </div>
+    </div>
+    <div style="margin-top:14px;font-size:12px;color:#8b95a7;line-height:1.7;">
+      <strong style="color:#c9d1d9;">市场点评：</strong>
+      三大指数全线小幅收涨，科创50领涨（+0.86%），深成指次之（+0.34%），上证与沪深300窄幅震荡。
+      两市成交约1.41万亿，量能温和；上涨家数3315 vs 下跌1821，多头占优但涨停仅56家、赚钱效应一般。
+      整体偏震荡偏多格局，结构性行情为主，缺乏趋势性主线。
+    </div>
+  </div>
+
+  <!-- 7只A股收盘对比表 -->
+  <div class="section">
+    <h2>7只A股收盘对比表</h2>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>证券代码 / 简称</th>
+            <th>收盘价</th>
+            <th>涨跌幅</th>
+            <th>买点区间</th>
+            <th>止损价</th>
+            <th>仓位</th>
+            <th>成交额</th>
+            <th>换手率</th>
+            <th>触及止损</th>
+            <th>验证结果</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>600066.SH 宇通客车</td>
+            <td>26.34</td>
+            <td class="up">+0.46%</td>
+            <td>25.0 - 26.5</td>
+            <td>24.0</td>
+            <td>6%</td>
+            <td>4.21亿</td>
+            <td>0.73%</td>
+            <td>否</td>
+            <td><span class="tag tag-mid">区间内运行</span></td>
+          </tr>
+          <tr>
+            <td>003010.SZ 若羽臣</td>
+            <td>27.83</td>
+            <td class="down">-0.57%</td>
+            <td>26.0 - 27.5</td>
+            <td>24.5</td>
+            <td>5%</td>
+            <td>1.42亿</td>
+            <td>2.27%</td>
+            <td>否</td>
+            <td><span class="tag tag-pass">符合预期</span></td>
+          </tr>
+          <tr>
+            <td>605499.SH 东鹏饮料</td>
+            <td>110.19</td>
+            <td class="down">-0.84%</td>
+            <td>108 - 112</td>
+            <td>102</td>
+            <td>5%</td>
+            <td>1.76亿</td>
+            <td>0.24%</td>
+            <td>否</td>
+            <td><span class="tag tag-mid">区间内运行</span></td>
+          </tr>
+          <tr>
+            <td>603486.SH 科沃斯</td>
+            <td>49.22</td>
+            <td class="down">-2.34%</td>
+            <td>50 - 52</td>
+            <td>46</td>
+            <td>4%</td>
+            <td>1.76亿</td>
+            <td>0.62%</td>
+            <td>否</td>
+            <td><span class="tag tag-info">未达买点</span></td>
+          </tr>
+          <tr>
+            <td>603444.SH 吉比特</td>
+            <td>335.96</td>
+            <td class="down">-0.02%</td>
+            <td>330 - 340</td>
+            <td>305</td>
+            <td>4%</td>
+            <td>2.64亿</td>
+            <td>1.08%</td>
+            <td>否</td>
+            <td><span class="tag tag-mid">区间内运行</span></td>
+          </tr>
+          <tr>
+            <td>605305.SH 中际联合</td>
+            <td>30.24</td>
+            <td class="up">+1.20%</td>
+            <td>48 - 50</td>
+            <td>44</td>
+            <td>3%</td>
+            <td>0.72亿</td>
+            <td>1.12%</td>
+            <td>否</td>
+            <td><span class="tag tag-info">未达买点</span></td>
+          </tr>
+          <tr>
+            <td>689009.SH 九号公司</td>
+            <td>36.04</td>
+            <td class="down">-1.80%</td>
+            <td>58 - 60</td>
+            <td>53</td>
+            <td>3%</td>
+            <td>2.19亿</td>
+            <td>1.07%</td>
+            <td>否</td>
+            <td><span class="tag tag-info">未达买点</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:#5a6577;">
+      注：成交额均 ≥ 0.5亿（活跃阈值5000万），7只标的全部满足活跃成交条件。
+      涨跌幅按 iFinD 实时口径计算；A股惯例：红涨绿跌。
+    </div>
+  </div>
+
+  <!-- 形态评估 -->
+  <div class="section">
+    <h2>形态评估</h2>
+    <div class="form-grid">
+
+      <div class="form-card">
+        <div class="fc-title">600066.SH 宇通客车 · 缩量回踩企稳</div>
+        <div class="fc-desc">
+          收盘 26.34 落在买点区间 25.0-26.5 内，振幅 2.5%（高26.42/低25.76）。
+          换手率仅 0.73%，成交 4.21亿，量能收敛；多头守住买点下沿，符合缩量回踩企稳形态，结构偏多。
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="fc-title">003010.SZ 若羽臣 · 突破买点上沿</div>
+        <div class="fc-desc">
+          收盘 27.83 高于买点上沿 27.5，盘中最高 28.09 突破后小幅回落。
+          换手率 2.27% 在7只中最高，资金交投活跃；形态上属"突破买点上沿后回踩确认"，需观察27.5支撑是否有效。
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="fc-title">605499.SH 东鹏饮料 · 区间内窄幅震荡</div>
+        <div class="fc-desc">
+          收盘 110.19 位于买点区间 108-112 中段，振幅仅 0.95%（高110.87/低109.82）。
+          换手率 0.24% 极低、成交1.76亿，属典型区间内窄幅震荡，无明显方向选择，待突破信号。
+        </div>
+      </div>
+
+      <div class="form-card warn">
+        <div class="fc-title">603486.SH 科沃斯 · 触及买点后回落</div>
+        <div class="fc-desc">
+          盘中最高 50.30 触及买点下沿 50，但收盘 49.22 跌回买点下方，跌-2.34% 领跌组合。
+          成交 1.76亿、换手0.62%，呈现"突破未果、回落破位"迹象，多方力量不足，短期偏弱。
+        </div>
+      </div>
+
+      <div class="form-card">
+        <div class="fc-title">603444.SH 吉比特 · 收敛平台待突破</div>
+        <div class="fc-desc">
+          收盘 335.96 几乎持平（-0.02%），位于买点区间 330-340 内，振幅 1.78%。
+          成交 2.64亿、换手1.08%，呈现收敛平台形态，待方向选择，若放量突破340可看多。
+        </div>
+      </div>
+
+      <div class="form-card muted">
+        <div class="fc-title">605305.SH 中际联合 · 远离买点</div>
+        <div class="fc-desc">
+          收盘 30.24，盘中最高 30.66，距买点下沿 48 仍有 36.5% 空间，未触及买点。
+          虽涨+1.20% 但成交仅 0.72亿、换手1.12%，反弹乏力；当前价与推荐买点严重不匹配，需复核推荐参数有效性。
+        </div>
+      </div>
+
+      <div class="form-card danger">
+        <div class="fc-title">689009.SH 九号公司 · 远离买点 · 弱势</div>
+        <div class="fc-desc">
+          收盘 36.04，跌-1.80% 在7只中跌幅居前；盘中最高 36.99 距买点下沿 58 仍差 36.6%，未触及买点。
+          成交 2.19亿、换手1.07%，弱势调整形态，与推荐买点完全不匹配，建议复核或剔除。
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 明日操作建议 -->
+  <div class="section">
+    <h2>明日（2026-09-30）操作建议</h2>
+    <ul class="advice-list">
+      <li>
+        <span class="advice-tag">符合预期</span>
+        <strong>003010.SZ 若羽臣：</strong>
+        收盘突破买点上沿（27.5），但小幅收跌，明日重点观察 27.5 支撑能否守住。
+        若低开回踩 27.5 不破可继续持有/加仓至5%；若放量跌破 27.0 减仓至3%，止损位 24.5 不变。
+      </li>
+      <li class="warn">
+        <span class="advice-tag">区间内运行</span>
+        <strong>600066.SH 宇通客车 / 605499.SH 东鹏饮料 / 603444.SH 吉比特：</strong>
+        三只均落在买点区间内、未触及止损，按既定计划执行。
+        宇通客车缩量企稳、吉比特收敛平台，建议持有等待突破；东鹏饮料量能极低，可分批建仓，关注放量突破信号。
+      </li>
+      <li class="info">
+        <span class="advice-tag">未达买点</span>
+        <strong>603486.SH 科沃斯：</strong>
+        盘中触及买点下沿后回落，破位迹象明显。明日若站不稳 49.0 建议暂缓建仓，等待重新回到 50 上方再介入；止损 46 维持。
+      </li>
+      <li class="info">
+        <span class="advice-tag">未达买点</span>
+        <strong>605305.SH 中际联合 / 689009.SH 九号公司：</strong>
+        收盘价距推荐买点存在 36% 以上空间，与买点完全不匹配。
+        建议暂停这两只标的的跟踪，明日盘前复核推荐参数（买点/止损是否对应最新股价区间）；如确认推荐参数失效，建议从台账中标记为"参数失效"。
+      </li>
+      <li class="info">
+        <span class="advice-tag">组合层面</span>
+        <strong>仓位与风控：</strong>
+        当日组合仅若羽臣一只符合预期，其余多在区间内或未达买点；A股总仓位建议控制在 25-30%（已建仓部分约 20%）。
+        明日若无新增买点触发，不主动加仓；严格按止损纪律执行，单只跌破止损即了结。
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <div class="risk">以上内容基于公开数据，不构成投资建议。市场有风险，入市需谨慎。</div>
+    <div>报告生成时间：2026-09-29 15:10 · 数据源：同花顺 iFinD（stock_highfreq_quotes / index_highfreq_quotes 实时口径）</div>
+  </div>
+
+</div>
+</body>
+</html>
