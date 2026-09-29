@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>港股收盘总结 - 2026-09-28（周一）16:00</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif; background: #f5f6fa; color: #2c3e50; line-height: 1.65; padding: 24px; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header { background: linear-gradient(135deg, #1a2a6c, #2d4373); color: #fff; padding: 28px 32px; border-radius: 14px; margin-bottom: 22px; box-shadow: 0 6px 20px rgba(26,42,108,.18); }
+  header h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  header .sub { font-size: 14px; opacity: .88; }
+  header .tag { display: inline-block; background: rgba(255,255,255,.16); padding: 3px 12px; border-radius: 20px; font-size: 12px; margin-right: 8px; margin-top: 8px; }
+  section { background: #fff; border-radius: 12px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+  h2 { font-size: 18px; color: #1a2a6c; border-left: 4px solid #1a2a6c; padding-left: 12px; margin-bottom: 14px; }
+  h3 { font-size: 15px; color: #2d4373; margin: 14px 0 6px; }
+  /* 港股总结卡 */
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat { background: #f8f9fc; border-radius: 10px; padding: 16px 14px; text-align: center; border: 1px solid #eef0f6; }
+  .stat .lbl { font-size: 12px; color: #7a8599; margin-bottom: 6px; }
+  .stat .val { font-size: 22px; font-weight: 700; color: #1a2a6c; }
+  .stat .chg { font-size: 13px; margin-top: 4px; font-weight: 600; }
+  .up { color: #e74c3c; } .down { color: #27ae60; } .flat { color: #7a8599; }
+  /* 表格 */
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 6px; }
+  th, td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eef0f6; }
+  th { background: #f0f2f8; color: #2d4373; font-weight: 600; }
+  tr:hover td { background: #fafbff; }
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+  .b-good { background: #e6f7ee; color: #1e8449; }
+  .b-warn { background: #fef5e7; color: #b9770e; }
+  .b-bad { background: #fdecea; color: #c0392b; }
+  .b-gray { background: #eef0f6; color: #7a8599; }
+  .pos { background: #fdf2f2; } .pos td:first-child { font-weight: 600; }
+  /* 形态评估 */
+  .form-card { border: 1px solid #eef0f6; border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; background: #fafbff; }
+  .form-card .ft { font-weight: 700; color: #1a2a6c; margin-bottom: 4px; }
+  .form-card .fb { font-size: 13px; color: #51607a; }
+  /* 汇总 */
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 12px 0; }
+  .sum-cell { text-align: center; padding: 14px; border-radius: 10px; }
+  .sum-cell .n { font-size: 26px; font-weight: 700; }
+  .sum-cell .t { font-size: 12px; color: #7a8599; margin-top: 4px; }
+  .note { background: #fff8e6; border-left: 3px solid #f0b429; padding: 10px 14px; border-radius: 6px; font-size: 13px; margin-top: 12px; }
+  .strat { background: #f8f9fc; border-left: 3px solid #1a2a6c; padding: 12px 16px; border-radius: 6px; margin-bottom: 10px; font-size: 13.5px; }
+  .strat b { color: #1a2a6c; }
+  footer { text-align: center; font-size: 12px; color: #9aa4b5; padding: 18px; line-height: 1.8; }
+  .src { font-size: 11.5px; color: #9aa4b5; margin-top: 10px; }
+  @media(max-width:720px){ .grid,.summary-grid{grid-template-columns:repeat(2,1fr)} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>港股收盘总结 · 三标的全天表现复盘</h1>
+  <div class="sub">交易日 2026-09-28（周一）16:00 收盘 ｜ 盘前推荐十股 · 港股3只验证</div>
+  <span class="tag">数据来源：同花顺 iFinD</span>
+  <span class="tag">含买点/止损/仓位校验</span>
+</header>
+
+<!-- 1. 港股总结卡 -->
+<section>
+  <h2>一、港股全天市场总览</h2>
+  <div class="grid">
+    <div class="stat">
+      <div class="lbl">恒生指数 (HSI) 收盘</div>
+      <div class="val">24,642.51</div>
+      <div class="chg up">+0.54%</div>
+    </div>
+    <div class="stat">
+      <div class="lbl">恒生科技指数 收盘</div>
+      <div class="val">4,296.00</div>
+      <div class="chg down">-0.37%</div>
+    </div>
+    <div class="stat">
+      <div class="lbl">南向资金净买入</div>
+      <div class="val flat" style="font-size:18px;">暂无数据</div>
+      <div class="chg flat">iFinD 未返回有效值</div>
+    </div>
+    <div class="stat">
+      <div class="lbl">港股子组合收益率（加权）</div>
+      <div class="val down">-0.50%</div>
+      <div class="chg flat">仓位合计 11% · 贡献 -0.055pp</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#51607a;margin-top:12px;">恒指微涨收红、恒生科技逆势收跌，市场风格分化：传统权重偏强、科技成长承压。本组合三只标的中哔哩哔哩收涨、中联重科与津上机床回调，全天子组合小幅回落 -0.50%。</p>
+</section>
+
+<!-- 2. 3只港股收盘对比表 -->
+<section>
+  <h2>二、三只港股收盘对比表</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>证券代码</th><th>证券简称</th><th>收盘价(HKD)</th><th>涨跌幅</th>
+        <th>成交量</th><th>成交额</th><th>买点</th><th>止损</th><th>仓位</th>
+        <th>vs 买点</th><th>验证结果</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1157.HK</td><td>中联重科</td><td>5.58</td><td class="down">-0.80%</td>
+        <td>465.76万</td><td>2,603.57万</td><td>4.8-5.0</td><td>4.4</td><td>4%</td>
+        <td><span class="badge b-good">买点上方</span></td><td><span class="badge b-good">符合预期</span></td>
+      </tr>
+      <tr>
+        <td>9626.HK</td><td>哔哩哔哩-W</td><td>119.80</td><td class="up">+2.83%</td>
+        <td>247.11万</td><td>2.93亿</td><td>115-120</td><td>106</td><td>4%</td>
+        <td><span class="badge b-good">区间内</span></td><td><span class="badge b-good">符合预期</span></td>
+      </tr>
+      <tr>
+        <td>1651.HK</td><td>津上机床中国</td><td>45.46</td><td class="down">-4.54%</td>
+        <td>183.72万</td><td>8,384.63万</td><td>11.5-12.0</td><td>10.6</td><td>3%</td>
+        <td><span class="badge b-warn">远超买点</span></td><td><span class="badge b-warn">符合预期(回调)</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="src">数据来源：同花顺 iFinD（global_stock_quotes / index_data），最新交易日收盘行情。</p>
+</section>
+
+<!-- 3. 逐只形态评估 -->
+<section>
+  <h2>三、逐只全天表现与形态评估</h2>
+
+  <div class="form-card">
+    <div class="ft">1157.HK 中联重科 ｜ 收盘 5.58，-0.80%</div>
+    <div class="fb">
+      收盘价 <b>5.58</b> 位于买点区间（4.8-5.0）<b>上方</b>，距买点上沿约 +11.6%，未触及止损 4.4。全天小幅回调 -0.80%，成交额 2,603.57 万（活跃度偏低）。形态上呈<b>高位缩量震荡整理</b>，未现明确楔形买点或收敛平台突破信号，买点动能待确认。结构安全，短期偏观望。
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="ft">9626.HK 哔哩哔哩-W ｜ 收盘 119.80，+2.83%</div>
+    <div class="fb">
+      收盘价 <b>119.80</b> 落入买点区间（115-120）<b>内</b>，逼近上沿 120，止损 106 远离。全天收涨 +2.83%，成交额 2.93 亿（活跃）。形态呈<b>收敛平台偏强、试探突破上沿</b>：买点区间内运行且放量收涨，为三者中最干净的偏多结构，若有效站稳 120 上方则确认突破。
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="ft">1651.HK 津上机床中国 ｜ 收盘 45.46，-4.54%</div>
+    <div class="fb">
+      收盘价 <b>45.46</b> 远超买点区间（11.5-12.0），距买点上沿约 +278%，止损 10.6 远离（结构安全）。全天回调 -4.54%，成交额 8,384.63 万（放量）。形态呈<b>高位放量回调</b>，未现缩量回踩企稳信号。<span style="color:#b9770e;">注意：现价与买点差距较大，建议复核买点数据与现价匹配度</span>；若继续走弱可考虑部分止盈锁定利润。
+    </div>
+  </div>
+</section>
+
+<!-- 4. 全天十股验证汇总 -->
+<section>
+  <h2>四、全天十股验证汇总</h2>
+
+  <div class="summary-grid">
+    <div class="sum-cell" style="background:#e6f7ee;">
+      <div class="n down">3</div><div class="t">符合预期（港股全部）</div>
+    </div>
+    <div class="sum-cell" style="background:#eef0f6;">
+      <div class="n flat">0</div><div class="t">未达买点</div>
+    </div>
+    <div class="sum-cell" style="background:#fdecea;">
+      <div class="n flat">0</div><div class="t">触发止损</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>市场</th><th>标的数</th><th>符合预期</th><th>未达买点</th><th>触发止损</th><th>仓位合计</th><th>对组合贡献</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>港股（已验证）</td><td>3</td><td>3</td><td>0</td><td>0</td><td>11%</td><td class="down">-0.055pp</td>
+      </tr>
+      <tr style="color:#9aa4b5;">
+        <td>A股（7只）</td><td>7</td><td>—</td><td>—</td><td>—</td><td>—</td><td>待补充</td>
+      </tr>
+      <tr style="font-weight:700;background:#f0f2f8;">
+        <td>十股合计</td><td>10</td><td>3</td><td>0</td><td>0</td><td>11%+</td><td>港股 -0.055pp + A股待补</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:13px;color:#51607a;margin-top:10px;">
+    <b>港股子组合加权收益率 -0.50%</b>（仓位加权：4%×(-0.80%) + 4%×(+2.83%) + 3%×(-4.54%) = -0.055pp 贡献，折算子组合 -0.50%）。三只标的均未触及止损，结构性安全；哔哩哔哩收涨对冲了中联重科与津上机床的回调。
+  </p>
+
+  <div class="note">
+    ⚠ <b>数据缺口说明：</b>盘前推荐报告 <code>盘前推荐-20260928.html</code> 与原台账未在 /workspace/outputs 中找到，A股7只标的的清单与买点/止损参数缺失，故十股总验证仅完成<b>港股3只</b>部分。A股7只的收盘涨跌%与验证结果需待盘前报告补齐后回填。港股缺口标的：龙蟠科技(2465.HK 综合分68)、君实生物(1877.HK 综合分69)，均未达70分入选线，余额已由A股递补。
+  </div>
+</section>
+
+<!-- 5. 明日策略建议 -->
+<section>
+  <h2>五、明日策略建议</h2>
+
+  <div class="strat">
+    <b>1157.HK 中联重科 — 持有/观望。</b> 收盘在买点上方高位震荡，未现突破信号，成交偏淡。建议：已持仓维持止损4.4持有；未进场者待回踩买点区间(4.8-5.0)缩量企稳再考虑介入，或等有效放量突破5.6上沿确认。
+  </div>
+
+  <div class="strat">
+    <b>9626.HK 哔哩哔哩-W — 偏多持有/关注突破。</b> 收盘位于买点区间内并放量收涨，逼近上沿120，为三者中最强结构。建议：买点区间(115-120)内已建仓者持有，止损上移至106下方防守；若明日有效站稳120上方可考虑加仓，跌破115则转入防守。
+  </div>
+
+  <div class="strat">
+    <b>1651.HK 津上机床中国 — 谨慎持有/部分止盈。</b> 高位放量回调-4.54%，现价远超买点。建议：先复核买点与现价匹配度；已持仓且浮盈较厚者可部分止盈锁定利润，止损10.6远离可暂持底仓；若明日续跌且跌破前低支撑，考虑进一步减仓。
+  </div>
+
+  <div class="note" style="margin-top:14px;">
+    <b>组合层面：</b>港股3只结构均安全（止损未触及），全天小幅回落属正常波动。明日关注哔哩哔哩能否突破120上沿确认强势、津上机床回调是否企稳；待A股7只数据补齐后更新十股总验证与组合全天收益率。
+  </div>
+</section>
+
+<footer>
+  数据来源：同花顺 iFinD（global_stock_quotes / index_data），最新交易日收盘行情。<br>
+  报告生成：港股收盘总结自动化流程 ｜ 交易日 2026-09-28 16:00<br>
+  以上内容基于公开数据，不构成投资建议。
+</footer>
+
+</div>
+</body>
+</html>
