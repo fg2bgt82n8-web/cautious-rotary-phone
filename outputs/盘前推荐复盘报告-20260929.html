@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>盘前推荐十股复盘报告 - 2026年9月29日</title>
+<style>
+  :root {
+    --bg: #f6f7f9;
+    --card: #ffffff;
+    --text: #1f2329;
+    --text-secondary: #5c6b7f;
+    --border: #e4e7ed;
+    --brand: #1a7f5c;
+    --brand-light: #e8f5ee;
+    --danger: #c22a2a;
+    --danger-light: #fdeeee;
+    --warning: #d4890d;
+    --warning-light: #fdf4e8;
+    --success: #1a7f5c;
+    --success-light: #e8f5ee;
+    --neutral: #5c6b7f;
+    --neutral-light: #f2f4f7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+  }
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 4px;
+  }
+  .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .badge-success { background: var(--success-light); color: var(--success); }
+  .badge-danger { background: var(--danger-light); color: var(--danger); }
+  .badge-warning { background: var(--warning-light); color: var(--warning); }
+  .badge-neutral { background: var(--neutral-light); color: var(--neutral); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--text-secondary);
+    font-weight: 500;
+    background: #fafbfc;
+  }
+  tr:last-child td { border-bottom: none; }
+  .number { font-family: "SF Mono", Monaco, "Cascadia Code", monospace; }
+  .up { color: var(--danger); }
+  .down { color: var(--success); }
+  .highlight {
+    background: linear-gradient(180deg, transparent 60%, var(--brand-light) 60%);
+    padding: 0 2px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .kpi {
+    text-align: center;
+    padding: 16px;
+    background: #fafbfc;
+    border-radius: 10px;
+  }
+  .kpi-value {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 4px 0;
+  }
+  .kpi-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .stock-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .stock-card:last-child { border-bottom: none; padding-bottom: 0; }
+  .stock-meta { flex: 1; }
+  .stock-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .stock-code {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-family: "SF Mono", monospace;
+  }
+  .stock-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+  .stock-data {
+    text-align: right;
+    min-width: 140px;
+  }
+  .stock-price {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .stock-change {
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .stock-note {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+  .alert {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-top: 12px;
+  }
+  .alert-warning {
+    background: var(--warning-light);
+    color: #8a5a00;
+    border: 1px solid #f0d9b3;
+  }
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  @media (max-width: 640px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .stock-card { flex-direction: column; }
+    .stock-data { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>盘前推荐十股复盘报告</h1>
+  <div class="subtitle">报告日期：2026年9月29日 · 数据来源：同花顺 iFinD · 报告时间：10:15</div>
+
+  <div class="card">
+    <div class="card-title">市场开盘情绪</div>
+    <div class="grid-3">
+      <div class="kpi">
+        <div class="kpi-label">上证涨跌家数</div>
+        <div class="kpi-value" style="color:var(--danger)">1,531</div>
+        <div class="kpi-label">跌 744 家</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">深证涨跌家数</div>
+        <div class="kpi-value" style="color:var(--danger)">2,109</div>
+        <div class="kpi-label">跌 729 家</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">两市涨停 / 跌停</div>
+        <div class="kpi-value" style="color:var(--danger)">32</div>
+        <div class="kpi-label">跌停 10 家</div>
+      </div>
+    </div>
+    <div class="alert alert-warning" style="margin-top:16px">
+      开盘情绪偏积极：两市合计涨家数 3,640 家，涨多跌少；涨停 32 家，跌停 10 家，抛压可控。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">十股复盘总览</div>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>开盘价</th>
+          <th>最新价</th>
+          <th>涨跌幅</th>
+          <th>量比</th>
+          <th>距买点上沿</th>
+          <th>操作建议</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="number">600066.SH</td>
+          <td>宇通客车</td>
+          <td class="number">26.18</td>
+          <td class="number">25.96</td>
+          <td class="down">-0.99%</td>
+          <td class="number">1.04</td>
+          <td class="number">-0.54</td>
+          <td><span class="badge badge-success">可介入</span></td>
+        </tr>
+        <tr>
+          <td class="number">003010.SZ</td>
+          <td>若羽臣</td>
+          <td class="number">27.71</td>
+          <td class="number">27.56</td>
+          <td class="down">-1.54%</td>
+          <td class="number">1.55</td>
+          <td class="number up">+0.06</td>
+          <td><span class="badge badge-neutral">观望</span></td>
+        </tr>
+        <tr>
+          <td class="number">605499.SH</td>
+          <td>东鹏饮料</td>
+          <td class="number">110.60</td>
+          <td class="number">110.49</td>
+          <td class="down">-0.57%</td>
+          <td class="number">1.28</td>
+          <td class="number">-1.51</td>
+          <td><span class="badge badge-success">可介入</span></td>
+        </tr>
+        <tr>
+          <td class="number">603486.SH</td>
+          <td>科沃斯</td>
+          <td class="number">49.84</td>
+          <td class="number">49.67</td>
+          <td class="down">-1.45%</td>
+          <td class="number">2.08</td>
+          <td class="number">-2.33</td>
+          <td><span class="badge badge-neutral">观望</span></td>
+        </tr>
+        <tr>
+          <td class="number">603444.SH</td>
+          <td>吉比特</td>
+          <td class="number">335.50</td>
+          <td class="number">339.89</td>
+          <td class="up">+1.15%</td>
+          <td class="number">1.23</td>
+          <td class="number">-0.11</td>
+          <td><span class="badge badge-success">可介入</span></td>
+        </tr>
+        <tr>
+          <td class="number">605305.SH</td>
+          <td>中际联合</td>
+          <td class="number">29.74</td>
+          <td class="number">30.19</td>
+          <td class="up">+1.04%</td>
+          <td class="number">1.11</td>
+          <td class="number">-19.81</td>
+          <td><span class="badge badge-danger">需止损</span></td>
+        </tr>
+        <tr>
+          <td class="number">689009.SH</td>
+          <td>九号公司</td>
+          <td class="number">36.87</td>
+          <td class="number">36.42</td>
+          <td class="down">-0.76%</td>
+          <td class="number">1.50</td>
+          <td class="number">-23.58</td>
+          <td><span class="badge badge-danger">需止损</span></td>
+        </tr>
+        <tr>
+          <td class="number">1157.HK</td>
+          <td>中联重科</td>
+          <td class="number">5.63</td>
+          <td class="number">5.58</td>
+          <td class="down">-0.80%</td>
+          <td class="number">—</td>
+          <td class="number up">+0.58</td>
+          <td><span class="badge badge-neutral">观望</span></td>
+        </tr>
+        <tr>
+          <td class="number">9626.HK</td>
+          <td>哔哩哔哩-W</td>
+          <td class="number">116.50</td>
+          <td class="number">119.80</td>
+          <td class="up">+2.83%</td>
+          <td class="number">—</td>
+          <td class="number">-0.20</td>
+          <td><span class="badge badge-success">可介入</span></td>
+        </tr>
+        <tr>
+          <td class="number">1651.HK</td>
+          <td>津上机床中国</td>
+          <td class="number">47.56</td>
+          <td class="number">45.46</td>
+          <td class="down">-4.54%</td>
+          <td class="number">—</td>
+          <td class="number up">+33.46</td>
+          <td><span class="badge badge-neutral">观望</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">逐只复盘详情</div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">宇通客车 <span class="stock-code">600066.SH</span></div>
+        <div class="stock-note">买点 25.0–26.5 · 止损 24.0 · 仓位 6%</div>
+        <div class="stock-tags">
+          <span class="badge badge-success">可介入</span>
+          <span class="badge badge-neutral">量比 1.04</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">25.96</div>
+        <div class="stock-change down">-0.99%</div>
+        <div class="stock-note">开盘 26.18</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      开盘后小幅回落至 25.96，仍位于买点区间内，距止损位 24.0 有约 8% 安全垫。量比 1.04 成交平稳，未见异常抛压，可择机介入。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">若羽臣 <span class="stock-code">003010.SZ</span></div>
+        <div class="stock-note">买点 26.0–27.5 · 止损 24.5 · 仓位 5%</div>
+        <div class="stock-tags">
+          <span class="badge badge-neutral">观望</span>
+          <span class="badge badge-neutral">量比 1.55</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">27.56</div>
+        <div class="stock-change down">-1.54%</div>
+        <div class="stock-note">开盘 27.71</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      最新价 27.56 已微幅突破买点上沿 27.5，按策略纪律应观望，避免追高；若后续回落至买点区间内，可重新评估。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">东鹏饮料 <span class="stock-code">605499.SH</span></div>
+        <div class="stock-note">买点 108–112 · 止损 102 · 仓位 5%</div>
+        <div class="stock-tags">
+          <span class="badge badge-success">可介入</span>
+          <span class="badge badge-neutral">量比 1.28</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">110.49</div>
+        <div class="stock-change down">-0.57%</div>
+        <div class="stock-note">开盘 110.60</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      价格处于买点区间中部，承接良好；量比 1.28 温和放大，有资金在买点附近承接。止损 102，当前仍有 8% 以上容错空间。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">科沃斯 <span class="stock-code">603486.SH</span></div>
+        <div class="stock-note">买点 50–52 · 止损 46 · 仓位 4%</div>
+        <div class="stock-tags">
+          <span class="badge badge-neutral">观望</span>
+          <span class="badge badge-neutral">量比 2.08</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">49.67</div>
+        <div class="stock-change down">-1.45%</div>
+        <div class="stock-note">开盘 49.84</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      最新价 49.67 低于买点下沿 50，已不符合"买点内开仓"条件；量比 2.08 显示开盘放量下跌，需观察 50 元关口能否收复，暂不开仓。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">吉比特 <span class="stock-code">603444.SH</span></div>
+        <div class="stock-note">买点 330–340 · 止损 305 · 仓位 4%</div>
+        <div class="stock-tags">
+          <span class="badge badge-success">可介入</span>
+          <span class="badge badge-neutral">量比 1.23</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">339.89</div>
+        <div class="stock-change up">+1.15%</div>
+        <div class="stock-note">开盘 335.50</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      开盘后由 335.5 上攻至 339.89，非常接近买点上沿（仅差 0.11 元），多头意图明显；量比 1.23 温和放量，止损 305，安全垫充足。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">中际联合 <span class="stock-code">605305.SH</span></div>
+        <div class="stock-note">买点 48–50 · 止损 44 · 仓位 3%</div>
+        <div class="stock-tags">
+          <span class="badge badge-danger">需止损</span>
+          <span class="badge badge-neutral">量比 1.11</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">30.19</div>
+        <div class="stock-change up">+1.04%</div>
+        <div class="stock-note">开盘 29.74</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      <strong style="color:var(--danger)">异常：</strong>最新价 30.19 已大幅跌破止损位 44，按纪律需止损。当前价格较推荐买点（48–50）偏离约 38%，建议核实是否存在除权除息导致的价格缺口。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">九号公司 <span class="stock-code">689009.SH</span></div>
+        <div class="stock-note">买点 58–60 · 止损 53 · 仓位 3%</div>
+        <div class="stock-tags">
+          <span class="badge badge-danger">需止损</span>
+          <span class="badge badge-neutral">量比 1.50</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">36.42</div>
+        <div class="stock-change down">-0.76%</div>
+        <div class="stock-note">开盘 36.87</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      <strong style="color:var(--danger)">异常：</strong>最新价 36.42 已大幅跌破止损位 53，按纪律需止损。当前价格较推荐买点（58–60）偏离约 38%，建议核实是否存在除权除息导致的价格缺口。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">中联重科 <span class="stock-code">1157.HK</span></div>
+        <div class="stock-note">买点 4.8–5.0 · 止损 4.4 · 仓位 4%</div>
+        <div class="stock-tags">
+          <span class="badge badge-neutral">观望</span>
+          <span class="badge badge-neutral">港股</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">5.58</div>
+        <div class="stock-change down">-0.80%</div>
+        <div class="stock-note">开盘 5.63</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      最新价 5.58 已突破买点上沿 5.0，按策略纪律应观望；若后续回落至 5.0 以内，可重新评估介入机会。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">哔哩哔哩-W <span class="stock-code">9626.HK</span></div>
+        <div class="stock-note">买点 115–120 · 止损 106 · 仓位 4%</div>
+        <div class="stock-tags">
+          <span class="badge badge-success">可介入</span>
+          <span class="badge badge-neutral">港股</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">119.80</div>
+        <div class="stock-change up">+2.83%</div>
+        <div class="stock-note">开盘 116.50</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary);padding-bottom:12px;border-bottom:1px solid var(--border)">
+      港股开盘后由 116.5 上攻至 119.8，运行在买点区间内且逼近上沿；涨幅 +2.83% 表现强势，止损 106，回撤容错空间大。
+    </div>
+
+    <div class="stock-card">
+      <div class="stock-meta">
+        <div class="stock-name">津上机床中国 <span class="stock-code">1651.HK</span></div>
+        <div class="stock-note">买点 11.5–12.0 · 止损 10.6 · 仓位 3%</div>
+        <div class="stock-tags">
+          <span class="badge badge-neutral">观望</span>
+          <span class="badge badge-neutral">港股</span>
+        </div>
+      </div>
+      <div class="stock-data">
+        <div class="stock-price">45.46</div>
+        <div class="stock-change down">-4.54%</div>
+        <div class="stock-note">开盘 47.56</div>
+      </div>
+    </div>
+    <div style="font-size:13px;color:var(--text-secondary)">
+      <strong style="color:var(--danger)">异常：</strong>最新价 45.46 较推荐买点（11.5–12.0）偏离约 280%，按当前价格已大幅突破买点上沿。建议核实数据口径或是否存在合股、除权等特殊情况。
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">操作建议分类汇总</div>
+    <table>
+      <thead>
+        <tr><th>分类</th><th>标的</th><th>核心逻辑</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-success">可介入</span></td>
+          <td>宇通客车、东鹏饮料、吉比特、哔哩哔哩-W</td>
+          <td>最新价位于推荐买点区间内，止损安全垫充足，开盘量价结构正常</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-neutral">观望</span></td>
+          <td>若羽臣、科沃斯、中联重科、津上机床中国</td>
+          <td>若羽臣、中联重科、津上机床中国已突破买点上沿；科沃斯低于买点下沿且放量下跌</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-danger">需止损</span></td>
+          <td>中际联合、九号公司</td>
+          <td>最新价已跌破止损位，按纪律应止损；同时价格与推荐买点严重偏离，建议核实除权除息</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-title">异常风险提示</div>
+    <div class="alert alert-warning">
+      以下三只标的当前价格与盘前推荐买点存在严重偏离，请务必核实是否存在除权除息、合股或数据口径差异，避免基于错误价格基准进行决策：
+    </div>
+    <ul style="font-size:13px;color:var(--text-secondary);margin-top:12px;padding-left:20px">
+      <li><strong>605305.SH 中际联合</strong>：最新价 30.19 元，推荐买点 48–50 元，偏离约 38%</li>
+      <li><strong>689009.SH 九号公司</strong>：最新价 36.42 元，推荐买点 58–60 元，偏离约 38%</li>
+      <li><strong>1651.HK 津上机床中国</strong>：最新价 45.46 港元，推荐买点 11.5–12.0 港元，偏离约 280%</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    数据来源：同花顺 iFinD（level1 盘中数据，收盘后可能调整）<br>
+    以上内容基于公开数据整理，仅供复盘参考，不构成投资建议。
+  </div>
+</div>
+</body>
+</html>
