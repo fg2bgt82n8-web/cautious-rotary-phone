@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A+H全市场盘前推荐 — 2026年09月29日</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #161a20;
+    --card-2: #1e232b;
+    --text: #e6e9ef;
+    --muted: #9aa3b2;
+    --danger: #ff4d4f;
+    --warning: #faad14;
+    --success: #52c41a;
+    --info: #1890ff;
+    --border: #2a303c;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+    line-height: 1.6;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  header {
+    text-align: center; padding: 32px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px;
+  }
+  header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
+  header .sub { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  .badge {
+    display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;
+  }
+  .badge-danger { background: rgba(255,77,79,0.15); color: var(--danger); border: 1px solid rgba(255,77,79,0.35); }
+  .badge-warning { background: rgba(250,173,20,0.15); color: var(--warning); border: 1px solid rgba(250,173,20,0.35); }
+  .badge-success { background: rgba(82,196,26,0.15); color: var(--success); border: 1px solid rgba(82,196,26,0.35); }
+  .badge-info { background: rgba(24,144,255,0.15); color: var(--info); border: 1px solid rgba(24,144,255,0.35); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px;
+  }
+  .card h2 { margin: 0 0 12px; font-size: 18px; color: var(--text); }
+  .card h3 { margin: 12px 0 8px; font-size: 15px; color: var(--muted); }
+  .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { color: var(--muted); font-size: 14px; }
+  .stat-value { font-size: 14px; font-weight: 600; }
+  .up { color: var(--danger); }
+  .down { color: var(--success); }
+  .neutral { color: var(--muted); }
+
+  .alert-box {
+    background: rgba(255,77,79,0.08); border: 1px solid rgba(255,77,79,0.35);
+    border-radius: 12px; padding: 24px; text-align: center; margin: 24px 0;
+  }
+  .alert-box h2 { margin: 0 0 8px; color: var(--danger); font-size: 22px; }
+  .alert-box p { margin: 0; color: var(--muted); }
+
+  .section-title {
+    font-size: 20px; font-weight: 700; margin: 32px 0 16px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tag {
+    display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 12px; margin-right: 6px; margin-bottom: 6px;
+    background: var(--card-2); border: 1px solid var(--border); color: var(--muted);
+  }
+  .tag-strong { color: var(--danger); border-color: rgba(255,77,79,0.4); }
+
+  .progress { background: var(--card-2); border-radius: 6px; height: 10px; overflow: hidden; margin-top: 6px; }
+  .progress-bar { height: 100%; border-radius: 6px; }
+
+  .footer {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+  }
+
+  .risk-list { list-style: none; padding: 0; margin: 0; }
+  .risk-list li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
+  .risk-list li::before { content: "⚠ "; color: var(--warning); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px; text-align: left; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; }
+
+  .emotion-score { font-size: 48px; font-weight: 700; text-align: center; color: var(--danger); }
+  .emotion-label { text-align: center; color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+  .small-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="badge badge-danger">M大盘一票否决 — 未通过</div>
+    <h1>A+H 全市场盘前十股推荐</h1>
+    <div class="sub">2026年09月29日（周二）· 数据截至 2026-09-28 收盘</div>
+  </header>
+
+  <div class="alert-box">
+    <h2>风险提示：今日不推荐个股</h2>
+    <p>沪深300收盘约 4340-4372，显著低于20周均线（4520）及牛熊分界线（4621），量能呈恐慌性放大。<br>
+    大盘结构偏空，处于日线级别调整段，建议空仓/减仓观望，等待企稳信号。</p>
+  </div>
+
+  <div class="section-title">M 大盘结论卡（缠论 + 波浪结构研判）</div>
+  <div class="grid">
+    <div class="card">
+      <h2>缠论结构研判</h2>
+      <div class="stat-row">
+        <span class="stat-label">当前级别</span>
+        <span class="stat-value">日线级别下跌一笔</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">中枢位置</span>
+        <span class="stat-value">跌破近期日线中枢下沿</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">笔段位置</span>
+        <span class="stat-value">向下离开段运行中</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">背驰状态</span>
+        <span class="stat-value up">暂未出现明显底背驰</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">关键观察</span>
+        <span class="stat-value">等待底分型 + MACD绿柱收敛</span>
+      </div>
+      <div class="small-note">* 周线视角：两中枢上行后顶背驰破位，日线级别上涨段已完成，转为调整结构。</div>
+    </div>
+
+    <div class="card">
+      <h2>波浪理论研判</h2>
+      <div class="stat-row">
+        <span class="stat-label">浪型判定</span>
+        <span class="stat-value">C浪回调（或A浪初段）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">前期结构</span>
+        <span class="stat-value">8月底完成5浪上行/三角形反弹</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">回调分位</span>
+        <span class="stat-value">已接近0.5-0.618区域</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">多空结论</span>
+        <span class="stat-value up">结构偏空，尚未确认止跌</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">仓位闸门</span>
+        <span class="stat-value up">整体仓位上限 0%-20%</span>
+      </div>
+      <div class="small-note">* 若后续在3800附近缩量企稳，可能形成4浪底或B浪反弹；跌破3800则调整加深。</div>
+    </div>
+  </div>
+
+  <div class="section-title">昨日盘口 & 隔夜外股 & 五日情绪</div>
+  <div class="grid">
+    <div class="card">
+      <h2>A股昨日盘口（9月28日）</h2>
+      <div class="stat-row">
+        <span class="stat-label">上证指数</span>
+        <span class="stat-value up">3823.62 / -1.67%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">深证成指</span>
+        <span class="stat-value up">12858.75 / -3.44%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">创业板指</span>
+        <span class="stat-value up">3139.82 / -4.53%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">沪深300</span>
+        <span class="stat-value up">~4370 / -2.22%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">科创50</span>
+        <span class="stat-value up">-4.06%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">两市成交额</span>
+        <span class="stat-value">约 1.72 万亿元</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">涨跌家数</span>
+        <span class="stat-value up">上涨 898 / 下跌 4554</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">涨停 / 跌停</span>
+        <span class="stat-value up">35 只 / 57 只</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">北向资金</span>
+        <span class="stat-value neutral">数据缺失</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>隔夜外围市场（9月28日）</h2>
+      <div class="stat-row">
+        <span class="stat-label">道琼斯</span>
+        <span class="stat-value up">51481.51 / -0.67%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">纳斯达克</span>
+        <span class="stat-value up">26820.38 / -0.92%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">标普500</span>
+        <span class="stat-value up">7683.69 / -0.77%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">费城半导体</span>
+        <span class="stat-value up">12488.24 / -1.43%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">中概金龙指数</span>
+        <span class="stat-value down">+1.12%（逆势收涨）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">恒指期货夜盘</span>
+        <span class="stat-value down">24716 / +0.79%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">A50期货</span>
+        <span class="stat-value neutral">数据缺失</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">美债10Y</span>
+        <span class="stat-value up">5.22%（创新高）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">美元指数</span>
+        <span class="stat-value down">101.197 / +0.22%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">美油 / 布油</span>
+        <span class="stat-value">92.60 / 105.28</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">现货黄金</span>
+        <span class="stat-value up">4128.20 美元/盎司（下跌近4%）</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>五日情绪（9月22日-28日）</h2>
+      <div class="emotion-score">2.5</div>
+      <div class="emotion-label">/ 10 分（偏恐慌）</div>
+      <div class="progress">
+        <div class="progress-bar" style="width: 25%; background: var(--danger);"></div>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">日均成交额趋势</span>
+        <span class="stat-value up">1.5万亿→1.7万亿（恐慌放量）</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">涨停家数与晋级率</span>
+        <span class="stat-value up">涨停减少，晋级率下降</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">上涨家数占比</span>
+        <span class="stat-value up">骤降至约16%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">两融/北向边际</span>
+        <span class="stat-value neutral">数据缺失</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">连板高度</span>
+        <span class="stat-value up">高位股批量跌停，情绪退潮</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">十股推荐卡片（今日推荐：0 支）</div>
+  <div class="alert-box">
+    <h2>大盘一票否决未通过，暂停个股推荐</h2>
+    <p>沪深300未站上20周线（4520）且处于牛熊分界线（4621）之下，结构偏空。<br>
+    建议空仓或极低仓位观望，等待大盘企稳后再行选股。</p>
+  </div>
+
+  <div class="section-title">板块方向与风险清单</div>
+  <div class="grid">
+    <div class="card">
+      <h2>板块强弱 TOP / BOTTOM</h2>
+      <h3>强势板块</h3>
+      <div>
+        <span class="tag">石油石化 +0.89%</span>
+        <span class="tag">公用事业 +0.14%</span>
+        <span class="tag">农林牧渔 +0.03%</span>
+        <span class="tag">煤炭 +0.02%</span>
+        <span class="tag">汽车整车</span>
+        <span class="tag">小家电</span>
+        <span class="tag">猪肉</span>
+        <span class="tag">银行 -0.16%</span>
+      </div>
+      <h3>弱势板块</h3>
+      <div>
+        <span class="tag tag-strong">通信 -7.36%</span>
+        <span class="tag tag-strong">电子 -4.93%</span>
+        <span class="tag tag-strong">建筑材料 -4.45%</span>
+        <span class="tag tag-strong">有色金属 -3.77%</span>
+        <span class="tag tag-strong">机械设备 -3.6%</span>
+        <span class="tag tag-strong">元件</span>
+        <span class="tag tag-strong">CPO</span>
+        <span class="tag tag-strong">贵金属</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>风险清单</h2>
+      <ul class="risk-list">
+        <li>沪深300跌破20周均线（4520）及牛熊分界线（4621），趋势转空。</li>
+        <li>美债10Y收益率飙升至5.22%，全球长端债券遭抛售，流动性收紧预期升温。</li>
+        <li>创业板指大跌4.53%，科创50跌4.06%，成长股出现系统性杀跌。</li>
+        <li>高位人气股批量跌停，连板高度骤降，短线情绪退潮明显。</li>
+        <li>美元指数走强至101.197，人民币汇率承压，北向资金存在流出风险。</li>
+        <li>通信、电子、建材等板块跌幅超3%，机构调仓或引发持续抛压。</li>
+        <li>跌停家数（57）远超涨停家数（35），恐慌盘涌出，尚未出现止跌信号。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>免责声明：本报告仅供研究参考，不构成任何投资建议。股市有风险，投资需谨慎。</p>
+    <p>数据来源于公开市场信息及通达信/同花顺/WebSearch，部分数据可能存在缺失或延迟。</p>
+    <p>生成时间：2026-09-29 盘前</p>
+  </div>
+</div>
+</body>
+</html>
