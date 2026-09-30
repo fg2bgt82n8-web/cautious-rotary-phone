@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>A股收盘总结 - 2026-09-30</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f6f8; color: #333; margin: 0; padding: 20px; }
+  .container { max-width: 960px; margin: 0 auto; }
+  h1 { text-align: center; font-size: 24px; margin-bottom: 8px; }
+  .subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 24px; }
+  .card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .card-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; border-left: 4px solid #1a73e8; padding-left: 10px; }
+  .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+  .market-item { background: #f8f9fa; border-radius: 6px; padding: 12px; text-align: center; }
+  .market-name { font-size: 13px; color: #666; margin-bottom: 4px; }
+  .market-value { font-size: 20px; font-weight: 700; }
+  .market-change { font-size: 13px; margin-top: 4px; }
+  .up { color: #d93025; }
+  .down { color: #188038; }
+  .summary-row { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .summary-item { text-align: center; }
+  .summary-label { font-size: 12px; color: #888; }
+  .summary-value { font-size: 16px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
+  th { background: #f8f9fa; font-weight: 600; color: #555; }
+  tr:hover { background: #f8f9fa; }
+  .tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+  .tag-success { background: #e6f4ea; color: #188038; }
+  .tag-warning { background: #fce8e6; color: #d93025; }
+  .tag-info { background: #e8f0fe; color: #1a73e8; }
+  .tag-default { background: #f1f3f4; color: #5f6368; }
+  .note { font-size: 12px; color: #888; margin-top: 8px; }
+  .advice-list { padding-left: 18px; }
+  .advice-list li { margin-bottom: 8px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>A股收盘总结报告</h1>
+  <div class="subtitle">报告日期：2026-09-30（周三） 数据来源：同花顺 iFinD</div>
+
+  <div class="card">
+    <div class="card-title">大盘总结</div>
+    <div class="market-grid">
+      <div class="market-item">
+        <div class="market-name">上证指数</div>
+        <div class="market-value">3842.19</div>
+        <div class="market-change up">+0.31%</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">深证成指</div>
+        <div class="market-value">12887.62</div>
+        <div class="market-change down">-0.11%</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">创业板指</div>
+        <div class="market-value">3135.28</div>
+        <div class="market-change down">-0.23%</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">沪深300</div>
+        <div class="market-value">4357.62</div>
+        <div class="market-change up">+0.29%</div>
+      </div>
+      <div class="market-item">
+        <div class="market-name">科创50</div>
+        <div class="market-value">1530.01</div>
+        <div class="market-change down">-2.51%</div>
+      </div>
+    </div>
+    <div class="summary-row">
+      <div class="summary-item">
+        <div class="summary-label">两市成交额</div>
+        <div class="summary-value">约14,380亿</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">上涨家数</div>
+        <div class="summary-value up">2,393</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">下跌家数</div>
+        <div class="summary-value down">2,729</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">涨停家数</div>
+        <div class="summary-value up">56</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">跌停家数</div>
+        <div class="summary-value down">11</div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">北向资金净买入</div>
+        <div class="summary-value">暂无数据</div>
+      </div>
+    </div>
+    <div class="note">* 成交额为上证与深证合计（上证6,794亿 + 深证7,586亿）；涨跌家数为两市汇总。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">7只A股收盘对比表</div>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>收盘价</th>
+          <th>涨跌幅</th>
+          <th>成交额</th>
+          <th>换手率</th>
+          <th>与买点区间关系</th>
+          <th>是否触及止损</th>
+          <th>验证结果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>600066.SH</td>
+          <td>宇通客车</td>
+          <td>26.72</td>
+          <td class="up">+1.44%</td>
+          <td>5.08亿</td>
+          <td>0.86%</td>
+          <td>买点上方</td>
+          <td>否</td>
+          <td><span class="tag tag-success">符合预期</span></td>
+        </tr>
+        <tr>
+          <td>003010.SZ</td>
+          <td>若羽臣</td>
+          <td>27.99</td>
+          <td class="up">+0.57%</td>
+          <td>1.05亿</td>
+          <td>1.66%</td>
+          <td>买点上方</td>
+          <td>否</td>
+          <td><span class="tag tag-success">符合预期</span></td>
+        </tr>
+        <tr>
+          <td>605499.SH</td>
+          <td>东鹏饮料</td>
+          <td>112.25</td>
+          <td class="up">+1.87%</td>
+          <td>3.27亿</td>
+          <td>0.43%</td>
+          <td>买点上方</td>
+          <td>否</td>
+          <td><span class="tag tag-success">符合预期</span></td>
+        </tr>
+        <tr>
+          <td>603486.SH</td>
+          <td>科沃斯</td>
+          <td>49.89</td>
+          <td class="up">+1.36%</td>
+          <td>1.61亿</td>
+          <td>0.56%</td>
+          <td>买点下方</td>
+          <td>否</td>
+          <td><span class="tag tag-default">未达买点</span></td>
+        </tr>
+        <tr>
+          <td>603444.SH</td>
+          <td>吉比特</td>
+          <td>339.69</td>
+          <td class="up">+1.11%</td>
+          <td>2.48亿</td>
+          <td>1.02%</td>
+          <td>买点区间内</td>
+          <td>否</td>
+          <td><span class="tag tag-info">区间内运行</span></td>
+        </tr>
+        <tr>
+          <td>605305.SH</td>
+          <td>中际联合</td>
+          <td>30.33</td>
+          <td class="up">+0.30%</td>
+          <td>0.51亿</td>
+          <td>0.80%</td>
+          <td>买点下方</td>
+          <td><span class="up">是</span></td>
+          <td><span class="tag tag-warning">触发止损</span></td>
+        </tr>
+        <tr>
+          <td>689009.SH</td>
+          <td>九号公司</td>
+          <td>37.10</td>
+          <td class="up">+2.94%</td>
+          <td>2.35亿</td>
+          <td>1.14%</td>
+          <td>买点下方</td>
+          <td><span class="up">是</span></td>
+          <td><span class="tag tag-warning">触发止损</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">* 成交额活跃阈值：≥5,000万元；以上7只个股今日成交额均达活跃水平。数据来源：同花顺iFinD level1盘中数据。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">形态评估</div>
+    <table>
+      <thead>
+        <tr>
+          <th>代码</th>
+          <th>名称</th>
+          <th>形态评估</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>600066.SH</td>
+          <td>宇通客车</td>
+          <td>收盘站上买点区间上沿，放量收涨，短期维持强势，但未观察到明确的下降楔形上破或收敛平台突破信号。</td>
+        </tr>
+        <tr>
+          <td>003010.SZ</td>
+          <td>若羽臣</td>
+          <td>收盘略高于买点上限，换手率放大至1.66%，资金关注度提升，形态趋于企稳，需观察后续能否站稳28元。</td>
+        </tr>
+        <tr>
+          <td>605499.SH</td>
+          <td>东鹏饮料</td>
+          <td>收盘价突破112元买点上限，涨1.87%为七股中次高，成交额3.27亿元，呈现放量上攻态势。</td>
+        </tr>
+        <tr>
+          <td>603486.SH</td>
+          <td>科沃斯</td>
+          <td>收盘价49.89元微低于买点下限50元，日内涨1.36%，量能温和，未出现缩量回踩企稳的明确信号，处于临界点。</td>
+        </tr>
+        <tr>
+          <td>603444.SH</td>
+          <td>吉比特</td>
+          <td>收盘价位于330-340买点区间内，涨1.11%，换手率1.02%，日内走势平稳，属于区间内正常运行。</td>
+        </tr>
+        <tr>
+          <td>605305.SH</td>
+          <td>中际联合</td>
+          <td>收盘价30.33元远低于买点及止损位，仅微涨0.30%，成交额0.51亿处于活跃边缘，技术形态偏弱，无突破迹象。</td>
+        </tr>
+        <tr>
+          <td>689009.SH</td>
+          <td>九号公司</td>
+          <td>收盘价37.10元远低于买点及止损位，虽涨2.94%但属于低位反弹，成交额2.35亿，尚未形成有效企稳结构。</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">* 形态评估基于当日收盘行情与量能概况，未涉及分钟级或日K线级别技术形态确认，仅供参考。</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">明日操作建议</div>
+    <ul class="advice-list">
+      <li><strong>宇通客车（600066）</strong>：收盘站上买点区间且量能充足，明日若早盘继续放量上攻可继续持有；若出现冲高回落或跌破26.5元，建议适当减仓锁定利润。</li>
+      <li><strong>若羽臣（003010）</strong>：勉强站上买点上限，明日需观察能否站稳28元关口，若缩量回调至27元附近企稳，可考虑逢低关注。</li>
+      <li><strong>东鹏饮料（605499）</strong>：放量突破买点上沿，趋势相对最强，明日若维持112元以上运行可持股待涨；若快速回落跌破110元需警惕假突破。</li>
+      <li><strong>科沃斯（603486）</strong>：收盘价略低于买点下限，处于临界状态，明日若回踩50元附近获得支撑且缩量企稳，可视为观察介入点；若继续走弱则保持观望。</li>
+      <li><strong>吉比特（603444）</strong>：区间内运行，明日重点关注能否放量突破340元压力位，突破成功则打开上行空间，否则继续在区间内高抛低吸。</li>
+      <li><strong>中际联合（605305）</strong>：收盘价已触发止损（44元），且远低于买点区间，建议严格执行止损纪律，明日开盘考虑出局，不宜留恋。</li>
+      <li><strong>九号公司（689009）</strong>：收盘价已触发止损（53元），尽管今日涨幅较大，但属于低位反弹，尚未改变弱势格局，建议按纪律止损离场。</li>
+    </ul>
+    <div class="note">* 以上内容基于公开数据整理，不构成投资建议。股市有风险，决策需谨慎。</div>
+  </div>
+</div>
+</body>
+</html>
