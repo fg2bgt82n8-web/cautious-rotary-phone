@@ -1,0 +1,53 @@
+{
+  "query_date": "2026-10-01",
+  "data_date": "2026-09-30",
+  "stocks": [
+    {
+      "code": "1157.HK",
+      "name": "中联重科",
+      "close": 5.76,
+      "change_pct": 0.7874,
+      "volume": "419.68万",
+      "turnover": "2421.4164万",
+      "currency": "HKD"
+    },
+    {
+      "code": "9626.HK",
+      "name": "哔哩哔哩-W",
+      "close": 119.5,
+      "change_pct": 1.3571,
+      "volume": "303.8017万",
+      "turnover": "3.6117亿",
+      "currency": "HKD"
+    },
+    {
+      "code": "1651.HK",
+      "name": "津上机床中国",
+      "close": 46.34,
+      "change_pct": 2.2958,
+      "volume": "258.126万",
+      "turnover": "1.1826亿",
+      "currency": "HKD"
+    }
+  ],
+  "indices": [
+    {
+      "code": "HSI.HK",
+      "name": "恒生指数",
+      "close": 24613.27,
+      "change_pct": 0.3658
+    },
+    {
+      "code": "HSTECH.HK",
+      "name": "恒生科技",
+      "close": 4253.89,
+      "change_pct": 0.1005
+    }
+  ],
+  "southbound": {
+    "date": "2026-09-30",
+    "net_buy_hkd_million": 6863.61,
+    "net_buy_hkd_billion": 68.64,
+    "unit": "百万港元"
+  }
+}
