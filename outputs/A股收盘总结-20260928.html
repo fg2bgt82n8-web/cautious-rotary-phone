@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>A股收盘总结-2026-09-28</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f6f8; color: #1a1a1a; margin: 0; padding: 20px; }
+.container { max-width: 960px; margin: 0 auto; }
+h1 { text-align: center; font-size: 24px; margin-bottom: 8px; }
+.subtitle { text-align: center; color: #666; font-size: 14px; margin-bottom: 24px; }
+.card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+.card-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; border-left: 4px solid #2563eb; padding-left: 10px; }
+.market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.market-item { background: #f8f9fa; border-radius: 6px; padding: 12px; text-align: center; }
+.market-name { font-size: 13px; color: #666; margin-bottom: 4px; }
+.market-value { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+.market-change { font-size: 13px; font-weight: 500; }
+.up { color: #d93026; }
+.down { color: #237a3c; }
+.neutral { color: #666; }
+.summary-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.summary-item { flex: 1; min-width: 120px; background: #f8f9fa; border-radius: 6px; padding: 10px; text-align: center; }
+.summary-label { font-size: 12px; color: #666; }
+.summary-value { font-size: 16px; font-weight: 600; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #eee; }
+th { background: #f8f9fa; font-weight: 600; color: #333; }
+tr:hover { background: #fafafa; }
+.td-left { text-align: left; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; }
+.badge-success { background: #e6f4ea; color: #1e7e34; }
+.badge-warning { background: #fff3cd; color: #856404; }
+.badge-danger { background: #fce8e8; color: #c5221f; }
+.badge-info { background: #e8f0fe; color: #1967d2; }
+.pattern-text { color: #444; line-height: 1.6; font-size: 13px; }
+.advice-box { background: #f0f7ff; border-left: 4px solid #2563eb; padding: 12px 16px; border-radius: 0 6px 6px 0; font-size: 13px; line-height: 1.6; }
+.footer { text-align: center; color: #999; font-size: 12px; margin-top: 24px; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>A股收盘总结报告</h1>
+<div class="subtitle">数据日期：2026-09-28 | 数据来源：同花顺 iFinD</div>
+
+<!-- 大盘总结卡 -->
+<div class="card">
+<div class="card-title">大盘总结</div>
+<div class="market-grid">
+
+<div class="market-item">
+<div class="market-name">上证指数</div>
+<div class="market-value">3823.62</div>
+<div class="market-change down">-1.67%</div>
+</div>
+
+<div class="market-item">
+<div class="market-name">深证成指</div>
+<div class="market-value">12858.75</div>
+<div class="market-change down">-3.44%</div>
+</div>
+
+<div class="market-item">
+<div class="market-name">创业板指</div>
+<div class="market-value">3139.82</div>
+<div class="market-change down">-4.53%</div>
+</div>
+
+<div class="market-item">
+<div class="market-name">沪深300</div>
+<div class="market-value">4340.76</div>
+<div class="market-change down">-2.22%</div>
+</div>
+
+<div class="market-item">
+<div class="market-name">科创50</div>
+<div class="market-value">1555.98</div>
+<div class="market-change down">-4.06%</div>
+</div>
+
+</div>
+<div class="summary-row">
+<div class="summary-item">
+<div class="summary-label">两市成交额</div>
+<div class="summary-value">17028亿</div>
+</div>
+<div class="summary-item">
+<div class="summary-label">上涨家数</div>
+<div class="summary-value up">~899家</div>
+</div>
+<div class="summary-item">
+<div class="summary-label">下跌家数</div>
+<div class="summary-value down">~4676家</div>
+</div>
+<div class="summary-item">
+<div class="summary-label">涨停/跌停</div>
+<div class="summary-value">35/60</div>
+</div>
+<div class="summary-item">
+<div class="summary-label">北向资金净买入</div>
+<div class="summary-value neutral">暂无数据</div>
+</div>
+</div>
+</div>
+
+<!-- 7只A股收盘对比表 -->
+<div class="card">
+<div class="card-title">推荐标的收盘表现（7只A股）</div>
+<table>
+<thead>
+<tr>
+<th>股票代码</th>
+<th>股票名称</th>
+<th>收盘价</th>
+<th>涨跌幅</th>
+<th>成交额</th>
+<th>换手率</th>
+<th>买点位置</th>
+<th>验证结果</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>600066.SH</td>
+<td class="td-left">宇通客车</td>
+<td>26.22</td>
+<td class="up">+0.81%</td>
+<td>5.72亿</td>
+<td>0.99%</td>
+<td>买点区间内</td>
+<td><span class="badge badge-info">区间内运行</span></td>
+</tr>
+
+<tr>
+<td>003010.SZ</td>
+<td class="td-left">若羽臣</td>
+<td>27.99</td>
+<td class="down">-1.62%</td>
+<td>1.31亿</td>
+<td>2.04%</td>
+<td>买点上方</td>
+<td><span class="badge badge-success">符合预期</span></td>
+</tr>
+
+<tr>
+<td>605499.SH</td>
+<td class="td-left">东鹏饮料</td>
+<td>111.12</td>
+<td class="up">+0.26%</td>
+<td>2.29亿</td>
+<td>0.31%</td>
+<td>买点区间内</td>
+<td><span class="badge badge-info">区间内运行</span></td>
+</tr>
+
+<tr>
+<td>603486.SH</td>
+<td class="td-left">科沃斯</td>
+<td>50.40</td>
+<td class="up">+0.14%</td>
+<td>1.49亿</td>
+<td>0.52%</td>
+<td>买点区间内</td>
+<td><span class="badge badge-info">区间内运行</span></td>
+</tr>
+
+<tr>
+<td>603444.SH</td>
+<td class="td-left">吉比特</td>
+<td>336.03</td>
+<td class="down">-1.75%</td>
+<td>3.41亿</td>
+<td>1.40%</td>
+<td>买点区间内</td>
+<td><span class="badge badge-info">区间内运行</span></td>
+</tr>
+
+<tr>
+<td>605305.SH</td>
+<td class="td-left">中际联合</td>
+<td>29.88</td>
+<td class="down">-2.77%</td>
+<td>0.91亿</td>
+<td>1.43%</td>
+<td>止损下方</td>
+<td><span class="badge badge-danger">触发止损</span></td>
+</tr>
+
+<tr>
+<td>689009.SH</td>
+<td class="td-left">九号公司</td>
+<td>36.70</td>
+<td class="down">-0.97%</td>
+<td>2.07亿</td>
+<td>1.00%</td>
+<td>止损下方</td>
+<td><span class="badge badge-danger">触发止损</span></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+
+<!-- 形态评估 -->
+<div class="card">
+<div class="card-title">逐只形态评估</div>
+
+<div style="margin-bottom:14px;">
+<strong>600066.SH 宇通客车</strong>
+<span class="badge badge-info">区间内运行</span>
+<div class="pattern-text">开盘25.97即处于买点区间内，盘中最低25.75接近买点下沿后获得支撑，收盘26.22回到区间中上部，日线收阳，呈现缩量企稳迹象。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>003010.SZ 若羽臣</strong>
+<span class="badge badge-success">符合预期</span>
+<div class="pattern-text">开盘28.50即处于买点上方，盘中一度冲高至29.15，但随后回落，收盘27.99仍高于买点上限，呈现冲高回落态势，需警惕上方抛压。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>605499.SH 东鹏饮料</strong>
+<span class="badge badge-info">区间内运行</span>
+<div class="pattern-text">开盘111.17处于买点区间内，全天在109.68-111.59窄幅震荡，收盘111.12接近区间上沿，呈现围绕买点中轴缩量整理格局。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>603486.SH 科沃斯</strong>
+<span class="badge badge-info">区间内运行</span>
+<div class="pattern-text">开盘50.50处于买点区间内，盘中最低49.71短暂跌破买点下限50，但收盘50.40收回区间，呈现缩量回踩买点下沿后小幅回升。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>603444.SH 吉比特</strong>
+<span class="badge badge-info">区间内运行</span>
+<div class="pattern-text">开盘343.04高于买点区间，但随后持续回落，最低333.00接近买点下限330，收盘336.03回到区间内，呈现高开低走、在买点区间寻求支撑的态势。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>605305.SH 中际联合</strong>
+<span class="badge badge-danger">触发止损</span>
+<div class="pattern-text">开盘30.68，随后震荡走低，收盘29.88为全天最低，几乎光头光脚阴线，收盘远低于止损价44，空头主导，弱势特征明显。</div>
+</div>
+
+<div style="margin-bottom:14px;">
+<strong>689009.SH 九号公司</strong>
+<span class="badge badge-danger">触发止损</span>
+<div class="pattern-text">开盘37.08，全天在36.61-37.43窄幅波动，收盘36.70，股价远低于止损价53，呈现低位弱势整理格局。</div>
+</div>
+
+</div>
+
+<!-- 明日操作建议 -->
+<div class="card">
+<div class="card-title">明日操作建议</div>
+<div class="advice-box">
+<strong>总体判断：</strong>2026-09-28市场整体偏弱，三大指数集体收跌，创业板指跌幅超4%，两市上涨个股占比仅约16%。在系统性调整背景下，推荐标的多数表现相对稳健。<br><br>
+<strong>个股策略：</strong><br>
+1. <strong>宇通客车、东鹏饮料、科沃斯</strong>：收盘处于买点区间内，可关注明日能否在买点区间获得支撑并放量突破。若放量突破买点区间上沿，可考虑按计划建仓；若跌破买点区间下沿，建议观望。<br>
+2. <strong>若羽臣</strong>：收盘价在买点上方，但当日收跌且呈现冲高回落，建议观察明日能否企稳回升，确认支撑有效后再行介入。<br>
+3. <strong>吉比特</strong>：高开低走后回落至买点区间内，需警惕进一步下探买点下限330的风险。若明日能在330附近缩量企稳，可考虑低吸；若放量跌破330，建议暂时回避。<br>
+4. <strong>中际联合、九号公司</strong>：收盘价已远低于止损价，处于深度破位状态。严格按照止损纪律，不建议在当前位置补仓或新建仓位，应等待股价重新站稳止损价上方后再评估。<br><br>
+<strong>仓位控制：</strong>市场弱势背景下，建议整体仓位控制在30%以内，单只个股仓位不超过计划仓位上限，分批建仓、留足现金应对波动。
+</div>
+</div>
+
+<div class="footer">以上内容基于公开数据整理，不构成投资建议。数据来源：同花顺 iFinD。</div>
+</div>
+</body>
+</html>
